@@ -1,25 +1,20 @@
-import { myFunction } from "../../../src/rock-paper-scissors/main"
+import { RockPaperScissors } from "../../../src/rock-paper-scissors/main";
 
-describe('myFunction', () => {
+describe('RockPaperScissors',()=>{
 
-    beforeEach(()=>{
-        jest.clearAllMocks()
-       
-    })
+       describe('play',()=>{
 
-    it('returns string `a`',()=>{
-       
-        //arrange
-        const sut = myFunction
-        
-        let expected ='a'
-        
-        // act
-        let actual = sut()
-        
-        // assert
-        expect(actual).toBe(expected)
+            it('returns `DRAW` when both play same move',()=>{
+                  
+                //arrange
 
-    })
-  
+                const sut = new RockPaperScissors().play
+
+
+                  //act
+
+
+                  //assert
+            })
+       })
 })
