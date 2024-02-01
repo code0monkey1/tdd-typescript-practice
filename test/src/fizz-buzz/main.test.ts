@@ -73,6 +73,33 @@ describe('fizz-Buzz', () => {
 
               })
          })
+
+         describe('String of number', () => {
+              
+                 it.each([
+                {num:8,res:'8'},
+                {num:28,res:'28'},
+                {num:56,res:'56'}
+              ])('when number is $num',({num,res})=>{
+               
+                      // arrange
+
+                      const sut = getFizzBuzz()
+                      const expected=res
+
+                      //act
+
+                      const actual = sut.execute(num)
+
+                      //assert
+                      expect(actual).toBe(expected)
+
+              })
+
+            
+           
+         })
+         
   })
   
   
