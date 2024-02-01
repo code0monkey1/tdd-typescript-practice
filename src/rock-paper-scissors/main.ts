@@ -2,7 +2,16 @@ export type MOVE = "ROCK"|"PAPER"|"SCISSORS"
 
 export type RESULT="DRAW"|"WIN"|"LOSE"
 
-export class RockPaperScissors{
+
+// start with the interface
+export interface IRockPaperScissors{
+
+  play(p1:MOVE,p2:MOVE):RESULT
+
+}
+
+// later create the class
+export class RockPaperScissors implements IRockPaperScissors{
 
    private winningMoves: { p1: MOVE; p2: MOVE }[] = [
     { p1: "PAPER", p2: "ROCK" },

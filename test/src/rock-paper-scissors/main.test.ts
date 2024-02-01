@@ -1,4 +1,4 @@
-import { MOVE, RESULT, RockPaperScissors } from "../../../src/rock-paper-scissors/main";
+import { IRockPaperScissors, MOVE, RESULT, RockPaperScissors } from "../../../src/rock-paper-scissors/main";
 
 describe('rock-paper-scissors',()=>{
 
@@ -82,9 +82,8 @@ describe('rock-paper-scissors',()=>{
        })
 })
 
-let createRockPaperScissors=():RockPaperScissors=>{
+let createRockPaperScissors=():IRockPaperScissors=>{
 
     return new RockPaperScissors()
   
-
 }
