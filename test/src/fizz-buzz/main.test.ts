@@ -28,6 +28,30 @@ describe('fizz-Buzz', () => {
 
               })
          })
+
+
+             describe('Buzz',()=>{
+             
+              it.each([
+                {num:5},
+                {num:25},
+                {num:20}
+              ])('when number is $num',({num})=>{
+               
+                      // arrange
+
+                      const sut = getFizzBuzz()
+                      const expected =Result.Buzz
+
+                      //act
+
+                      const actual = sut.execute(num)
+
+                      //assert
+                      expect(actual).toBe(expected)
+
+              })
+         })
   })
   
   
