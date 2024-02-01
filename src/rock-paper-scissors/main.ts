@@ -1,6 +1,14 @@
-export type MOVE = "ROCK"|"PAPER"|"SCISSORS"
+export enum MOVE {
+  ROCK,
+  PAPER,
+  SCISSORS
+}
 
-export type RESULT="DRAW"|"WIN"|"LOSE"
+export enum RESULT{
+  DRAW,
+  WIN,
+  LOSE
+}
 
 
 // start with the interface
@@ -14,21 +22,21 @@ export interface IRockPaperScissors{
 export class RockPaperScissors implements IRockPaperScissors{
 
    private winningMoves: { p1: MOVE; p2: MOVE }[] = [
-    { p1: "PAPER", p2: "ROCK" },
-    { p1: "ROCK", p2: "SCISSORS" },
-    { p1: "SCISSORS", p2: "PAPER" },
+    { p1: MOVE.PAPER, p2: MOVE.ROCK},
+    { p1: MOVE.ROCK, p2: MOVE.SCISSORS},
+    { p1: MOVE.SCISSORS, p2: MOVE.PAPER },
   ];
 
     play(p1:MOVE,p2:MOVE):RESULT{
 
       if (p1==p2)
-        return 'DRAW'
+        return RESULT.DRAW
 
       const found = this.winningMoves.find( move =>{
        return  move.p1 == p1 && move.p2==p2
       })
 
-      return found?'WIN':'LOSE'
+      return found?RESULT.WIN:RESULT.LOSE
 
   }
 }
