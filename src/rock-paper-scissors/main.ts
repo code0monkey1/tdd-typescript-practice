@@ -8,13 +8,17 @@ export class RockPaperScissors{
 
       let winning:{p1:MOVE,p2:MOVE}[]=[
         {p1:"PAPER",p2:"ROCK"},
-        {p1:"PAPER",p2:"ROCK"},
-        {p1:"PAPER",p2:"ROCK"}
+        {p1:"ROCK",p2:"SCISSORS"},
+        {p1:"SCISSORS",p2:"PAPER"}
       ]
+
+      const found = winning.find( move =>{
+       return  move.p1 == p1 && move.p2==p2
+      })
 
       if (p1==p2)
         return 'DRAW'
-      else if ( winning.includes({p1,p2}))
+      else if (found)
         return "WIN"
 
       return 'LOSE'
