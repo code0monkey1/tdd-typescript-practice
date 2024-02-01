@@ -12,14 +12,15 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const rps = new RockPaperScissors()
-                   const sut = rps.play.bind(rps)
+                   const sut = new RockPaperScissors()
+   
+
                    const expected:RESULT='DRAW'
     
     
                    //act
     
-                   const actual = sut(p1,p2)
+                   const actual = sut.play(p1,p2)
     
     
                    //assert
@@ -37,13 +38,12 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const sut = new RockPaperScissors().play
+                   const sut = new RockPaperScissors()
                    const expected:RESULT='WIN'
 
-    
                    //act
     
-                   const actual = sut(p1,p2)
+                   const actual = sut.play(p1,p2)
     
     
                    //assert
@@ -62,12 +62,12 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const sut = new RockPaperScissors().play
+                   const sut = new RockPaperScissors()
                    const expected:RESULT='LOSE'
 
                    //act
     
-                   const actual = sut(p1,p2)
+                   const actual = sut.play(p1,p2)
     
     
                    //assert
