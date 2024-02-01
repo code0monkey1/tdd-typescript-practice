@@ -1,10 +1,10 @@
-import { myFunction } from "../../src/main"
+import { myFunction } from "../../../src/rock-paper-scissors/main"
 
 describe('myFunction', () => {
 
     beforeEach(()=>{
-
         jest.clearAllMocks()
+       
     })
 
     it('returns string `a`',()=>{
