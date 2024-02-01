@@ -1,3 +1,5 @@
+// BETTER to describe as ENUM , if you need to refer them as constant values later in code
+
 export enum MOVE {
   ROCK,
   PAPER,
@@ -9,7 +11,6 @@ export enum RESULT{
   WIN,
   LOSE
 }
-
 
 // start with the interface
 export interface IRockPaperScissors{
