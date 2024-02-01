@@ -19,10 +19,7 @@ export class RockPaperScissors{
        return  move.p1 == p1 && move.p2==p2
       })
 
-      if (found)
-        return "WIN"
-
-      return 'LOSE'
+      return found?'WIN':'LOSE'
 
   }
 }
