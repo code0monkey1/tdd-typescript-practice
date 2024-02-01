@@ -2,8 +2,12 @@ import { myFunction } from "../../src/main"
 
 const sut = myFunction
 
-it('return a string',()=>{
-    let result = sut()
 
-    expect(result).toBe('a')
+describe('myFunction', () => {
+    it('returns string `a`',()=>{
+        let result = sut()
+    
+        expect(result).toBe('a')
+    })
+  
 })
