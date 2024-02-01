@@ -12,7 +12,8 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const sut = new RockPaperScissors().play
+                   const rps = new RockPaperScissors()
+                   const sut = rps.play.bind(rps)
                    const expected:RESULT='DRAW'
     
     
