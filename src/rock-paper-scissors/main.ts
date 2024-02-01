@@ -12,13 +12,14 @@ export class RockPaperScissors{
 
     play(p1:MOVE,p2:MOVE):RESULT{
 
+      if (p1==p2)
+        return 'DRAW'
+
       const found = this.winningMoves.find( move =>{
        return  move.p1 == p1 && move.p2==p2
       })
 
-      if (p1==p2)
-        return 'DRAW'
-      else if (found)
+      if (found)
         return "WIN"
 
       return 'LOSE'
