@@ -84,7 +84,8 @@ describe('fizz-Buzz', () => {
 const getFizzBuzz=():FizzBuzz=>{
 
     const sut:FizzBuzz={
-      execute: function (digit: number): Result |Error {
+      
+      execute: function (digit: number): Result |string {
         
         
         
@@ -93,12 +94,13 @@ const getFizzBuzz=():FizzBuzz=>{
 
         if( isMultipleOfN(digit,3))
            return Result.Fizz
+
         if( isMultipleOfN(digit,5))
            return Result.Buzz
       
-        throw Error("Invalid Number")
-      }
+        return digit.toString()
     }
+  }
 
     return sut
 
