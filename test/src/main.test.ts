@@ -1,8 +1,5 @@
 import { myFunction } from "../../src/main"
 
-
-
-
 describe('myFunction', () => {
     it('returns string `a`',()=>{
        
