@@ -12,6 +12,11 @@ export enum RESULT{
   LOSE
 }
 
+export type SCENARIO={
+  p1:MOVE,
+  p2:MOVE
+}
+
 // start with the interface
 export interface IRockPaperScissors{
 
@@ -22,11 +27,11 @@ export interface IRockPaperScissors{
 // later create the class
 export class RockPaperScissors implements IRockPaperScissors{
 
-   private winningMoves: { p1: MOVE; p2: MOVE }[] = [
+   private winningMoves: SCENARIO[] = new Array(
     { p1: MOVE.PAPER, p2: MOVE.ROCK},
     { p1: MOVE.ROCK, p2: MOVE.SCISSORS},
     { p1: MOVE.SCISSORS, p2: MOVE.PAPER },
-  ];
+   );
 
     play(p1:MOVE,p2:MOVE):RESULT{
 
