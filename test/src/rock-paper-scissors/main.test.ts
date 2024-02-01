@@ -1,6 +1,6 @@
 import { MOVE, RESULT, RockPaperScissors } from "../../../src/rock-paper-scissors/main";
 
-describe('RockPaperScissors',()=>{
+describe('rock-paper-scissors',()=>{
 
        describe('play',()=>{
 
@@ -22,7 +22,7 @@ describe('RockPaperScissors',()=>{
                    const actual = sut.play(p1,p2)
     
                    //assert
-                   
+
                    expect(actual).toBe(expected)
                })
            })
