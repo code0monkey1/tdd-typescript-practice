@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose"
+    "test": "jest",
+    "tdd":"jest --watchAll --verbose"
   },
   "keywords": [],
   "author": "",
