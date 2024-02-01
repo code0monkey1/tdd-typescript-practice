@@ -6,5 +6,5 @@ export const enum Result{
 
 
 export interface FizzBuzz{
-  execute(n:Number):Result|Error
+  execute(n:Number):Result|string
 }
