@@ -12,8 +12,7 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const sut = new RockPaperScissors()
-   
+                   const sut =createRockPaperScissors()
 
                    const expected:RESULT='DRAW'
     
@@ -22,8 +21,8 @@ describe('RockPaperScissors',()=>{
     
                    const actual = sut.play(p1,p2)
     
-    
                    //assert
+                   
                    expect(actual).toBe(expected)
                })
            })
@@ -38,7 +37,7 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const sut = new RockPaperScissors()
+                   const sut = createRockPaperScissors()
                    const expected:RESULT='WIN'
 
                    //act
@@ -62,7 +61,7 @@ describe('RockPaperScissors',()=>{
                      
                    //arrange
     
-                   const sut = new RockPaperScissors()
+                   const sut = createRockPaperScissors()
                    const expected:RESULT='LOSE'
 
                    //act
@@ -82,3 +81,10 @@ describe('RockPaperScissors',()=>{
 
        })
 })
+
+let createRockPaperScissors=():RockPaperScissors=>{
+
+    return new RockPaperScissors()
+  
+
+}
