@@ -12,9 +12,19 @@ describe('fizz-Buzz', () => {
                 {num:3},
                 {num:9},
                 {num:27}
-              ])('when number is multiple of 3',()=>{
+              ])('when number is $num',({num})=>{
                
-                     
+                      // arrange
+
+                      const sut = getFizzBuzz()
+                      const expected =Result.Fizz
+
+                      //act
+
+                      const actual = sut.execute(num)
+
+                      //assert
+                      expect(actual).toBe(expected)
 
               })
          })
@@ -27,11 +37,14 @@ describe('fizz-Buzz', () => {
 const getFizzBuzz=():FizzBuzz=>{
 
     const sut:FizzBuzz={
-      execute: function (n: Number): Result {
-        throw new Error("Function not implemented.")
+      execute: function (n: number): Result {
+
+         if( n%3 == 0)
+           return Result.Fizz
+
+         return Result.Buzz
       }
     }
-
 
     return sut
 }
