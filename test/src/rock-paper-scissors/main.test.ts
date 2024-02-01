@@ -36,7 +36,7 @@ describe('rock-paper-scissors',()=>{
              it.each(scenarios)(`returns "DRAW" when p1 is $p1 and p2 is $p2`,({p1,p2})=>{
                      
                    //arrange
-    
+                   
                    const sut = createRockPaperScissors()
                    const expected=RESULT.WIN
 
