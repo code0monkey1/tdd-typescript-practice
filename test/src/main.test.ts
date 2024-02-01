@@ -11,7 +11,7 @@ describe('myFunction', () => {
         
         let expected ='a'
         
-        // execute
+        // act
         let actual = sut()
         
         // assert
