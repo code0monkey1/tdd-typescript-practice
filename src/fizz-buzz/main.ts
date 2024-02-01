@@ -5,6 +5,30 @@ export const enum Result{
 }
 
 
-export interface FizzBuzz{
-  execute(n:Number):Result|string
+export interface IFizzBuzz{
+  execute(digit:number):Result|string
+}
+
+export class FizBuzz implements IFizzBuzz{
+    execute(digit: number): string | Result {
+    
+          
+          if( this.isMultipleOfN(digit,3) && this.isMultipleOfN(digit,5))
+            return Result.FizzBuzz
+
+          if( this.isMultipleOfN(digit,3))
+            return Result.Fizz
+
+          if( this.isMultipleOfN(digit,5))
+            return Result.Buzz
+        
+          return digit.toString()
+
+    }
+
+     isMultipleOfN =(digit: number,n:number)=>{
+      return digit%n==0
+    }
+
+
 }

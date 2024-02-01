@@ -1,6 +1,4 @@
-import { FizzBuzz, Result } from "../../../src/fizz-buzz/main"
-
-
+import { FizBuzz, IFizzBuzz, Result } from "../../../src/fizz-buzz/main"
 
 describe('fizz-Buzz', () => {
 
@@ -81,31 +79,8 @@ describe('fizz-Buzz', () => {
 })
 
 
-const getFizzBuzz=():FizzBuzz=>{
+const getFizzBuzz=():IFizzBuzz=>{
 
-    const sut:FizzBuzz={
-      
-      execute: function (digit: number): Result |string {
-        
-        
-        
-        if( isMultipleOfN(digit,3) && isMultipleOfN(digit,5))
-          return Result.FizzBuzz
+    return new FizBuzz()
 
-        if( isMultipleOfN(digit,3))
-           return Result.Fizz
-
-        if( isMultipleOfN(digit,5))
-           return Result.Buzz
-      
-        return digit.toString()
-    }
-  }
-
-    return sut
-
- 
 }
-const  isMultipleOfN =(digit: number,n:number)=>{
-      return digit%n==0
-    }
