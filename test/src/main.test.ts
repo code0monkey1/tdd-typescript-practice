@@ -1,22 +1,21 @@
 import { myFunction } from "../../src/main"
 
-const sut = myFunction
+
 
 
 describe('myFunction', () => {
     it('returns string `a`',()=>{
        
         //arrange
-        let actual = sut()
-
+        const sut = myFunction
+        
         let expected ='a'
-    
-        expect(actual).toBe(expected)
-
+        
         // execute
-
+        let actual = sut()
+        
         // assert
-
+        expect(actual).toBe(expected)
 
     })
   
