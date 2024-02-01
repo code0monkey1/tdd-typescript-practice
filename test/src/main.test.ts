@@ -1,6 +1,12 @@
 import { myFunction } from "../../src/main"
 
 describe('myFunction', () => {
+
+    beforeEach(()=>{
+
+        jest.clearAllMocks()
+    })
+
     it('returns string `a`',()=>{
        
         //arrange
