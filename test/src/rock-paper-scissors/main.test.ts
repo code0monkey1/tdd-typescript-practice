@@ -6,7 +6,7 @@ describe('rock-paper-scissors',()=>{
 
            describe('draw', () => {
                
-               const scenarios : {p1:MOVE,p2:MOVE}[] =[{p1:"PAPER",p2:"PAPER"},{p1:"ROCK",p2:"ROCK"},{p1:"SCISSORS",p2:"SCISSORS"}]
+               const scenarios : {p1:MOVE,p2:MOVE}[] =[{p1:MOVE.PAPER,p2:MOVE.PAPER},{p1:MOVE.ROCK,p2:MOVE.ROCK},{p1:MOVE.SCISSORS,p2:MOVE.SCISSORS}]
 
                it.each(scenarios)(`returns "DRAW" when p1 is $p1 and p2 is $p2`,({p1,p2})=>{
                      
@@ -14,7 +14,7 @@ describe('rock-paper-scissors',()=>{
     
                    const sut =createRockPaperScissors()
 
-                   const expected:RESULT='DRAW'
+                   const expected=RESULT.DRAW
     
     
                    //act
@@ -30,15 +30,15 @@ describe('rock-paper-scissors',()=>{
            describe('p1 wins',()=>{
 
               const scenarios : {p1:MOVE,p2:MOVE}[] =[
-                {p1:"PAPER",p2:"ROCK"},
-                {p1:"ROCK",p2:"SCISSORS"},
-                {p1:"SCISSORS",p2:"PAPER"}]
+                {p1:MOVE.PAPER,p2:MOVE.ROCK},
+                {p1:MOVE.ROCK,p2:MOVE.SCISSORS},
+                {p1:MOVE.SCISSORS,p2:MOVE.PAPER}]
              it.each(scenarios)(`returns "DRAW" when p1 is $p1 and p2 is $p2`,({p1,p2})=>{
                      
                    //arrange
     
                    const sut = createRockPaperScissors()
-                   const expected:RESULT='WIN'
+                   const expected=RESULT.WIN
 
                    //act
     
@@ -54,15 +54,15 @@ describe('rock-paper-scissors',()=>{
             describe('p2 loses',()=>{
 
               const scenarios : {p1:MOVE,p2:MOVE}[] =[
-                {p1:"ROCK",p2:"PAPER"},
-                {p1:"SCISSORS",p2:"ROCK"},
-                {p1:"PAPER",p2:"SCISSORS"}]
+                {p1:MOVE.ROCK,p2:MOVE.PAPER},
+                {p1:MOVE.SCISSORS,p2:MOVE.ROCK},
+                {p1:MOVE.PAPER,p2:MOVE.SCISSORS}]
              it.each(scenarios)(`returns "LOSE" when p1 is $p1 and p2 is $p2`,({p1,p2})=>{
                      
                    //arrange
     
                    const sut = createRockPaperScissors()
-                   const expected:RESULT='LOSE'
+                   const expected=RESULT.LOSE
 
                    //act
     
@@ -74,11 +74,8 @@ describe('rock-paper-scissors',()=>{
                })
 
 
-
            })
            
-           
-
        })
 })
 
