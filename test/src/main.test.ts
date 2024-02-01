@@ -5,9 +5,11 @@ const sut = myFunction
 
 describe('myFunction', () => {
     it('returns string `a`',()=>{
-        let result = sut()
+        
+        let actual = sut()
+        let expected ='a'
     
-        expect(result).toBe('a')
+        expect(actual).toBe(expected)
     })
   
 })
