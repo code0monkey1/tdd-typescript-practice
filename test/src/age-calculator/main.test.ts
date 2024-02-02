@@ -15,9 +15,12 @@ describe('age-calculator', () => {
 
         //act
 
-        const expected = sut.execute()
+        // const actual = sut.execute(birthDate,targetDate)
+        // const expected = new Error("invalid target date")
 
         //assert
+
+        expect(async()=>sut.execute(birthDate,targetDate)).toThrow(Error)
 
         
     })
