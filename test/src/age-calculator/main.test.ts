@@ -51,7 +51,7 @@ describe('age-calculator', () => {
   
       })
       
-      describe('BirthDate is less than TargetDate', () => {
+      describe('BirthDate has not yet passed in the current year ', () => {
 
           it.each([
             {
