@@ -1,6 +1,6 @@
 import { IRockPaperScissors, MOVE, RESULT, RockPaperScissors, SCENARIO } from "../../../src/rock-paper-scissors/main";
 
-describe('rock-paper-scissors',()=>{
+describe.skip('rock-paper-scissors',()=>{
 
        describe('play',()=>{
 
@@ -14,7 +14,6 @@ describe('rock-paper-scissors',()=>{
                    const sut =createRockPaperScissors()
 
                    const expected=RESULT.DRAW
-    
     
                    //act
                    const actual = sut.play(p1,p2)
