@@ -1,15 +1,5 @@
 
-interface IAgeCalculator{
-   execute(birthDate:string,targetDate:string):number
-}
 
-
-class AgeCalculator implements IAgeCalculator{
-  execute(birthDate: string,targetDate:string): number {
-    return 38
-  }
-  
-}
 describe('age-calculator', () => {
 
   describe('execute', () => {
@@ -20,19 +10,19 @@ describe('age-calculator', () => {
 
       const sut = createAgeCalculator()
 
-      const birthDate='04-03-1985'
-      const targetDate='02-02-2024'
+      const birthDate=new Date('1985/03/04')
+      const targetDate=new Date('2024/02/02')
+
+     
+
       const expected=38
 
       //act
        
       const actual = sut.execute(birthDate,targetDate)
 
-
       //assert
-
       expect(actual).toBe(expected)
-
 
      })
 
@@ -41,7 +31,17 @@ describe('age-calculator', () => {
   
   
 })
+interface IAgeCalculator{
+   execute(birthDate:Date,targetDate:Date):number
+}
 
+
+class AgeCalculator implements IAgeCalculator{
+  execute(birthDate: Date,targetDate:Date): number {
+    return 38
+  }
+  
+}
 
 const createAgeCalculator=()=>{
   return new AgeCalculator()
