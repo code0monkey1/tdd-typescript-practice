@@ -1,9 +1,9 @@
 // BETTER to describe as ENUM , if you need to refer them as constant values later in code
 
 export enum MOVE {
-  ROCK,
-  PAPER,
-  SCISSORS
+  ROCK='ROCK',
+  PAPER='PAPER',
+  SCISSORS="SCISSORS"
 }
 
 export enum RESULT{
