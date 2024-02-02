@@ -111,9 +111,9 @@ describe('age-calculator', () => {
 
           it.each([
             {
-              birthDate:'1996/02/29', 
+              birthDate:'2000/02/29', 
               targetDate:'2024/03/04',
-              expected:8
+              expected:6
             },
               {
               birthDate:'1989/02/16', 
