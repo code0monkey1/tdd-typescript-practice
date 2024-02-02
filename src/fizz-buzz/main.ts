@@ -17,6 +17,7 @@ export class FizBuzz implements IFizzBuzz{
 
           if(digit==3)
              return Result.WizzFizz
+             
           if(digit==5)
              return Result.WizzBuzz
          
