@@ -4,7 +4,7 @@ describe('age-calculator', () => {
   describe('execute', () => {
 
     
-    describe('BirthDate is after the TargetDate', () => {
+    describe('TargetDate is earlier than BirthDate', () => {
   
           it.each([
          {birthDate:'2024/03/04',targetDate:'2024/03/03'},
