@@ -85,7 +85,7 @@ class AgeCalculator implements IAgeCalculator{
     if(birthDate>targetDate)
         throw new Error("Invalid : Target Date is before Birth Date")
    
-    const diff = targetDate.getFullYear() - birthDate.getFullYear();
+    const diff =  Math.floor(targetDate.getFullYear() - birthDate.getFullYear());
     
     return diff
 
