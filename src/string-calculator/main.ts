@@ -6,23 +6,14 @@ export class StringCalculator implements IStringCalculator{
     if( (trimmed).length==0)  return 0
 
     // more than 1 digit
-  
-    const sum = this.getSum(this.getDigitsArray(trimmed.split(',')))
+    const sum = trimmed.split(',')
+                      .map( e => parseInt(e))
+                      .reduce((prev:number,current:number)=> prev+=current,0)
 
     return sum
 
   }
 
-  private getSum(arr:number[]){
-
-   return arr.reduce((prev:number,current:number)=> prev+=current,0)
-   
-  }
-
-  private getDigitsArray(arr:string[]){
-
-   return  arr.map( e => parseInt(e))
-  }
   
 }
 export interface IStringCalculator{
