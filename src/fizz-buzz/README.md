@@ -15,4 +15,4 @@
 1. Only a multiple of 5 [ 5 , 10, 20 , 25 ] , return `Buzz`
 1. Multiple of both 5 and 3 [ 15 , 30 , 15 ] , return `FizzBuzz`
 1. Number is neither a multiple of 5 , nor a multiple of 3 , return String
-1. Number is a Prime Number , return `Wizz`
+1. Number is a Prime Number [ 2 ,3 , 5 ,7 , 11 ] , return `Wizz`
