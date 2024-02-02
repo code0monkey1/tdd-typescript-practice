@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "tdd":"jest --watchAll --verbose --coverage"
+    "test": "jest --verbose --coverage ",
+    "tdd":"jest --watchAll "
   },
   "keywords": [],
   "author": "",
