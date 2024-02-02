@@ -1,28 +1,32 @@
 describe('age-calculator', () => {
 
   describe('execute', () => {
+    
+    describe('Invalid Dates , throw Error', () => {
+      
+      describe('When birthDate is after targetDate', () => {
+  
+  
+          it.each([
+         {birthDate:new Date('2025/03/04'),targetDate:new Date('2024/03/04')},
+         {birthDate:new Date('2024/03/05'),targetDate:new Date('2023/03/04')}
+        ])('The $birthDate is greater than the $targetDate',({birthDate,targetDate})=>{
+  
+          //arrange
+          const sut = createAgeCalculator()
+          const ErrorMessage ="Invalid Target Year or Birth Date"
+  
+          //act
+  
+          //assert
+          expect(() => sut.execute(birthDate, targetDate)).toThrow(
+            new Error(ErrorMessage)
+          );
+  
+      })
 
-    describe('When birthDate is after targetDate', () => {
-
-        it.each([
-       {birthDate:new Date('2025/03/04'),targetDate:new Date('2024/03/04')},
-       {birthDate:new Date('2024/03/05'),targetDate:new Date('2023/03/04')}
-      ])('The $birthDate is greater than the $targetDate',({birthDate,targetDate})=>{
-
-        //arrange
-        const sut = createAgeCalculator()
-        const ErrorMessage ="Invalid Target Year or Birth Date"
-
-        //act
-
-        //assert
-        expect(() => sut.execute(birthDate, targetDate)).toThrow(
-          new Error(ErrorMessage)
-        );
-
-        
     })
-
+    
   })
     
     
