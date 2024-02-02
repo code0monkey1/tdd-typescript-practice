@@ -4,13 +4,13 @@ describe('age-calculator', () => {
   describe('execute', () => {
 
     
-    describe('Invalid Dates', () => {
+    describe('BirthDate is after the TargetDate', () => {
   
           it.each([
-         {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/03')},
-         {birthDate:new Date('2024/03/05'),targetDate:new Date('2023/03/04')},
-         {birthDate:new Date('1985/03/05'),targetDate:new Date('1975/03/04')}
-        ])(`The $birthDate.getFullYear() is greater than the $targetDate`,({birthDate,targetDate})=>{
+         {birthDate:'2024/03/04',targetDate:'2024/03/03'},
+         {birthDate:'2024/03/05',targetDate:'2023/03/04'},
+         {birthDate:'1985/03/05',targetDate:'1975/03/04'}
+        ])(`The $birthDate is greater than the $targetDate`,({birthDate,targetDate})=>{
   
           //arrange
           const sut = createAgeCalculator()
@@ -19,7 +19,7 @@ describe('age-calculator', () => {
           //act
   
           //assert
-          expect(() => sut.execute(birthDate, targetDate)).toThrow(
+          expect(() => sut.execute(new Date(birthDate), new Date(targetDate))).toThrow(
             new Error(ErrorMessage)
           );
   
@@ -27,13 +27,13 @@ describe('age-calculator', () => {
 
     })
     
-    describe('Valid Dates',()=>{
+
       
       describe('BirthDate is equal to TargetDate', () => {
         
         it.each([
-         {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')},
-         {birthDate:new Date('2024/03/05'),targetDate:new Date('2024/03/05')}
+         {birthDate:'2024/03/04',targetDate:'2024/03/04'},
+         {birthDate:'2024/03/05',targetDate:'2024/03/05'}
         ])('$birthDate $targetDate',({birthDate,targetDate})=>{
             
         //arrange
@@ -42,7 +42,7 @@ describe('age-calculator', () => {
         const expected=0
      
         //act
-        const actual = sut.execute(birthDate,targetDate)
+        const actual = sut.execute(new Date(birthDate),new Date(targetDate) )
         
         //assert
         expect(actual).toBe(expected)
@@ -51,17 +51,17 @@ describe('age-calculator', () => {
   
       })
       
-      describe('Birth Date is less than Target Date', () => {
+      describe('BirthDate is less than TargetDate', () => {
 
           it.each([
             {
-              birthDate:new Date('1985/03/04'), 
-              targetDate:new Date('2024/02/02'),
+              birthDate:'1985/03/04', 
+              targetDate:'2024/02/02',
               expected:38
             },
               {
-              birthDate:new Date('1989/02/16'), 
-              targetDate:new Date('2024/02/02'),
+              birthDate:'1989/02/16', 
+              targetDate:'2024/02/02',
               expected:34
             }
           ])('birthDate : $birthDate is less  than targetDate : $targetDate',({birthDate,targetDate,expected})=>{
@@ -71,7 +71,7 @@ describe('age-calculator', () => {
          
             //act
              
-            const actual = sut.execute(birthDate,targetDate)
+            const actual = sut.execute(new Date(birthDate),new Date(targetDate))
             
             //assert
             expect(actual).toBe(expected)
@@ -79,9 +79,6 @@ describe('age-calculator', () => {
           })
       })
 
-
-
-     })
  
   })
   
