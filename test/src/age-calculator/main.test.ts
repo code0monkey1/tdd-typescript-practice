@@ -164,10 +164,6 @@ describe('age-calculator', () => {
 
           })
       })
-
-
- 
-
  
   })
   
@@ -184,22 +180,24 @@ class AgeCalculator implements IAgeCalculator{
     
     let  years = this.getYears(ms) ;
 
-    if( this.isLeapYear(birthDate.getFullYear()) && 
-    birthDate.getDate()==29 && 
-    birthDate.getMonth()+1 ==2)
+    if( this.isLeapDay(birthDate))
        years = years / 4
 
     return Math.floor( years)
 
   }
 
-  getYears(ms:number){
+  private isLeapDay(birthDate: Date) {
+    return this.isLeapYear(birthDate.getFullYear()) &&
+      birthDate.getDate() == 29 &&
+      birthDate.getMonth() + 1 == 2
+  }
+
+  private getYears(ms:number){
    return  ms / (1000 * 60 * 60 * 24 * 365) 
   }
 
-
-
- isLeapYear(year:number) {
+ private isLeapYear(year:number) {
       if (year % 4 === 0) {
         if (year % 100 === 0) {
           if (year % 400 === 0) {
