@@ -1,12 +1,12 @@
 describe('test', () => {
 
-  describe('When input string is blank', () => {
+  describe('Input is blank', () => {
     
     it.each([
      {input:''},
      {input:'   '},
      {input:'  '}
-   ])(' input : $input',({input})=>{
+   ])('input : $input',({input})=>{
         
      // arrange 
      const sut = createStringCalculator()
@@ -23,6 +23,31 @@ describe('test', () => {
     })
      
   })
+
+  describe('Input has 1 digit', () => {
+
+    it.each([
+      {input:"1"},
+      {input:"2"},
+      {input:"9"}
+  ])('input : $input',({input})=>{
+     
+    // arrange 
+     const sut = createStringCalculator()
+  
+     const expected = 0
+     
+     // act 
+     const actual = sut.add(input)
+     
+     // assert 
+     expect(actual).toBe(expected)
+  
+
+    })
+    
+  })
+  
   
 })
 
