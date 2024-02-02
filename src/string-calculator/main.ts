@@ -5,13 +5,23 @@ export class StringCalculator implements IStringCalculator{
 
     if( (trimmedInput).length==0)  return 0
 
-    const arr = input.split(',')
+    // more than 1 digit
+
+    const sum = this.getSum(input.split(','))
+
+    return sum
+
+  }
+
+  private getSum(arr:string[]){
+
 
     let sum=0
 
     for ( let a of arr) sum+= parseInt(a)
     
     return sum
+   
   }
   
 }
