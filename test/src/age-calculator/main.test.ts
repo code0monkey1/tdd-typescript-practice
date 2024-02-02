@@ -29,12 +29,12 @@ describe('age-calculator', () => {
     
 
       
-      describe('BirthDate is equal to TargetDate, the age is : $expected', () => {
+      describe('BirthDate is equal to TargetDate', () => {
         
         it.each([
          {birthDate:'2024/03/04',targetDate:'2024/03/04'},
          {birthDate:'2024/03/05',targetDate:'2024/03/05'}
-        ])('$birthDate $targetDate',({birthDate,targetDate})=>{
+        ])('birthDate : $birthDate deathDate: $targetDate , the age is : 0',({birthDate,targetDate})=>{
             
         //arrange
         const sut = createAgeCalculator()
