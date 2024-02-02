@@ -1,8 +1,13 @@
 describe('age-calculator', () => {
 
   describe('execute', () => {
+
+     it.each([{birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')}])('',()=>{
+
+
+     })
    
-     test('test',()=>{
+     it.skip('test',()=>{
 
       //arrange
 
