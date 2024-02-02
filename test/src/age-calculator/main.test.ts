@@ -6,10 +6,18 @@ describe('age-calculator', () => {
 
 
         it.each([
-       {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')},
-       {birthDate:new Date('2024/03/05'),targetDate:new Date('2024/03/04')}
-      ])('',()=>{
+       {birthDate:new Date('2025/03/04'),targetDate:new Date('2024/03/04')},
+       {birthDate:new Date('2024/03/05'),targetDate:new Date('2023/03/04')}
+      ])('The $birthDate is greater than the $targetDate',({birthDate,targetDate})=>{
 
+        //arrange
+        const sut = createAgeCalculator()
+
+        //act
+
+        const expected = sut.execute()
+
+        //assert
 
         
     })
