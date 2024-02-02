@@ -56,21 +56,32 @@ describe('age-calculator', () => {
    
      it('Valid Dates',()=>{
 
-      //arrange
 
-      const sut = createAgeCalculator()
+      describe('Birth Date is less than Target Date ', () => {
 
-      const birthDate=new Date('1985/03/04')
-      const targetDate=new Date('2024/02/02')
-
-      const expected=38
-   
-      //act
-       
-      const actual = sut.execute(birthDate,targetDate)
+          it.each([
+            {birthDate:new Date('1985/03/04'), 
+              targetDate:new Date('2024/02/02')
+            }
+          ])('$birthDate < $targetDate')
+        //arrange
+  
+        const sut = createAgeCalculator()
+  
+        const birthDate=
+        const 
+  
+        const expected=38
+     
+        //act
+         
+        const actual = sut.execute(birthDate,targetDate)
+        
+        //assert
+        expect(actual).toBe(expected)
+      })
       
-      //assert
-      expect(actual).toBe(expected)
+
 
      })
  
@@ -86,7 +97,7 @@ class AgeCalculator implements IAgeCalculator{
         throw new Error("Invalid : Target Date is before Birth Date")
    
     const diff = targetDate.getTime() - birthDate.getTime();
-    
+
     const years = Math.floor( diff / (1000 * 60 * 60 * 24 * 365) );
 
     return years
