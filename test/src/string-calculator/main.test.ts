@@ -24,7 +24,7 @@ describe('string-calculator', () => {
        
     })
   
-    describe('Input has 1 digit', () => {
+    describe('Given single number , should return that number', () => {
   
       it.each([
         {input:"1",expected:1},
