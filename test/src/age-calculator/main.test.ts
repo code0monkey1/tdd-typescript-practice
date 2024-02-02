@@ -51,7 +51,7 @@ describe('age-calculator', () => {
   
       })
       
-      describe('BirthDate has not yet passed in the current year ', () => {
+      describe('BirthDate has not yet passed ', () => {
 
           it.each([
             {
@@ -63,6 +63,34 @@ describe('age-calculator', () => {
               birthDate:'1989/02/16', 
               targetDate:'2024/02/02',
               expected:34
+            }
+          ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
+
+            //arrange
+            const sut = createAgeCalculator()
+         
+            //act
+             
+            const actual = sut.execute(new Date(birthDate),new Date(targetDate))
+            
+            //assert
+            expect(actual).toBe(expected)
+
+          })
+      })
+
+        describe('BirthDate has passed ', () => {
+
+          it.each([
+            {
+              birthDate:'1985/03/04', 
+              targetDate:'2024/03/04',
+              expected:39
+            },
+              {
+              birthDate:'1989/02/16', 
+              targetDate:'2024/02/17',
+              expected:35
             }
           ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
 
