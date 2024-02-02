@@ -56,16 +56,20 @@ describe('age-calculator', () => {
           it.each([
             {
               birthDate:new Date('1985/03/04'), 
-              targetDate:new Date('2024/02/02')
+              targetDate:new Date('2024/02/02'),
+              expected:38
+            },
+              {
+              birthDate:new Date('1989/02/16'), 
+              targetDate:new Date('2024/02/02'),
+              expected:34
             }
-          ])('$birthDate < $targetDate',({birthDate,targetDate})=>{
+          ])('$birthDate < $targetDate',({birthDate,targetDate,expected})=>{
 
             //arrange
       
             const sut = createAgeCalculator()
       
-      
-            const expected=38
          
             //act
              
