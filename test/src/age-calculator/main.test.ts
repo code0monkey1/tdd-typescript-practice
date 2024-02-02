@@ -11,7 +11,7 @@ describe('age-calculator', () => {
          {birthDate:new Date('2025/03/04'),targetDate:new Date('2024/03/04')},
          {birthDate:new Date('2024/03/05'),targetDate:new Date('2023/03/04')},
          {birthDate:new Date('1985/03/05'),targetDate:new Date('1975/03/04')}
-        ])('The $birthDate.getFullYear() is greater than the $targetDate.getFullYear()',({birthDate,targetDate})=>{
+        ])('The ($birthDate.getFullYear()) is greater than the $targetDate',({birthDate,targetDate})=>{
   
           //arrange
           const sut = createAgeCalculator()
