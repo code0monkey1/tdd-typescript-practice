@@ -26,36 +26,31 @@ describe('age-calculator', () => {
       })
 
     })
-
-
+    
+    describe('Valid Dates',()=>{
+      
+      describe('BirthDate is equal to TargetDate', () => {
+        
+        it.each([
+         {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')},
+         {birthDate:new Date('2024/03/05'),targetDate:new Date('2024/03/05')}
+        ])('$birthDate $targetDate',({birthDate,targetDate})=>{
+            
+        //arrange
+        const sut = createAgeCalculator()
   
-    
-    
-    describe('BirthDate is equal to TargetDate ', () => {
-      
-      it.each([
-       {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')},
-       {birthDate:new Date('2024/03/05'),targetDate:new Date('2024/03/05')}
-      ])('$birthDate $targetDate',({birthDate,targetDate})=>{
-          
-      //arrange
-      const sut = createAgeCalculator()
-
-      const expected=0
-   
-      //act
-      const actual = sut.execute(birthDate,targetDate)
-      
-      //assert
-      expect(actual).toBe(expected)
-      
+        const expected=0
+     
+        //act
+        const actual = sut.execute(birthDate,targetDate)
+        
+        //assert
+        expect(actual).toBe(expected)
+        
+        })
+  
       })
-
-    })
-    
-   
-     describe('Valid Dates',()=>{
-
+      
       describe('Birth Date is less than Target Date', () => {
 
           it.each([
@@ -81,7 +76,7 @@ describe('age-calculator', () => {
 
           })
       })
-      
+
 
 
      })
