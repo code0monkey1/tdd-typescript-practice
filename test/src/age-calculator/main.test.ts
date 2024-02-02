@@ -107,6 +107,33 @@ describe('age-calculator', () => {
   
           })
       })
+
+        describe('BirthDay has not yet Passed', () => {
+          it.each([
+            {
+              birthDate:'2000/02/29', 
+              targetDate:'2024/02/04',
+              expected:5
+            },
+              {
+              birthDate:'2004/02/29', 
+              targetDate:'2024/02/17',
+              expected:4
+            }
+          ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
+  
+            //arrange
+            const sut = createAgeCalculator()
+         
+            //act
+             
+            const actual = sut.execute(new Date(birthDate),new Date(targetDate))
+            
+            //assert
+            expect(actual).toBe(expected)
+  
+          })
+      })
           
         })
         
@@ -155,14 +182,14 @@ class AgeCalculator implements IAgeCalculator{
     
     const ms = targetDate.getTime() - birthDate.getTime();
     
-    const years = Math.floor(this.getYears(ms) );
+    let  years = this.getYears(ms) ;
 
     if( this.isLeapYear(birthDate.getFullYear()) && 
     birthDate.getDate()==29 && 
     birthDate.getMonth()+1 ==2)
-       return years / 4
+       years = years / 4
 
-    return years
+    return Math.floor( years)
 
   }
 
