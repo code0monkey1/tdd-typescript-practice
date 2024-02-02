@@ -15,7 +15,7 @@ export interface IFizzBuzz{
 export class FizBuzz implements IFizzBuzz{
     execute(digit: number): string | Result {
          
-          if ( this.isPrime(digit))
+          if ( this.isPrime(digit) )
               return Result.Wizz
 
           if( this.isMultipleOfN(digit,15))
@@ -37,11 +37,11 @@ export class FizBuzz implements IFizzBuzz{
 
     isPrime=( digit:number):boolean=>{
 
-      for( let i =2;i<=Math.sqrt(digit);i++){
+      for( let i =2;i<=Math.sqrt(digit);i++)
          if (digit % i ==0)
               return false
-      }
       
+
       return true
 
     }

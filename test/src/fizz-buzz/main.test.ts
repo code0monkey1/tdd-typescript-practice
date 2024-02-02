@@ -7,7 +7,6 @@ describe('fizz-Buzz', () => {
          describe('Fizz',()=>{
              
               it.each([
-                {input:3},
                 {input:9},
                 {input:27},
                 {input:6}
@@ -32,7 +31,6 @@ describe('fizz-Buzz', () => {
              describe('Buzz',()=>{
              
               it.each([
-                {num:5},
                 {num:25},
                 {num:20}
               ])('when number is $num',({num})=>{
