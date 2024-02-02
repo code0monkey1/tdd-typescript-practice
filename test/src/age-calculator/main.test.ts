@@ -6,7 +6,7 @@ interface IAgeCalculator{
 
 class AgeCalculator implements IAgeCalculator{
   execute(birthDate: string,targetDate:string): number {
-    throw new Error("Method not implemented.")
+    return 38
   }
   
 }
@@ -14,18 +14,26 @@ describe('age-calculator', () => {
 
   describe('execute', () => {
    
-     test('',()=>{
+     test('test',()=>{
 
       //arrange
 
       const sut = createAgeCalculator()
 
-      //act
+      const birthDate='04-03-1985'
+      const targetDate='02-02-2024'
+      const expected=38
 
-      const result = sut.execute('04-03-1985','02-02-2024')
+      //act
+       
+      const actual = sut.execute(birthDate,targetDate)
+
 
       //assert
-        
+
+      expect(actual).toBe(expected)
+
+
      })
 
     
