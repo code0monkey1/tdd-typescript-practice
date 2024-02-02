@@ -4,7 +4,7 @@ describe('age-calculator', () => {
   describe('execute', () => {
 
     
-    describe('Invalid Dates : targetDate before birthDate', () => {
+    describe('Invalid Dates', () => {
   
           it.each([
          {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/03')},
@@ -49,7 +49,7 @@ describe('age-calculator', () => {
     })
     
    
-     it('test',()=>{
+     it('Valid Dates',()=>{
 
       //arrange
 
