@@ -21,7 +21,7 @@ export class StringCalculator implements IStringCalculator{
 
   private getDigitsArray(arr:string[]){
 
-   return  arr.map( e=> parseInt(e))
+   return  arr.map( e => parseInt(e))
   }
   
 }
