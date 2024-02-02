@@ -13,8 +13,6 @@ describe('age-calculator', () => {
       const birthDate=new Date('1985/03/04')
       const targetDate=new Date('2024/02/02')
 
-     
-
       const expected=38
 
       //act
