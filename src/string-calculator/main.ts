@@ -8,7 +8,7 @@ export class StringCalculator implements IStringCalculator{
     // more than 1 digit
     const sum = trimmed.split(',')
                       .map( e => parseInt(e))
-                      .reduce((prev:number,current:number)=> prev+=current,0)
+                      .reduce((current:number,prev:number)=> prev+=current)
 
     return sum
 
