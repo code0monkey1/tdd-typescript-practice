@@ -13,9 +13,9 @@ export interface IFizzBuzz{
 export class FizBuzz implements IFizzBuzz{
     execute(digit: number): string | Result {
          
-          if ( digit ==2)
+          if ( this.isPrime(digit))
               return Result.Wizz
-              
+
           if( this.isMultipleOfN(digit,15))
             return Result.FizzBuzz
 
@@ -29,8 +29,17 @@ export class FizBuzz implements IFizzBuzz{
 
     }
 
-     isMultipleOfN =(digit: number,n:number)=>{
+     isMultipleOfN =(digit: number,n:number):boolean=>{
       return digit%n==0
+    }
+
+    isPrime=( digit:number):boolean=>{
+
+      if (digit ==2)
+         return true
+      
+      return false
+
     }
 
 
