@@ -14,7 +14,7 @@ describe('fizz-Buzz', () => {
                
                       // arrange
 
-                      const sut = getFizzBuzz()
+                      const sut = createFizzBuzz()
                       const expected =Result.Fizz
 
                       //act
@@ -38,7 +38,7 @@ describe('fizz-Buzz', () => {
                
                       // arrange
 
-                      const sut = getFizzBuzz()
+                      const sut = createFizzBuzz()
                       const expected =Result.Buzz
 
                       //act
@@ -61,7 +61,7 @@ describe('fizz-Buzz', () => {
                
                       // arrange
 
-                      const sut = getFizzBuzz()
+                      const sut = createFizzBuzz()
                       const expected =Result.FizzBuzz
 
                       //act
@@ -84,7 +84,7 @@ describe('fizz-Buzz', () => {
                
                       // arrange
 
-                      const sut = getFizzBuzz()
+                      const sut = createFizzBuzz()
                       const expected=res
 
                       //act
@@ -106,7 +106,7 @@ describe('fizz-Buzz', () => {
 })
 
 
-const getFizzBuzz=():IFizzBuzz=>{
+const createFizzBuzz=():IFizzBuzz=>{
 
     return new FizBuzz()
 
