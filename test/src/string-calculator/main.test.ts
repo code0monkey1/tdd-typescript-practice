@@ -1,3 +1,5 @@
+import { IStringCalculator, StringCalculator } from "../../../src/string-calculator/main"
+
 describe('test', () => {
 
   describe('Input is blank', () => {
@@ -11,7 +13,6 @@ describe('test', () => {
      // arrange 
      const sut = createStringCalculator()
 
-     
      // act 
      const actual = sut.add(input)
      
@@ -46,18 +47,6 @@ describe('test', () => {
 })
 
 
-class StringCalculator implements IStringCalculator{
-  add(input: string): number {
-    
-    if(input.trim()=='')  return 0
-    
-    return parseInt(input)
-  }
-  
-}
-interface IStringCalculator{
-  add(input:string):number
-}
 
 const createStringCalculator=():IStringCalculator=>{
 
