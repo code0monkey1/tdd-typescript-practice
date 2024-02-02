@@ -2,7 +2,9 @@ export const enum Result{
   Fizz,
   Buzz,
   FizzBuzz,
-  Wizz
+  Wizz,
+  WizzFizz,
+  WizzBuzz
 }
 
 
