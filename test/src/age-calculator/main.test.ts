@@ -54,31 +54,32 @@ describe('age-calculator', () => {
     })
     
    
-     it('Valid Dates',()=>{
+     describe('Valid Dates',()=>{
 
-
-      describe('Birth Date is less than Target Date ', () => {
+      describe('Birth Date is less than Target Date', () => {
 
           it.each([
-            {birthDate:new Date('1985/03/04'), 
+            {
+              birthDate:new Date('1985/03/04'), 
               targetDate:new Date('2024/02/02')
             }
-          ])('$birthDate < $targetDate')
-        //arrange
-  
-        const sut = createAgeCalculator()
-  
-        const birthDate=
-        const 
-  
-        const expected=38
-     
-        //act
+          ])('$birthDate < $targetDate',({birthDate,targetDate})=>{
+
+            //arrange
+      
+            const sut = createAgeCalculator()
+      
+      
+            const expected=38
          
-        const actual = sut.execute(birthDate,targetDate)
-        
-        //assert
-        expect(actual).toBe(expected)
+            //act
+             
+            const actual = sut.execute(birthDate,targetDate)
+            
+            //assert
+            expect(actual).toBe(expected)
+
+          })
       })
       
 
