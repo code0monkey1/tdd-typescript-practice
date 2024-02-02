@@ -86,6 +86,27 @@ describe('string-calculator', () => {
       })
       
     })
+
+       describe('Given numbers separated by /\n and `,` , should return sum ', () => {
+  
+      it.each([
+        {input:"1,2,3",expected:6},
+        {input:"2,3,4",expected:9},
+        {input:"9,1,10",expected:20}
+    ])('input : $input , expected : $expected',({input,expected})=>{
+       
+      // arrange 
+       const sut = createStringCalculator()
+       
+       // act 
+       const actual = sut.add(input)
+       
+       // assert 
+       expect(actual).toBe(expected)
+  
+      })
+      
+    })
     
   })
 
