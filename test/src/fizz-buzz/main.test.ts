@@ -13,12 +13,10 @@ describe('fizz-Buzz', () => {
               ])('when number is $input',({input})=>{
                
                       // arrange
-
                       const sut = createFizzBuzz()
                       const expected = Result.Fizz
 
                       //act
-
                       const actual = sut.execute(input)
 
                       //assert
@@ -95,8 +93,6 @@ describe('fizz-Buzz', () => {
 
               })
 
-            
-           
          })
 
 
@@ -112,6 +108,54 @@ describe('fizz-Buzz', () => {
 
                       const sut = createFizzBuzz()
                       const expected=Result.Wizz
+
+                      //act
+
+                      const actual = sut.execute(input)
+
+                      //assert
+                      expect(actual).toBe(expected)
+
+              })
+
+            
+           
+         })
+
+            describe('WizzFizz', () => {
+              
+                 it.each([
+                {input:3},
+              
+              ])('when number is $input',({input})=>{
+               
+                      // arrange
+
+                      const sut = createFizzBuzz()
+                      const expected=Result.WizzFizz
+
+                      //act
+
+                      const actual = sut.execute(input)
+
+                      //assert
+                      expect(actual).toBe(expected)
+
+              })
+
+         })
+
+            describe('WizzBuzz', () => {
+              
+                 it.each([
+                {input:5},
+               
+              ])('when number is $input',({input})=>{
+               
+                      // arrange
+
+                      const sut = createFizzBuzz()
+                      const expected=Result.WizzBuzz
 
                       //act
 
