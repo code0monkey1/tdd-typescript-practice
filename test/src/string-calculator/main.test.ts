@@ -45,12 +45,33 @@ describe('string-calculator', () => {
       
     })
 
-      describe('Given 2 csv (numbers) , should return sum ', () => {
+      describe('Given two numbers , should return sum ', () => {
   
       it.each([
         {input:"1,2",expected:3},
         {input:"2,3",expected:5},
         {input:"9,1",expected:10}
+    ])('input : $input , expected : $expected',({input,expected})=>{
+       
+      // arrange 
+       const sut = createStringCalculator()
+       
+       // act 
+       const actual = sut.add(input)
+       
+       // assert 
+       expect(actual).toBe(expected)
+  
+      })
+      
+    })
+
+        describe('Given many number , should return sum ', () => {
+  
+      it.each([
+        {input:"1,2,3",expected:6},
+        {input:"2,3,4",expected:9},
+        {input:"9,1,10",expected:20}
     ])('input : $input , expected : $expected',({input,expected})=>{
        
       // arrange 
