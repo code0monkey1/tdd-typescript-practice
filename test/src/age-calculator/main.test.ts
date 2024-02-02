@@ -48,7 +48,7 @@ describe('age-calculator', () => {
       
       //assert
       expect(actual).toBe(expected)
-
+      
       })
 
     })
@@ -85,9 +85,11 @@ class AgeCalculator implements IAgeCalculator{
     if(birthDate>targetDate)
         throw new Error("Invalid : Target Date is before Birth Date")
    
-    const diff =  Math.floor(targetDate.getFullYear() - birthDate.getFullYear());
+    const diff = targetDate.getTime() - birthDate.getTime();
     
-    return diff
+    const years = Math.floor( diff / (1000 * 60 * 60 * 24 * 365) );
+
+    return years
 
   }
   
