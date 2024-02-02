@@ -1,14 +1,31 @@
 describe('age-calculator', () => {
 
   describe('execute', () => {
+
+    describe('When birthDate is after targetDate', () => {
+
+
+        it.each([
+       {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')},
+       {birthDate:new Date('2024/03/05'),targetDate:new Date('2024/03/04')}
+      ])('',()=>{
+
+
+        
+    })
+
+  })
     
-    describe('BirthYear and Target year are the same ', () => {
+    
+    describe.skip('BirthYear and Target year are the same ', () => {
       
       it.each([
-       {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')}])('',()=>{
+       {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')},
+       {birthDate:new Date('2024/03/05'),targetDate:new Date('2024/03/04')}
+      ])('',()=>{
           
         //arrange
-        
+
 
 
         //act 
@@ -48,7 +65,7 @@ describe('age-calculator', () => {
 
 
 class AgeCalculator implements IAgeCalculator{
-  execute(birthDate: Date,targetDate:Date): number {
+  execute(birthDate: Date,targetDate:Date): number |Error {
     return 38
   }
   
@@ -59,5 +76,5 @@ const createAgeCalculator=()=>{
 }
 
 interface IAgeCalculator{
-   execute(birthDate:Date,targetDate:Date):number
+   execute(birthDate:Date,targetDate:Date):number |Error
 }
