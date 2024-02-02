@@ -15,6 +15,16 @@ describe('age-calculator', () => {
   describe('execute', () => {
    
      test('',()=>{
+
+      //arrange
+
+      const sut = createAgeCalculator()
+
+      //act
+
+      const result = sut.execute('04-03-1985','02-02-2024')
+
+      //assert
         
      })
 
@@ -23,3 +33,8 @@ describe('age-calculator', () => {
   
   
 })
+
+
+const createAgeCalculator=()=>{
+  return new AgeCalculator()
+}
