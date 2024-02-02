@@ -5,8 +5,10 @@ export class StringCalculator implements IStringCalculator{
 
     if( (trimmed).length==0)  return 0
 
+    const splitParams = [",", "\n"];
+
     // more than 1 digit
-    const sum = trimmed.split(',')
+    const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
                       .map( e => parseInt(e))
                       .reduce((current:number,prev:number)=> prev+=current)
 
