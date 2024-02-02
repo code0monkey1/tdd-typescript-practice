@@ -123,7 +123,9 @@ class AgeCalculator implements IAgeCalculator{
     
     const years = Math.floor(this.getYears(ms) );
 
-    if( this.isLeapYear(birthDate.getFullYear()) && birthDate.getDate()==29 && birthDate.getMonth()+1 ==2)
+    if( this.isLeapYear(birthDate.getFullYear()) && 
+    birthDate.getDate()==29 && 
+    birthDate.getMonth()+1 ==2)
        return years / 4
 
     return years
@@ -133,6 +135,8 @@ class AgeCalculator implements IAgeCalculator{
   getYears(ms:number){
    return  ms / (1000 * 60 * 60 * 24 * 365) 
   }
+
+
 
  isLeapYear(year:number) {
       if (year % 4 === 0) {
