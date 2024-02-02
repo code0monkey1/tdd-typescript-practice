@@ -9,4 +9,6 @@ export class StringCalculator implements IStringCalculator{
 }
 export interface IStringCalculator{
   add(input:string):number
+
+  
 }
