@@ -1,25 +1,30 @@
 describe('test', () => {
 
-   it.each([
-    {input:''},{input:'   '},{input:'  '}
-  ])(' input : $input',({input})=>{
-       
-    // arrange 
-    const sut = createStringCalculator()
-
-    const expected = 0
+  describe('When input string is blank', () => {
     
-    // act 
-    const actual = sut.add(input)
-    
-    // assert 
-    expect(actual).toBe(expected)
-
-
-   })
-    
+    it.each([
+     {input:''},
+     {input:'   '},
+     {input:'  '}
+   ])(' input : $input',({input})=>{
+        
+     // arrange 
+     const sut = createStringCalculator()
+  
+     const expected = 0
+     
+     // act 
+     const actual = sut.add(input)
+     
+     // assert 
+     expect(actual).toBe(expected)
+  
+  
+    })
+     
+  })
+  
 })
-
 
 interface IStringCalculator{
   add(input:string):number
