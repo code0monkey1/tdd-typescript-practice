@@ -6,7 +6,6 @@ export class StringCalculator implements IStringCalculator{
     if( (trimmedInput).length==0)  return 0
 
     // more than 1 digit
-
     const sum = this.getSum(input.split(','))
 
     return sum
@@ -14,12 +13,12 @@ export class StringCalculator implements IStringCalculator{
   }
 
   private getSum(arr:string[]){
-    
-    let sum=0
 
-    for ( let a of arr) sum+= parseInt(a)
+    let res=0
+
+    for ( let a of arr) res+= parseInt(a)
     
-    return sum
+    return res
   }
   
 }
