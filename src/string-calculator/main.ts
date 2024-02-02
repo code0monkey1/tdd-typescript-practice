@@ -9,6 +9,7 @@ export class StringCalculator implements IStringCalculator{
 
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
+                      .filter(e => parseInt(e))
                       .map( e => parseInt(e))
                       .reduce((current:number,prev:number)=> prev+=current)
 
