@@ -107,19 +107,19 @@ describe('age-calculator', () => {
           })
       })
 
-       describe('BirthDate is on 29th of February ', () => {
+       describe('BirthDate is on 29th of February of a LeapYear', () => {
 
           it.each([
             {
-              birthDate:'1985/03/04', 
+              birthDate:'1996/02/29', 
               targetDate:'2024/03/04',
-              expected:39
+              expected:7
             },
-              {
-              birthDate:'1989/02/16', 
-              targetDate:'2024/02/17',
-              expected:35
-            }
+            //   {
+            //   birthDate:'1989/02/16', 
+            //   targetDate:'2024/02/17',
+            //   expected:35
+            // }
           ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
 
             //arrange
