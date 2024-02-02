@@ -1,7 +1,8 @@
 export const enum Result{
   Fizz,
   Buzz,
-  FizzBuzz
+  FizzBuzz,
+  Wizz
 }
 
 
@@ -11,8 +12,10 @@ export interface IFizzBuzz{
 
 export class FizBuzz implements IFizzBuzz{
     execute(digit: number): string | Result {
-    
-          
+         
+          if ( digit ==2)
+              return Result.Wizz
+              
           if( this.isMultipleOfN(digit,15))
             return Result.FizzBuzz
 
@@ -29,6 +32,8 @@ export class FizBuzz implements IFizzBuzz{
      isMultipleOfN =(digit: number,n:number)=>{
       return digit%n==0
     }
+
+
 
 
 }

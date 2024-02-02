@@ -100,6 +100,33 @@ describe('fizz-Buzz', () => {
             
            
          })
+
+
+           describe('Wizz ( prime number)', () => {
+              
+                 it.each([
+                {input:2,},
+                // {num:28},
+                // {num:56}
+              ])('when number is $input',({input})=>{
+               
+                      // arrange
+
+                      const sut = createFizzBuzz()
+                      const expected=Result.Wizz
+
+                      //act
+
+                      const actual = sut.execute(input)
+
+                      //assert
+                      expect(actual).toBe(expected)
+
+              })
+
+            
+           
+         })
          
   })
   
