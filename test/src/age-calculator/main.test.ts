@@ -1,5 +1,3 @@
-
-
 describe('age-calculator', () => {
 
   describe('execute', () => {
@@ -29,9 +27,6 @@ describe('age-calculator', () => {
   
   
 })
-interface IAgeCalculator{
-   execute(birthDate:Date,targetDate:Date):number
-}
 
 
 class AgeCalculator implements IAgeCalculator{
@@ -43,4 +38,8 @@ class AgeCalculator implements IAgeCalculator{
 
 const createAgeCalculator=()=>{
   return new AgeCalculator()
+}
+
+interface IAgeCalculator{
+   execute(birthDate:Date,targetDate:Date):number
 }
