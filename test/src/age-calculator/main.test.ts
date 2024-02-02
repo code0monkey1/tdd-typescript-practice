@@ -6,7 +6,6 @@ describe('age-calculator', () => {
     
     describe('targetDate is before birthDate', () => {
   
-  
           it.each([
          {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/03')},
          {birthDate:new Date('2024/03/05'),targetDate:new Date('2023/03/04')},
