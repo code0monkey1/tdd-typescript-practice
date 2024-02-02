@@ -4,7 +4,7 @@ describe('age-calculator', () => {
   describe('execute', () => {
 
     
-    describe('Invalid Dates , throw Error', () => {
+    describe('Invalid Dates : throws Error', () => {
       
       describe('When birthDate is after targetDate', () => {
   
@@ -17,7 +17,7 @@ describe('age-calculator', () => {
   
           //arrange
           const sut = createAgeCalculator()
-          const ErrorMessage ="Invalid Target Year or Birth Date"
+          const ErrorMessage ="Invalid : Target Date is before Birth Date"
   
           //act
   
@@ -89,7 +89,7 @@ class AgeCalculator implements IAgeCalculator{
       const [targetYear,targetMonth,targetDay] =[targetDate.getFullYear(),targetDate.getMonth()+1,targetDate.getDate()]
 
      if (birthYear>targetYear ){
-       throw new Error("Invalid Target Year or Birth Date")
+       throw new Error("Invalid : Target Date is before Birth Date")
      }
 
      return 38
