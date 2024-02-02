@@ -1,6 +1,6 @@
 import { IRockPaperScissors, MOVE, RESULT, RockPaperScissors, SCENARIO } from "../../../src/rock-paper-scissors/main";
 
-describe.skip('rock-paper-scissors',()=>{
+describe('rock-paper-scissors',()=>{
 
        describe('play',()=>{
 
