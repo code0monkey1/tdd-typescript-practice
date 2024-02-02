@@ -7,20 +7,20 @@ describe('fizz-Buzz', () => {
          describe('Fizz',()=>{
              
               it.each([
-                {num:3},
-                {num:9},
-                {num:27},
-                {num:6}
-              ])('when number is $num',({num})=>{
+                {input:3},
+                {input:9},
+                {input:27},
+                {input:6}
+              ])('when number is $input',({input})=>{
                
                       // arrange
 
                       const sut = createFizzBuzz()
-                      const expected =Result.Fizz
+                      const expected = Result.Fizz
 
                       //act
 
-                      const actual = sut.execute(num)
+                      const actual = sut.execute(input)
 
                       //assert
                       expect(actual).toBe(expected)
