@@ -14,14 +14,12 @@ export class StringCalculator implements IStringCalculator{
   }
 
   private getSum(arr:string[]){
-
-
+    
     let sum=0
 
     for ( let a of arr) sum+= parseInt(a)
     
     return sum
-   
   }
   
 }
