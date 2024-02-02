@@ -27,9 +27,9 @@ describe('test', () => {
   describe('Input has 1 digit', () => {
 
     it.each([
-      {input:"1"},
-      {input:"2"},
-      {input:"9"}
+      {input:"1",expected:1},
+      {input:"2",expected:2},
+      {input:"9",expected:9}
   ])('input : $input',({input})=>{
      
     // arrange 
@@ -42,7 +42,7 @@ describe('test', () => {
      
      // assert 
      expect(actual).toBe(expected)
-  
+
 
     })
     
