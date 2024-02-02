@@ -1,11 +1,24 @@
 describe('age-calculator', () => {
 
   describe('execute', () => {
+    
+    describe('BirthYear and Target year are the same ', () => {
+      
+      it.each([
+       {birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')}])('',()=>{
+          
+        //arrange
+        
 
-     it.each([{birthDate:new Date('2024/03/04'),targetDate:new Date('2024/03/04')}])('',()=>{
 
+        //act 
 
-     })
+        //assert
+  
+      })
+
+    })
+    
    
      it.skip('test',()=>{
 
