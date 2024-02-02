@@ -17,7 +17,6 @@ describe('age-calculator', () => {
           const ErrorMessage ="Invalid : Target Date is before Birth Date"
   
           //act
-  
           //assert
           expect(() => sut.execute(new Date(birthDate), new Date(targetDate))).toThrow(
             new Error(ErrorMessage)
@@ -181,7 +180,7 @@ class AgeCalculator implements IAgeCalculator{
     let  years = this.getYears(ms) ;
 
     if( this.isLeapDay(birthDate))
-       years = years / 4
+       years= years/ 4
 
     return Math.floor( years)
 
