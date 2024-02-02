@@ -19,7 +19,6 @@ describe('test', () => {
      // assert 
      expect(actual).toBe(expected)
   
-  
     })
      
   })
@@ -30,19 +29,17 @@ describe('test', () => {
       {input:"1",expected:1},
       {input:"2",expected:2},
       {input:"9",expected:9}
-  ])('input : $input',({input})=>{
+  ])('input : $input',({input,expected})=>{
      
     // arrange 
      const sut = createStringCalculator()
-  
-     const expected = 0
+
      
      // act 
      const actual = sut.add(input)
      
      // assert 
      expect(actual).toBe(expected)
-
 
     })
     
@@ -60,7 +57,7 @@ class StringCalculator implements IStringCalculator{
 
     if(input.trim()=='')  return 0
 
-    return 1
+    return Number(input)
   }
 
 }
