@@ -29,7 +29,7 @@ describe('test', () => {
       {input:"1",expected:1},
       {input:"2",expected:2},
       {input:"9",expected:9}
-  ])('input : $input',({input,expected})=>{
+  ])('input : $input , expected : $expected',({input,expected})=>{
      
     // arrange 
      const sut = createStringCalculator()
@@ -57,7 +57,7 @@ class StringCalculator implements IStringCalculator{
 
     if(input.trim()=='')  return 0
 
-    return Number(input)
+    return parseInt(input)
   }
 
 }
