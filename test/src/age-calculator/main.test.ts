@@ -10,7 +10,7 @@ describe('age-calculator', () => {
          {birthDate:'2024/03/04',targetDate:'2024/03/03'},
          {birthDate:'2024/03/05',targetDate:'2023/03/04'},
          {birthDate:'1985/03/05',targetDate:'1975/03/04'}
-        ])(`The $birthDate is greater than the $targetDate`,({birthDate,targetDate})=>{
+        ])(`The $birthDate is greater than the $targetDate ,throws Error("Invalid : Target Date is before Birth Date")`,({birthDate,targetDate})=>{
   
           //arrange
           const sut = createAgeCalculator()
@@ -64,7 +64,7 @@ describe('age-calculator', () => {
               targetDate:'2024/02/02',
               expected:34
             }
-          ])('birthDate : $birthDate is less  than targetDate : $targetDate',({birthDate,targetDate,expected})=>{
+          ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
 
             //arrange
             const sut = createAgeCalculator()
