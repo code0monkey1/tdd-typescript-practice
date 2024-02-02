@@ -14,11 +14,8 @@ export class StringCalculator implements IStringCalculator{
 
   private getSum(arr:string[]){
 
-    let res=0
-
-    for ( let a of arr) res+= parseInt(a)
-    
-    return res
+   return arr.reduce((prev:number,current:string)=> prev+=parseInt(current),0)
+   
   }
   
 }
