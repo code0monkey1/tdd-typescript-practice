@@ -9,4 +9,4 @@
 1. When the `targetDate` is before the `birthDate`
 1. When the `targetDate`  has the same year  as `birthDate`
 1. When the `targetDate` has different year than `birthDate`
-1. When the `birthYear` is a leap year
+1. When the `birthYear` is a leap year and you were born on the `29th` of `Febuary`

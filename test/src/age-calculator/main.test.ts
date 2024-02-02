@@ -118,16 +118,38 @@ class AgeCalculator implements IAgeCalculator{
     
     if(birthDate>targetDate)
         throw new Error("Invalid : Target Date is before Birth Date")
-
     
-   
-    const diff = targetDate.getTime() - birthDate.getTime();
+    const ms = targetDate.getTime() - birthDate.getTime();
+    
+    const years = Math.floor(this.getYears(ms) );
 
-    const years = Math.floor( diff / (1000 * 60 * 60 * 24 * 365) );
+    if( this.isLeapYear(birthDate.getFullYear()) && birthDate.getDate()==29 && birthDate.getMonth()+1 ==2)
+       return years / 4
 
     return years
 
   }
+
+  getYears(ms:number){
+   return  ms / (1000 * 60 * 60 * 24 * 365) 
+  }
+
+ isLeapYear(year:number) {
+      if (year % 4 === 0) {
+        if (year % 100 === 0) {
+          if (year % 400 === 0) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return true;
+        }
+      } else {
+        return false;
+      }
+  }
+
   
 }
 
