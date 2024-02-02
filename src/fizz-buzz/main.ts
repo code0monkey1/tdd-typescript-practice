@@ -37,10 +37,12 @@ export class FizBuzz implements IFizzBuzz{
 
     isPrime=( digit:number):boolean=>{
 
-      if (digit ==2)
-         return true
+      for( let i =2;i<=Math.sqrt(digit);i++){
+         if (digit % i ==0)
+              return false
+      }
       
-      return false
+      return true
 
     }
 

@@ -106,8 +106,8 @@ describe('fizz-Buzz', () => {
               
                  it.each([
                 {input:2,},
-                // {num:28},
-                // {num:56}
+                {input:7},
+                {input:11}
               ])('when number is $input',({input})=>{
                
                       // arrange
