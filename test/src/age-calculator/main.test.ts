@@ -1,6 +1,21 @@
 describe('age-calculator', () => {
 
-  describe('execute', () => {
+  describe.only(' learning test', () => {
+
+    test('learning',()=>{
+      const date = new Date('2025/03/01')
+      
+      const actual = date.getFullYear()
+
+      const expected =2025
+
+      expect(actual).toBe(expected)
+
+    })
+  })
+  
+  describe.skip('execute', () => {
+
     
     describe('Invalid Dates , throw Error', () => {
       
