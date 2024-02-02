@@ -36,9 +36,7 @@ describe.skip('rock-paper-scissors',()=>{
                    const expected=RESULT.WIN
 
                    //act
-    
                    const actual = sut.play(p1,p2)
-    
     
                    //assert
                    expect(actual).toBe(expected)
