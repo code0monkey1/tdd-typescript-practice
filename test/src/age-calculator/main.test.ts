@@ -64,12 +64,10 @@ describe('age-calculator', () => {
               targetDate:new Date('2024/02/02'),
               expected:34
             }
-          ])('$birthDate < $targetDate',({birthDate,targetDate,expected})=>{
+          ])('birthDate : $birthDate is less  than targetDate : $targetDate',({birthDate,targetDate,expected})=>{
 
             //arrange
-      
             const sut = createAgeCalculator()
-      
          
             //act
              
