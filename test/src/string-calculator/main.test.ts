@@ -3,15 +3,14 @@ describe('test', () => {
   describe('Input is blank', () => {
     
     it.each([
-     {input:''},
-     {input:'   '},
-     {input:'  '}
-   ])('input : $input',({input})=>{
+     {input:'' ,expected:0},
+     {input:'   ',expected:0},
+     {input:'  ',expected:0}
+   ])('input : $input , expected : $expected',({input,expected})=>{
         
      // arrange 
      const sut = createStringCalculator()
-  
-     const expected = 0
+
      
      // act 
      const actual = sut.add(input)
@@ -33,7 +32,6 @@ describe('test', () => {
      
     // arrange 
      const sut = createStringCalculator()
-
      
      // act 
      const actual = sut.add(input)
@@ -44,8 +42,7 @@ describe('test', () => {
     })
     
   })
-  
-  
+
 })
 
 interface IStringCalculator{
