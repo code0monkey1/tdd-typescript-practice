@@ -13,7 +13,7 @@ export class FizBuzz implements IFizzBuzz{
     execute(digit: number): string | Result {
     
           
-          if( this.isMultipleOfN(digit,3) && this.isMultipleOfN(digit,5))
+          if( this.isMultipleOfN(digit,15))
             return Result.FizzBuzz
 
           if( this.isMultipleOfN(digit,3))
