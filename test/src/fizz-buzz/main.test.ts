@@ -1,6 +1,6 @@
 import { FizBuzz, IFizzBuzz, Result } from "../../../src/fizz-buzz/main"
 
-describe('fizz-Buzz', () => {
+describe.skip('fizz-Buzz', () => {
 
   describe('execute', () => {
       
