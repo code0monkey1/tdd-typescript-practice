@@ -14,8 +14,13 @@ export interface IFizzBuzz{
 
 export class FizBuzz implements IFizzBuzz{
     execute(digit: number): string | Result {
+
+          if(digit==3)
+             return Result.WizzFizz
+          if(digit==5)
+             return Result.WizzBuzz
          
-          if ( this.isPrime(digit) )
+          if (this.isPrime(digit) )
               return Result.Wizz
 
           if( this.isMultipleOfN(digit,15))
