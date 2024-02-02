@@ -20,7 +20,9 @@ describe('age-calculator', () => {
 
         //assert
 
-        expect(async()=>sut.execute(birthDate,targetDate)).toThrow(Error)
+        expect(() => sut.execute(birthDate, targetDate)).toThrow(
+      new Error("Invalid Target Year")
+    );
 
         
     })
