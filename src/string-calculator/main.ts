@@ -15,12 +15,11 @@ export class StringCalculator implements IStringCalculator{
   private getSum(arr:string[]){
 
    return arr.reduce((prev:number,current:string)=> prev+=parseInt(current),0)
-   
+
   }
   
 }
 export interface IStringCalculator{
   add(input:string):number
-
 
 }

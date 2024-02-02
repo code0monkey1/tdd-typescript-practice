@@ -49,8 +49,8 @@ describe('string-calculator', () => {
   
       it.each([
         {input:"1,2",expected:3},
-        // {input:"2,3",expected:5},
-        // {input:"9,1",expected:10}
+        {input:"2,3",expected:5},
+        {input:"9,1",expected:10}
     ])('input : $input , expected : $expected',({input,expected})=>{
        
       // arrange 
@@ -67,11 +67,8 @@ describe('string-calculator', () => {
     })
     
   })
-  
-
 
 })
-
 
 
 const createStringCalculator=():IStringCalculator=>{
