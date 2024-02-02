@@ -87,7 +87,7 @@ describe('string-calculator', () => {
       
     })
 
-       describe('Given numbers separated by /\n/ and `,` , should return sum ', () => {
+       describe('Given numbers separated by \\n and `,` , should return sum ', () => {
   
       it.each([
         {input:"1,2,3",expected:6},
