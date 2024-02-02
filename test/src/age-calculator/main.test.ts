@@ -79,6 +79,37 @@ describe('age-calculator', () => {
           })
       })
 
+      describe('BirthDate is on 29th of February of a LeapYear', () => {
+         
+        describe('BirthDay has Passed', () => {
+          it.each([
+            {
+              birthDate:'2000/02/29', 
+              targetDate:'2024/03/04',
+              expected:6
+            },
+              {
+              birthDate:'2004/02/29', 
+              targetDate:'2024/03/17',
+              expected:5
+            }
+          ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
+  
+            //arrange
+            const sut = createAgeCalculator()
+         
+            //act
+             
+            const actual = sut.execute(new Date(birthDate),new Date(targetDate))
+            
+            //assert
+            expect(actual).toBe(expected)
+  
+          })
+      })
+          
+        })
+        
         describe('BirthDate has passed ', () => {
 
           it.each([
@@ -107,33 +138,6 @@ describe('age-calculator', () => {
           })
       })
 
-       describe('BirthDate is on 29th of February of a LeapYear', () => {
-
-          it.each([
-            {
-              birthDate:'2000/02/29', 
-              targetDate:'2024/03/04',
-              expected:6
-            },
-              {
-              birthDate:'2004/02/29', 
-              targetDate:'2024/03/17',
-              expected:5
-            }
-          ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
-
-            //arrange
-            const sut = createAgeCalculator()
-         
-            //act
-             
-            const actual = sut.execute(new Date(birthDate),new Date(targetDate))
-            
-            //assert
-            expect(actual).toBe(expected)
-
-          })
-      })
 
  
 
