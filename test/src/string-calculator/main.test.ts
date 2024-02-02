@@ -45,18 +45,18 @@ describe('test', () => {
 
 })
 
-interface IStringCalculator{
-  add(input:string):number
-}
 
 class StringCalculator implements IStringCalculator{
   add(input: string): number {
-
+    
     if(input.trim()=='')  return 0
-
+    
     return parseInt(input)
   }
-
+  
+}
+interface IStringCalculator{
+  add(input:string):number
 }
 
 const createStringCalculator=():IStringCalculator=>{
