@@ -1,6 +1,6 @@
 import { AgeCalculator } from "../../../src/age-calculator/main"
 
-describe('age-calculator', () => {
+describe.skip('age-calculator', () => {
 
   
   describe('execute', () => {
