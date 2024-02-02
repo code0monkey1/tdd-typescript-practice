@@ -113,13 +113,13 @@ describe('age-calculator', () => {
             {
               birthDate:'1996/02/29', 
               targetDate:'2024/03/04',
-              expected:7
+              expected:8
             },
-            //   {
-            //   birthDate:'1989/02/16', 
-            //   targetDate:'2024/02/17',
-            //   expected:35
-            // }
+              {
+              birthDate:'1989/02/16', 
+              targetDate:'2024/02/17',
+              expected:35
+            }
           ])('birthDate : $birthDate is less  than targetDate : $targetDate , the age is : $expected',({birthDate,targetDate,expected})=>{
 
             //arrange
