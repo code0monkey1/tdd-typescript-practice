@@ -27,7 +27,6 @@ describe('age-calculator', () => {
         //arrange
 
 
-
         //act 
 
         //assert
@@ -66,7 +65,16 @@ describe('age-calculator', () => {
 
 class AgeCalculator implements IAgeCalculator{
   execute(birthDate: Date,targetDate:Date): number |Error {
-    return 38
+
+     const [birthYear,birthMonth,birthDay] =[birthDate.getFullYear(),birthDate.getMonth()+1,birthDate.getDate()]
+
+      const [targetYear,targetMonth,targetDay] =[targetDate.getFullYear(),targetDate.getMonth()+1,targetDate.getDate()]
+
+     if (birthYear>targetYear ){
+       throw new Error("Invalid Target Year")
+     }
+
+     return 38
   }
   
 }
