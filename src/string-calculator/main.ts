@@ -22,7 +22,7 @@ export class StringCalculator implements IStringCalculator{
                         if(e>0)return e 
                         throw new Error("Negative Numbers are invalid")
                       })
-                      .reduce((current:number,prev:number)=> prev+=current)
+                      .reduce((current:number,prev:number)=> prev+=current) // sum
 
     return sum
 
