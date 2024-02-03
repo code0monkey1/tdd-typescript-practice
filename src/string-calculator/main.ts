@@ -11,8 +11,10 @@ export class StringCalculator implements IStringCalculator{
 
       splitParams=[trimmed[2]]
 
-      trimmed=trimmed.substring(trimmed.indexOf('\n')+1,)
+      trimmed=trimmed.substring(trimmed.indexOf('\n')+1)
     }
+
+    console.log('splitParams : ',splitParams," trimmed : ",trimmed)
 
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
