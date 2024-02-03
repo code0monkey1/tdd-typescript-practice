@@ -219,7 +219,7 @@ describe('string-calculator', () => {
     it.only('learning test',()=>{
 
       const str = 'This is a sample string *** with multiple *** delimiters && and some &&&&.';
-      const delimiters = ['***', ',', '&&'];
+      const delimiters = ['\*', ',', '\&&'];
 
       const pattern = new RegExp(`(${delimiters.join('|')})`, 'g');
       const result = str.split(pattern);
