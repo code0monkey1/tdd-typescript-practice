@@ -29,7 +29,7 @@ export class StringCalculator implements IStringCalculator{
   
 
   private hasCustomDelimiter(trimmed: string) {
-    return trimmed.startsWith('\\') && trimmed.indexOf('\n') == 3;
+    return trimmed.startsWith('//') && trimmed.indexOf('\n') == 3;
   }
 }
 export interface IStringCalculator{
