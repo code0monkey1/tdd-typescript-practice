@@ -228,6 +228,7 @@ describe('string-calculator', () => {
           res.push(extractedToken)
           console.log(res)
           str=str.slice(str.indexOf(']')+1)
+          console.log("string is",str)
         }
       
        expect(res).toBe(['***',','])
