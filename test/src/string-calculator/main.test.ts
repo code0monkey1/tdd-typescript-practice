@@ -129,15 +129,36 @@ describe('string-calculator', () => {
           })
     })
 
+    describe('Throws on negative numbers', () => {
+           it.each([
+            {input:"//;\n1;-2"},
+            {input:"//,\n-1,4"},
+            {input:"//@\n1@-7"}
+         
+          ])(`input : $input , throw new Error("")`,({input})=>{
+   
+            // arrange 
+            const sut = createStringCalculator()
+            
+            // act 
+            const actual = 
+            
+            // assert 
+            expect(()=>sut.add(input)).toThrow(Error)
 
-    it.skip('learning test',()=>{
-      const str ='//;\n1;2'
-      expect(str.startsWith('//')).toBe(true)
-      expect(str.indexOf('\n')).toBe(3)
-      expect(str[2]).toBe(';')
-
-      expect(str.substring(str.indexOf('\n')+1)).toBe("1;2")
+          })
     })
+    
+
+
+    // it.skip('learning test',()=>{
+    //   const str ='//;\n1;2'
+    //   expect(str.startsWith('//')).toBe(true)
+    //   expect(str.indexOf('\n')).toBe(3)
+    //   expect(str[2]).toBe(';')
+
+    //   expect(str.substring(str.indexOf('\n')+1)).toBe("1;2")
+    // })
     
     
   })
