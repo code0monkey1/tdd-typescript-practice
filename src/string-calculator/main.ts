@@ -25,7 +25,7 @@ export class StringCalculator implements IStringCalculator{
     }
 
     parsedNumbers= this.removeGreaterThanN(parsedNumbers,1000)
-       
+    console.log("Parsed Numbers",parsedNumbers)
     return parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
 
   }

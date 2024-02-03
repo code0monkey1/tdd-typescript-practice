@@ -149,7 +149,7 @@ describe('string-calculator', () => {
           })
     })
 
-    describe('Discount all values above 1000',()=>{
+    describe.only('Discount all values above 1000',()=>{
 
           it.each([
             {input:"1001",expected:0},
