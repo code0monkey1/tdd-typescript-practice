@@ -219,7 +219,7 @@ describe('string-calculator', () => {
     it.only('learning test',()=>{
 
       let res:string[]=[]
-      let  str="//[***][',]\n1***2,3"
+      let  str="//[***][,]\n1***2,3"
   
       while(str.indexOf('[')){
           const extractedToken = str.substring(str.indexOf('[')+1,str.indexOf(']'))
@@ -229,7 +229,7 @@ describe('string-calculator', () => {
           str=str.slice(str.indexOf(']')+1)
         }
       
-       expect(res).toBe([1,2,3])
+       expect(res).toBe(['***',','])
     })
     
   })
