@@ -219,7 +219,7 @@ describe('string-calculator', () => {
     it.only('learning test',()=>{
 
       const str = '//[***][,]\n1***2,3';
-      const delimiters = ['\*', ',', '\&&'];
+      const delimiters = ['***', ','];
 
       const pattern =new RegExp(delimiters.map(delimiter => `\\${delimiter}`).join('|'));
 
