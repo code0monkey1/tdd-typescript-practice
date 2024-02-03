@@ -91,8 +91,8 @@ describe('string-calculator', () => {
   
       it.each([
         {input:"1\n2,3",expected:6},
-        // {input:"2,3,4",expected:9},
-        // {input:"9,1,10",expected:20}
+        {input:"2,3\n4",expected:9},
+        {input:"9\n1,10",expected:20}
     ])('input : $input , expected : $expected',({input,expected})=>{
        
       // arrange 
