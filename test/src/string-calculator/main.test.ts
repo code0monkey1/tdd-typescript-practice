@@ -140,11 +140,11 @@ describe('string-calculator', () => {
    
             // arrange 
             const sut = createStringCalculator()
-            const ErrorMessage ="negatives not allowed"
+            const ErrorMessage ="negatives not allowed"+expected
             
             // act 
             // assert 
-            expect(()=>sut.add(input)).toThrow(new Error(ErrorMessage + expected))
+            expect(()=>sut.add(input)).toThrow(ErrorMessage)
 
           })
     })

@@ -23,7 +23,7 @@ export class StringCalculator implements IStringCalculator{
         
       const negativeNumbers = this.extractNegativeNumbers(numbersArray)
 
-      throw new Error("negatives not allowed"+" : "+negativeNumbers.join(','))
+      throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
 
     }
                      
