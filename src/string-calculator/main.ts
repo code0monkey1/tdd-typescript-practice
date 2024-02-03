@@ -15,22 +15,26 @@ export class StringCalculator implements IStringCalculator{
       trimmed=this.removeCustomDelimiter(trimmed)
     }
 
-    const numbersArray = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
-                                  .filter(e => parseInt(e)) // filter out non-numbers
-                                     .map( e => parseInt(e)) // parse numbers      
+    const parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
     
-    if (this.hasNegativeNumber(numbersArray)){
+    if (this.hasNegativeNumber(parsedNumbers)){
         
-      const negativeNumbers = this.extractNegativeNumbers(numbersArray)
+      const negativeNumbers = this.extractNegativeNumbers(parsedNumbers)
 
       throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
 
     }
                      
-    const sum=numbersArray.reduce((current:number,prev:number)=> prev+=current) 
+    const sum=parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
 
     return sum
 
+  }
+
+  private parseNumbers(trimmed: string, splitParams: string[]) {
+    return trimmed.split(new RegExp(`(${splitParams.join("|")})`))
+      .filter(e => parseInt(e)) // filter out non-numbers
+      .map(e => parseInt(e));
   }
 
   private extractNegativeNumbers(numbersArray: number[]) {
