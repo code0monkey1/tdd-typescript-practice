@@ -7,6 +7,10 @@ export class StringCalculator implements IStringCalculator{
 
     const splitParams = [",", "\n"];
 
+    if(trimmed.startsWith('\\') && trimmed.indexOf('\n')==3){
+         return -1
+    }
+
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
                       .filter(e => parseInt(e))
