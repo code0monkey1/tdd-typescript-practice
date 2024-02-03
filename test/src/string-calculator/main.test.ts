@@ -223,9 +223,10 @@ describe('string-calculator', () => {
   
       while(str.indexOf('[')){
           const extractedToken = str.substring(str.indexOf('[')+1,str.indexOf(']'))
-         
+          console.log(extractedToken)
+
           res.push(extractedToken)
-          
+          console.log(res)
           str=str.slice(str.indexOf(']')+1)
         }
       
