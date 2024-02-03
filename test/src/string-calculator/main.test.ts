@@ -169,7 +169,6 @@ describe('string-calculator', () => {
             expect(actual).toBe(expected)
 
           })
-         
     })
 
      describe('Multiple Delimiters',()=>{
@@ -188,11 +187,8 @@ describe('string-calculator', () => {
             // assert 
             expect(actual).toBe(expected)
 
-          })
-         
+          }) 
     })
-    
-    
     
   })
 
