@@ -141,10 +141,9 @@ describe('string-calculator', () => {
             const sut = createStringCalculator()
             
             // act 
-            const actual = 
             
             // assert 
-            expect(()=>sut.add(input)).toThrow(Error)
+            expect(()=>sut.add(input)).toThrow(new Error("Negative Numbers are invalid"))
 
           })
     })
