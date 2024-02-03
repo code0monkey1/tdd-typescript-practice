@@ -69,8 +69,10 @@ export class StringCalculator implements IStringCalculator{
         return str.startsWith('//[') && (str.indexOf(']') !== str.lastIndexOf(']'))
   }
   private parseNumbers(str: string, splitParams: string[]) {
-     
-    const charsArray = splitParams.length==1?str.split(splitParams[0]):str.split(new RegExp(splitParams.map(param => `\\${param}`).join('|')))
+    const escapeStringRegexp = require('escape-string-regexp');
+
+
+    const charsArray = splitParams.length==1?str.split(splitParams[0]):str.split( new RegExp(splitParams.map(parm => escapeStringRegexp(parm)).join('|')))
 
     return charsArray
     .filter(e => parseInt(e)) // filter out non-numbers
