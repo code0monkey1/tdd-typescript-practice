@@ -16,8 +16,8 @@ export class StringCalculator implements IStringCalculator{
     }
 
     const numbersArray = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
-                      .filter(e => parseInt(e)) // filter out non-numbers
-                      .map( e => parseInt(e)) // parse numbers      
+                                  .filter(e => parseInt(e)) // filter out non-numbers
+                                     .map( e => parseInt(e)) // parse numbers      
     
     if (this.hasNegativeNumber(numbersArray)){
         
@@ -27,7 +27,7 @@ export class StringCalculator implements IStringCalculator{
 
     }
                      
-    const sum=numbersArray.reduce((current:number,prev:number)=> prev+=current) // sum
+    const sum=numbersArray.reduce((current:number,prev:number)=> prev+=current) 
 
     return sum
 
