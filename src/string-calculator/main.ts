@@ -39,7 +39,15 @@ export class StringCalculator implements IStringCalculator{
   }
 
   private parseNumbers(str: string, splitParams: string[]) {
-    return str.split(new RegExp(`(${splitParams.join("|")})`))
+     
+    let charArray
+
+    if(splitParams.length==1)
+      charArray= str.split(splitParams[0])
+    else
+      charArray =str.split(new RegExp(`(${splitParams.join("|")})`))
+
+    return charArray
       .filter(e => parseInt(e)) // filter out non-numbers
       .map(e => parseInt(e));
   }
