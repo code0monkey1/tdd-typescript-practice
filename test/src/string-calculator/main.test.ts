@@ -131,20 +131,19 @@ describe('string-calculator', () => {
 
     describe('Throws on negative numbers', () => {
            it.each([
-            {input:"//;\n1;-2",expected:" : -2"},
-            {input:"-1,4" ,expected:" : -1"},
-            {input:"-1,-20",expected:" : -1,-20"},
-            {input:"//@\n-1@7",expected:" : -1"}
+            {input:"//;\n1;-2",expected:"negatives not allowed : -2"},
+            {input:"-1,4" ,expected:"negatives not allowed : -1"},
+            {input:"-1,-20",expected:"negatives not allowed : -1,-20"},
+            {input:"//@\n-1@7",expected:"negatives not allowed : -1"}
          
-          ])(`input : $input , throw new Error("")`,({input ,expected})=>{
+          ])(`input : $input , throws : $expected`,({input ,expected})=>{
    
             // arrange 
             const sut = createStringCalculator()
-            const ErrorMessage ="negatives not allowed"+expected
             
             // act 
             // assert 
-            expect(()=>sut.add(input)).toThrow(ErrorMessage)
+            expect(()=>sut.add(input)).toThrow(expected)
 
           })
     })
