@@ -175,6 +175,8 @@ describe('string-calculator', () => {
 
           it.each([
             {input:"//[***]\n1***2***3",expected:6},
+            {input:"//[???]\n2???4???8",expected:14},
+            {input:"//[,]\n2,4,8",expected:14},
       
           ])(`input : $input , expected: $expected`,({input,expected})=>{
    
