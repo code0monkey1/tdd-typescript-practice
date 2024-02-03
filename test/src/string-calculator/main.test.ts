@@ -140,7 +140,7 @@ describe('string-calculator', () => {
    
             // arrange 
             const sut = createStringCalculator()
-            const ErrorMessage ="Negative Numbers are invalid"
+            const ErrorMessage ="negatives not allowed"
             
             // act 
             // assert 
