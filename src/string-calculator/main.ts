@@ -24,10 +24,8 @@ export class StringCalculator implements IStringCalculator{
       throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
     }
 
-    
-    parsedNumbers= this.removeAllOverN(parsedNumbers,1000)
-
-                     
+    parsedNumbers= this.removeGreaterThanN(parsedNumbers,1000)
+       
     return parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
 
   }
@@ -38,7 +36,7 @@ export class StringCalculator implements IStringCalculator{
       .map(e => parseInt(e));
   }
 
-  private removeAllOverN(arr:number[],n:number){
+  private removeGreaterThanN(arr:number[],n:number){
        
          return arr.filter(e => e<=n)
   }
