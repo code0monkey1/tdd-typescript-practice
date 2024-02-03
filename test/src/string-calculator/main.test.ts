@@ -221,8 +221,11 @@ describe('string-calculator', () => {
       const str = 'This is a sample string *** with multiple *** delimiters && and some &&&&.';
       const delimiters = ['\*', ',', '\&&'];
 
-      const pattern = new RegExp(`(${delimiters.join('|')})`, 'g');
+      const pattern =new RegExp(delimiters.map(delimiter => `\\${delimiter}`).join('|'));
+
       const result = str.split(pattern);
+
+      console.log(result)
 
       expect(result).toStrictEqual(["This is a sample string ", " with multiple ", " delimiters ", " and some ", "."])
 
