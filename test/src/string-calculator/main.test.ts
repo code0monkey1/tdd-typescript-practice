@@ -235,14 +235,14 @@ describe('string-calculator', () => {
       
        expect(res).toStrictEqual(['***',','])
 
-        // const charsArray = res.length==1?str.split(res[0]):
-        //                   str.split(new RegExp(`(${res.join("|")})`))
+        const charsArray = res.length==1?str.split(res[0]):
+                          str.split(new RegExp(`(${res.join('|')})`, 'g'));
 
-        // let arr =charsArray
-        // .filter(e => parseInt(e)) // filter out non-numbers
-        //     .map(e => parseInt(e));
+        let arr =charsArray
+        .filter(e => parseInt(e)) // filter out non-numbers
+            .map(e => parseInt(e));
 
-        // expect(arr).toStrictEqual([1,2,3])
+        expect(arr).toStrictEqual([1,2,3])
     })
     
   })
