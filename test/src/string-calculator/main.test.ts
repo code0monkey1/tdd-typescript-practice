@@ -236,7 +236,7 @@ describe('string-calculator', () => {
        expect(res).toStrictEqual(['***',','])
 
         const charsArray = res.length==1?str.split(res[0]):
-                          str.split(/(\***|\,)/g)
+                          str.split(/(\*|\,)/g)
 
         let arr =charsArray
         .filter(e => parseInt(e)) // filter out non-numbers
