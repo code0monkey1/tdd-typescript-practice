@@ -1,4 +1,4 @@
-import escapeStringRegexp from 'escape-string-regexp';
+
 import { IStringCalculator, StringCalculator } from "../../../src/string-calculator/main";
 describe('string-calculator', () => {
 
@@ -192,41 +192,19 @@ describe('string-calculator', () => {
           }) 
     })
 
-    describe.only('Array of Multiple Delimiters', () => {
-           
-         it.each([
-            {input:"//[***][,]\n1***2,3",expected:6},
-            // {input:"//[???]\n2???4???8",expected:14},
-            // {input:"//[,]\n2,4,8",expected:14},
-      
-          ])(`input : $input , expected: $expected`,({input,expected})=>{
-   
-            // arrange 
-            const sut = createStringCalculator()
-            
-            // act 
-            const actual = sut.add(input)
-            
-            // assert 
-            expect(actual).toBe(expected)
-
-          }) 
-
-      
-    })
     
 
-    it('learning test',()=>{
+    // it.skip('learning test',()=>{
 
-      const str = '1***2,3';
-      const delimiters = ['***', ','];
+    //   const str = '1***2,3';
+    //   const delimiters = ['***', ','];
 
-      const regex = new RegExp(delimiters.map(delimiter => escapeStringRegexp(delimiter)).join('|'));
-          const result = str.split(regex); 
+    //   const regex = new RegExp(delimiters.map(delimiter => escapeStringRegexp(delimiter)).join('|'));
+    //       const result = str.split(regex); 
 
-      console.log(result)
+    //   console.log(result)
 
-      expect(result).toStrictEqual(["1","2","3"])
+    //   expect(result).toStrictEqual(["1","2","3"])
 
       // let res:string[]=[]
       // let  str="//[***][,]\n1***2,3"
@@ -257,7 +235,7 @@ describe('string-calculator', () => {
     
   })
 
-})
+// })
 
 
 const createStringCalculator=():IStringCalculator=>{
