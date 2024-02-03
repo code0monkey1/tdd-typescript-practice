@@ -107,6 +107,25 @@ describe('string-calculator', () => {
       })
       
     })
+
+    describe('Custom Delimiter', () => {
+          
+          it.each([
+            {input:"//;\n1;2",expected:3}
+          ])(`input : $input , expected: $expected`,({input,expected})=>{
+   
+            // arrange 
+            const sut = createStringCalculator()
+            
+            // act 
+            const actual = sut.add(input)
+            
+            // assert 
+            expect(actual).toBe(expected)
+
+          })
+    })
+    
     
   })
 
