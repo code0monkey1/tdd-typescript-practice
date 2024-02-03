@@ -7,14 +7,14 @@ export class StringCalculator implements IStringCalculator{
 
     let splitParams = [",", "\n"];
 
+    const DELIMITER_INDEX =2
+
     if(this.hasCustomDelimiter(trimmed)){
 
-      splitParams=[trimmed[2]]
+      splitParams=[trimmed[DELIMITER_INDEX]]
 
       trimmed=trimmed.substring(trimmed.indexOf('\n')+1)
     }
-
-    console.log('splitParams : ',splitParams," trimmed : ",trimmed)
 
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
