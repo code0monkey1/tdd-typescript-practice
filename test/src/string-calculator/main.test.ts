@@ -111,7 +111,10 @@ describe('string-calculator', () => {
     describe('Custom Delimiter', () => {
           
           it.each([
-            {input:"//;\n1;2",expected:3}
+            {input:"//;\n1;2",expected:3},
+            {input:"//,\n1,4",expected:5},
+            {input:"//`\n1`7",expected:8}
+         
           ])(`input : $input , expected: $expected`,({input,expected})=>{
    
             // arrange 
