@@ -218,12 +218,12 @@ describe('string-calculator', () => {
 
     it.only('learning test',()=>{
 
-      const str = '//[***][,]\n1***2,3';
+      const str = '1***2,3';
       const delimiters = ['***', ','];
 
       const pattern =new RegExp(delimiters.map(delimiter => `\\${delimiter}`).join('|'));
 
-      const result = str.split(pattern);
+      const result = str.split(pattern); 
 
       console.log(result)
 
