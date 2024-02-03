@@ -11,7 +11,7 @@ export class StringCalculator implements IStringCalculator{
 
       splitParams=[trimmed[2]]
 
-      trimmed=trimmed.substring(trimmed.indexOf('\n')+1)
+      trimmed=trimmed.substring(trimmed.indexOf('\n')+1,)
     }
 
     // more than 1 digit
