@@ -189,6 +189,14 @@ describe('string-calculator', () => {
 
           }) 
     })
+
+    it.only('learning test',()=>{
+      const str = "//[***]\n1***2***3"
+      const res =str.slice(str.indexOf('[')+1,str.indexOf(']'))
+      expect(res).toBe("***")
+
+      expect("1***2***3".split("***")).toStrictEqual(["1","2","3"])
+    })
     
   })
 
