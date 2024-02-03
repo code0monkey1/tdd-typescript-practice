@@ -193,8 +193,25 @@ describe('string-calculator', () => {
     })
 
     describe('Array of Multiple Delimiters', () => {
-
+           
+         it.each([
+            {input:"//[***][',]\n1***2,3",expected:6},
+            // {input:"//[???]\n2???4???8",expected:14},
+            // {input:"//[,]\n2,4,8",expected:14},
       
+          ])(`input : $input , expected: $expected`,({input,expected})=>{
+   
+            // arrange 
+            const sut = createStringCalculator()
+            
+            // act 
+            const actual = sut.add(input)
+            
+            // assert 
+            expect(actual).toBe(expected)
+
+          }) 
+
       
     })
     
