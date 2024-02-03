@@ -75,8 +75,8 @@ export class StringCalculator implements IStringCalculator{
       return customDelimiter
   }
 
-  private removeCustomDelimiter(trimmed: string): string {
-    return trimmed.substring(trimmed.indexOf('\n') + 1);
+  private removeCustomDelimiter(str: string): string {
+    return str.substring(str.indexOf('\n') + 1);
   }
 
   private hasCustomDelimiter(trimmed: string) {
