@@ -45,13 +45,19 @@ export class StringCalculator implements IStringCalculator{
   }
   extractArrayOfCustomCharDelimiters(str: string): string[] {
      
-    let res=[]
+    let res:string[]=[]
 
-    while(str.indexOf(']')){
-      res.push(this.extractMultiCharDelimiter(str))
-      str=str.slice(str.indexOf(']')+1)
-    }
+     do {
 
+         const extractedToken = this.extractMultiCharDelimiter(str)
+
+          res.push(extractedToken)
+      
+          str=str.slice(str.indexOf(']')+1)
+
+        
+      } while (str.indexOf('[')!=-1);
+    
     return res
     
   }
