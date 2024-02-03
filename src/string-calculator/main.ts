@@ -16,7 +16,11 @@ export class StringCalculator implements IStringCalculator{
     }
 
     if(this.hasCustomMultiCharDelimiter(trimmed)){
-      splitParams = []
+
+      splitParams = [this.extractMultiCharDelimiter(trimmed)]
+      
+      trimmed = this.removeCustomDelimiter(trimmed)
+
     }
 
     let parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
@@ -57,6 +61,11 @@ export class StringCalculator implements IStringCalculator{
     return numbersArray.some(e => e < 0);
   }
 
+    private extractMultiCharDelimiter(str:string){
+
+      return str.slice(str.indexOf('[')+1,str.indexOf(']'))
+
+  }
   private extractCustomDelimiter(str:string){
 
       const DELIMITER_INDEX =2
