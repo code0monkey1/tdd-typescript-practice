@@ -23,8 +23,8 @@ export class StringCalculator implements IStringCalculator{
 
     }
 
-    if(this.hasArrayOfCustomMultiCharDelimiter(trimmed)){
-       return 6
+    if(this.hasArrayOfCustomCharDelimiters(trimmed)){
+      splitParams = this.extractArrayOfCustomCharDelimiters(trimmed)
     }
 
     let parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
@@ -41,7 +41,11 @@ export class StringCalculator implements IStringCalculator{
     return parsedNumbers.reduce((current:number,prev:number)=> prev+=current,0) 
 
   }
-  private hasArrayOfCustomMultiCharDelimiter(str:string){
+  extractArrayOfCustomCharDelimiters(trimmed: string): string[] {
+    throw new Error("Method not implemented.");
+  }
+  private hasArrayOfCustomCharDelimiters(str:string){
+
         return str.startsWith('//[') && (str.indexOf(']') !== str.lastIndexOf(']'))
   }
   private parseNumbers(str: string, splitParams: string[]) {
