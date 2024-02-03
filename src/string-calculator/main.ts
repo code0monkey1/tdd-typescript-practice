@@ -22,12 +22,9 @@ export class StringCalculator implements IStringCalculator{
       const negativeNumbers = this.extractNegativeNumbers(parsedNumbers)
 
       throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
-
     }
                      
-    const sum=parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
-
-    return sum
+    return parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
 
   }
 
