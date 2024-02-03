@@ -108,7 +108,7 @@ describe('string-calculator', () => {
       
     })
 
-    describe.skip('Custom Delimiter', () => {
+    describe('Custom Delimiter', () => {
           
           it.each([
             {input:"//;\n1;2",expected:3}
@@ -127,7 +127,7 @@ describe('string-calculator', () => {
     })
 
 
-    it('learning test',()=>{
+    it.skip('learning test',()=>{
       const str ='//;\n1;2'
       expect(str.startsWith('//')).toBe(true)
       expect(str.indexOf('\n')).toBe(3)
