@@ -192,7 +192,7 @@ describe('string-calculator', () => {
           }) 
     })
 
-    describe.only('Array of Multiple Delimiters', () => {
+    describe('Array of Multiple Delimiters', () => {
            
          it.each([
             {input:"//[***][,]\n1***2,3",expected:6},
@@ -216,9 +216,9 @@ describe('string-calculator', () => {
     })
     
 
-    it('learning test',()=>{
+    it.only('learning test',()=>{
 
-      const str = 'This is a sample string *** with multiple *** delimiters && and some &&&&.';
+      const str = '//[***][,]\n1***2,3';
       const delimiters = ['\*', ',', '\&&'];
 
       const pattern =new RegExp(delimiters.map(delimiter => `\\${delimiter}`).join('|'));
@@ -227,7 +227,7 @@ describe('string-calculator', () => {
 
       console.log(result)
 
-      expect(result).toStrictEqual(["This is a sample string ", " with multiple ", " delimiters ", " and some ", "."])
+      expect(result).toStrictEqual(["1","2","3"])
 
       // let res:string[]=[]
       // let  str="//[***][,]\n1***2,3"
