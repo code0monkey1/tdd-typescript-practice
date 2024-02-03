@@ -5,11 +5,11 @@ export class StringCalculator implements IStringCalculator{
 
     if( (trimmed).length==0)  return 0
 
-    const splitParams = [",", "\n"];
+    let splitParams = [",", "\n"];
 
-    if(trimmed.startsWith('\\') && trimmed.indexOf('\n')==3){
-         return -1
-    }
+    if(trimmed.startsWith('\\') && trimmed.indexOf('\n')==3)
+         splitParams=[trimmed[2]]
+    
 
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
