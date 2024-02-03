@@ -133,7 +133,7 @@ describe('string-calculator', () => {
            it.each([
             {input:"//;\n1;-2"},
             {input:"-1,4"},
-             {input:"-1,-20"},
+            {input:"-1,-20"},
             {input:"//@\n-1@7"}
          
           ])(`input : $input , throw new Error("")`,({input})=>{
