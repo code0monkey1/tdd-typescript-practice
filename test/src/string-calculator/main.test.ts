@@ -194,48 +194,10 @@ describe('string-calculator', () => {
 
     
 
-    // it.skip('learning test',()=>{
-
-    //   const str = '1***2,3';
-    //   const delimiters = ['***', ','];
-
-    //   const regex = new RegExp(delimiters.map(delimiter => escapeStringRegexp(delimiter)).join('|'));
-    //       const result = str.split(regex); 
-
-    //   console.log(result)
-
-    //   expect(result).toStrictEqual(["1","2","3"])
-
-      // let res:string[]=[]
-      // let  str="//[***][,]\n1***2,3"
-
-      // do {
-
-      //    const extractedToken = str.slice(str.indexOf('[')+1,str.indexOf(']'))
-
-      //     res.push(extractedToken)
-      
-      //     str=str.slice(str.indexOf(']')+1)
-
-        
-      // } while (str.indexOf('[')!=-1);
-  
-      
-      //  expect(res).toStrictEqual(['***',','])
-
-      //   const charsArray = res.length==1?str.split(res[0]):
-      //                     str.split(new RegExp(`(${res.join('|')})`, 'g'));
-
-      //   let arr =charsArray
-      //   .filter(e => parseInt(e)) // filter out non-numbers
-      //       .map(e => parseInt(e));
-
-      //   expect(arr).toStrictEqual([1,2,3])
     })
     
   })
 
-// })
 
 
 const createStringCalculator=():IStringCalculator=>{
