@@ -220,16 +220,18 @@ describe('string-calculator', () => {
 
       let res:string[]=[]
       let  str="//[***][,]\n1***2,3"
-  
-      while(str.indexOf('[')!=-1){
-          const extractedToken = str.substring(str.indexOf('[')+1,str.indexOf(']'))
-          console.log(extractedToken)
+
+      do {
+
+         const extractedToken = str.slice(str.indexOf('[')+1,str.indexOf(']'))
 
           res.push(extractedToken)
-          console.log(res)
+      
           str=str.slice(str.indexOf(']')+1)
-          console.log("string is",str)
-        }
+
+        
+      } while (str.indexOf('[')!=-1);
+  
       
        expect(res).toStrictEqual(['***',','])
     })
