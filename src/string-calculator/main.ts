@@ -15,7 +15,7 @@ export class StringCalculator implements IStringCalculator{
       trimmed=this.removeCustomDelimiter(trimmed)
     }
 
-    const parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
+    let parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
     
     if (this.hasNegativeNumber(parsedNumbers)){
         
@@ -23,6 +23,10 @@ export class StringCalculator implements IStringCalculator{
 
       throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
     }
+
+    
+    parsedNumbers= this.removeAllOverN(parsedNumbers,1000)
+
                      
     return parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
 
@@ -32,6 +36,11 @@ export class StringCalculator implements IStringCalculator{
     return trimmed.split(new RegExp(`(${splitParams.join("|")})`))
       .filter(e => parseInt(e)) // filter out non-numbers
       .map(e => parseInt(e));
+  }
+
+  private removeAllOverN(arr:number[],n:number){
+       
+         return arr.filter(e => e<=n)
   }
 
   private extractNegativeNumbers(numbersArray: number[]) {
