@@ -16,3 +16,12 @@ export  abstract class ICopier{
         this.dst.writeChar(ch)
       }
 }
+
+
+export class Act extends ICopier{
+
+  copy(): void {
+    throw new Error("Method not implemented.")
+  }
+
+}
