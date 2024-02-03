@@ -131,12 +131,12 @@ describe('string-calculator', () => {
 
     describe('Throws on negative numbers', () => {
            it.each([
-            {input:"//;\n1;-2"},
-            {input:"-1,4"},
-            {input:"-1,-20"},
-            {input:"//@\n-1@7"}
+            {input:"//;\n1;-2",expected:" : -2"},
+            {input:"-1,4" ,expected:" : -1"},
+            {input:"-1,-20",expected:" : -1,-20"},
+            {input:"//@\n-1@7",expected:" : -1"}
          
-          ])(`input : $input , throw new Error("")`,({input})=>{
+          ])(`input : $input , throw new Error("")`,({input ,expected})=>{
    
             // arrange 
             const sut = createStringCalculator()
@@ -144,7 +144,7 @@ describe('string-calculator', () => {
             
             // act 
             // assert 
-            expect(()=>sut.add(input)).toThrow(new Error(ErrorMessage))
+            expect(()=>sut.add(input)).toThrow(new Error(ErrorMessage + expected))
 
           })
     })
