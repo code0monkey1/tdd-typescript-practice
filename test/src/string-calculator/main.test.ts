@@ -154,6 +154,7 @@ describe('string-calculator', () => {
           it.each([
             {input:"1001",expected:0},
             {input:"1001,1",expected:1},
+            {input:"1000,1",expected:1001},
             {input:"//,\n5,4000",expected:5},
             {input:"//@\n1002@7",expected:7}     
           ])(`input : $input , expected: $expected`,({input,expected})=>{
