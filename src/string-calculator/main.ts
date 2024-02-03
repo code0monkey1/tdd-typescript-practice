@@ -40,16 +40,13 @@ export class StringCalculator implements IStringCalculator{
 
   private parseNumbers(str: string, splitParams: string[]) {
      
-    let charArray
+    const charsArray = splitParams.length==1?str.split(splitParams[0]):
+                          str.split(new RegExp(`(${splitParams.join("|")})`))
 
-    if(splitParams.length==1)
-      charArray= str.split(splitParams[0])
-    else
-      charArray =str.split(new RegExp(`(${splitParams.join("|")})`))
-
-    return charArray
-      .filter(e => parseInt(e)) // filter out non-numbers
-      .map(e => parseInt(e));
+    return charsArray
+    .filter(e => parseInt(e)) // filter out non-numbers
+        .map(e => parseInt(e));
+     
   }
 
   private hasCustomMultiCharDelimiter(str:string){
