@@ -9,11 +9,9 @@ export class StringCalculator implements IStringCalculator{
 
     if(this.hasCustomDelimiter(trimmed)){
       
-      const DELIMITER_INDEX =2
-
-      splitParams=[trimmed[DELIMITER_INDEX]]
-
-      trimmed=trimmed.substring(trimmed.indexOf('\n')+1)
+      splitParams= [ this.extractCustomDelimiter(trimmed) ]
+   
+      trimmed=this.removeCustomDelimiter(trimmed)
     }
 
     // more than 1 digit
@@ -26,7 +24,20 @@ export class StringCalculator implements IStringCalculator{
 
   }
 
+  private extractCustomDelimiter(str:string){
+
+      const DELIMITER_INDEX =2
+
+      let customDelimiter=str[DELIMITER_INDEX]
+
+      return customDelimiter
+  }
+
   
+
+  private removeCustomDelimiter(trimmed: string): string {
+    return trimmed.substring(trimmed.indexOf('\n') + 1);
+  }
 
   private hasCustomDelimiter(trimmed: string) {
     return trimmed.startsWith('//') && trimmed.indexOf('\n') == 3;
