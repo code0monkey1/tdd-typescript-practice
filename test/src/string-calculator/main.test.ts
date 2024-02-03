@@ -218,31 +218,39 @@ describe('string-calculator', () => {
 
     it.only('learning test',()=>{
 
-      let res:string[]=[]
-      let  str="//[***][,]\n1***2,3"
+      const str = 'This is a sample string *** with multiple *** delimiters && and some &&&&.';
+      const delimiters = ['***', ',', '&&'];
 
-      do {
+      const pattern = new RegExp(`(${delimiters.join('|')})`, 'g');
+      const result = str.split(pattern);
 
-         const extractedToken = str.slice(str.indexOf('[')+1,str.indexOf(']'))
+      expect(result).toStrictEqual(["This is a sample string ", " with multiple ", " delimiters ", " and some ", "."])
 
-          res.push(extractedToken)
+      // let res:string[]=[]
+      // let  str="//[***][,]\n1***2,3"
+
+      // do {
+
+      //    const extractedToken = str.slice(str.indexOf('[')+1,str.indexOf(']'))
+
+      //     res.push(extractedToken)
       
-          str=str.slice(str.indexOf(']')+1)
+      //     str=str.slice(str.indexOf(']')+1)
 
         
-      } while (str.indexOf('[')!=-1);
+      // } while (str.indexOf('[')!=-1);
   
       
-       expect(res).toStrictEqual(['***',','])
+      //  expect(res).toStrictEqual(['***',','])
 
-        const charsArray = res.length==1?str.split(res[0]):
-                          str.split(new RegExp(`(${res.join('|')})`, 'g'));
+      //   const charsArray = res.length==1?str.split(res[0]):
+      //                     str.split(new RegExp(`(${res.join('|')})`, 'g'));
 
-        let arr =charsArray
-        .filter(e => parseInt(e)) // filter out non-numbers
-            .map(e => parseInt(e));
+      //   let arr =charsArray
+      //   .filter(e => parseInt(e)) // filter out non-numbers
+      //       .map(e => parseInt(e));
 
-        expect(arr).toStrictEqual([1,2,3])
+      //   expect(arr).toStrictEqual([1,2,3])
     })
     
   })
