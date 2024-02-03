@@ -192,7 +192,7 @@ describe('string-calculator', () => {
           }) 
     })
 
-    describe.only('Array of Multiple Delimiters', () => {
+    describe('Array of Multiple Delimiters', () => {
            
          it.each([
             {input:"//[***][,]\n1***2,3",expected:6},
@@ -216,7 +216,7 @@ describe('string-calculator', () => {
     })
     
 
-    it.skip('learning test',()=>{
+    it.only('learning test',()=>{
 
       let res:string[]=[]
       let  str="//[***][,]\n1***2,3"
@@ -234,6 +234,15 @@ describe('string-calculator', () => {
   
       
        expect(res).toStrictEqual(['***',','])
+
+        const charsArray = res.length==1?str.split(res[0]):
+                          str.split(new RegExp(`(${res.join("|")})`))
+
+        let arr =charsArray
+        .filter(e => parseInt(e)) // filter out non-numbers
+            .map(e => parseInt(e));
+
+        expect(arr).toStrictEqual([1,2,3])
     })
     
   })
