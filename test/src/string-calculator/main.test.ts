@@ -134,7 +134,8 @@ describe('string-calculator', () => {
             {input:"//;\n1;-2",expected:"negatives not allowed : -2"},
             {input:"-1,4" ,expected:"negatives not allowed : -1"},
             {input:"-1,-20",expected:"negatives not allowed : -1,-20"},
-            {input:"//@\n-1@7",expected:"negatives not allowed : -1"}
+            {input:"//@\n-1@7",expected:"negatives not allowed : -1"},
+             {input:"//@\n-1@-999",expected:"negatives not allowed : -1,-999"}
          
           ])(`input : $input , throws : $expected`,({input ,expected})=>{
    
