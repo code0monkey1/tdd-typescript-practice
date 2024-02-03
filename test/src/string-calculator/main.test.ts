@@ -192,6 +192,13 @@ describe('string-calculator', () => {
           }) 
     })
 
+    describe('Array of Multiple Delimiters', () => {
+
+      
+      
+    })
+    
+
     // it.skip('learning test',()=>{
 
     //   const str = "//[***]\n1***2***3"
