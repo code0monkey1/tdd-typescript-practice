@@ -7,9 +7,8 @@ export class StringCalculator implements IStringCalculator{
 
     let splitParams = [",", "\n"];
 
-    if(trimmed.startsWith('\\') && trimmed.indexOf('\n')==3)
+    if(this.hasCustomDelimiter(trimmed))
          splitParams=[trimmed[2]]
-    
 
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
@@ -22,6 +21,10 @@ export class StringCalculator implements IStringCalculator{
   }
 
   
+
+  private hasCustomDelimiter(trimmed: string) {
+    return trimmed.startsWith('\\') && trimmed.indexOf('\n') == 3;
+  }
 }
 export interface IStringCalculator{
   add(input:string):number

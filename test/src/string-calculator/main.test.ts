@@ -108,7 +108,7 @@ describe('string-calculator', () => {
       
     })
 
-    describe.skip('Custom Delimiter', () => {
+    describe('Custom Delimiter', () => {
           
           it.each([
             {input:"//;\n1;2",expected:3}
