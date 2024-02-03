@@ -7,9 +7,9 @@ export class StringCalculator implements IStringCalculator{
 
     let splitParams = [",", "\n"];
 
-    const DELIMITER_INDEX =2
-
     if(this.hasCustomDelimiter(trimmed)){
+      
+      const DELIMITER_INDEX =2
 
       splitParams=[trimmed[DELIMITER_INDEX]]
 
