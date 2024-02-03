@@ -42,7 +42,6 @@ export class StringCalculator implements IStringCalculator{
   private extractMultiCharDelimiter(str:string){
 
     return str.slice(str.indexOf('[')+1,str.indexOf(']'))
-
 }
 
   private parseNumbers(str: string, splitParams: string[]) {
@@ -92,6 +91,4 @@ export class StringCalculator implements IStringCalculator{
 }
 export interface IStringCalculator{
   add(input:string):number
-
-
 }
