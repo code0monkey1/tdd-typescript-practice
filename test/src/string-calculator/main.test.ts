@@ -1,5 +1,5 @@
-import { IStringCalculator, StringCalculator } from "../../../src/string-calculator/main"
-
+import escapeStringRegexp from 'escape-string-regexp';
+import { IStringCalculator, StringCalculator } from "../../../src/string-calculator/main";
 describe('string-calculator', () => {
 
   describe('add', () => {
@@ -221,9 +221,8 @@ describe('string-calculator', () => {
       const str = '1***2,3';
       const delimiters = ['***', ','];
 
-      const pattern =new RegExp(delimiters.map(delimiter => `\\${delimiter}`).join('|'));
-
-      const result = str.split(pattern); 
+      const regex = new RegExp(delimiters.map(delimiter => escapeStringRegexp(delimiter)).join('|'));
+          const result = str.split(regex); 
 
       console.log(result)
 
