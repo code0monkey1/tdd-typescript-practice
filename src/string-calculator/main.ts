@@ -25,6 +25,8 @@ export class StringCalculator implements IStringCalculator{
 
     if(this.hasArrayOfCustomCharDelimiters(trimmed)){
       splitParams = this.extractArrayOfCustomCharDelimiters(trimmed)
+
+      trimmed=this.removeCustomDelimiter(trimmed)
     }
 
     let parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
@@ -41,9 +43,24 @@ export class StringCalculator implements IStringCalculator{
     return parsedNumbers.reduce((current:number,prev:number)=> prev+=current,0) 
 
   }
-  extractArrayOfCustomCharDelimiters(trimmed: string): string[] {
-    throw new Error("Method not implemented.");
+  extractArrayOfCustomCharDelimiters(str: string): string[] {
+     
+    let res=[]
+
+    while(str.indexOf(']')){
+      res.push(this.extractMultiCharDelimiter(str))
+      str=str.slice(str.indexOf(']')+1)
+    }
+
+    return res
+    
   }
+
+  private extractMultiCharDelimiter(str:string){
+
+    return str.slice(str.indexOf('[')+1,str.indexOf(']'))
+
+}
   private hasArrayOfCustomCharDelimiters(str:string){
 
         return str.startsWith('//[') && (str.indexOf(']') !== str.lastIndexOf(']'))
@@ -76,11 +93,6 @@ export class StringCalculator implements IStringCalculator{
     return numbersArray.some(e => e < 0);
   }
 
-    private extractMultiCharDelimiter(str:string){
-
-      return str.slice(str.indexOf('[')+1,str.indexOf(']'))
-
-  }
   private extractCustomDelimiter(str:string){
 
       const DELIMITER_INDEX =2
