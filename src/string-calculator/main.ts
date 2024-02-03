@@ -26,7 +26,7 @@ export class StringCalculator implements IStringCalculator{
     if(this.hasArrayOfCustomCharDelimiters(trimmed)){
 
       splitParams = this.extractArrayOfCustomCharDelimiters(trimmed)
-     console.log("split parms are",splitParams)
+  
       trimmed=this.removeCustomDelimiter(trimmed)
     }
 
@@ -71,7 +71,7 @@ export class StringCalculator implements IStringCalculator{
   private parseNumbers(str: string, splitParams: string[]) {
      
     const charsArray = splitParams.length==1?str.split(splitParams[0]):
-                          str.split(new RegExp(`(${splitParams.join("|")})`))
+                          str.split(new RegExp(splitParams.map(param => `\\${param}`).join('|')))
 
     return charsArray
     .filter(e => parseInt(e)) // filter out non-numbers
