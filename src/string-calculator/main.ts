@@ -24,8 +24,9 @@ export class StringCalculator implements IStringCalculator{
     }
 
     if(this.hasArrayOfCustomCharDelimiters(trimmed)){
-      splitParams = this.extractArrayOfCustomCharDelimiters(trimmed)
 
+      splitParams = this.extractArrayOfCustomCharDelimiters(trimmed)
+     console.log("split parms are",splitParams)
       trimmed=this.removeCustomDelimiter(trimmed)
     }
 
@@ -51,7 +52,7 @@ export class StringCalculator implements IStringCalculator{
           res.push(this.extractMultiCharDelimiter(str))
       
           str=str.slice(str.indexOf(']')+1)
-          
+
       } while (str.indexOf('[')!=-1);
     
     return res

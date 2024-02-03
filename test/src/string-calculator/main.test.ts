@@ -195,7 +195,7 @@ describe('string-calculator', () => {
     describe.only('Array of Multiple Delimiters', () => {
            
          it.each([
-            {input:"//[***][',]\n1***2,3",expected:6},
+            {input:"//[***][,]\n1***2,3",expected:6},
             // {input:"//[???]\n2???4???8",expected:14},
             // {input:"//[,]\n2,4,8",expected:14},
       
