@@ -18,6 +18,15 @@ export class StringCalculator implements IStringCalculator{
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
                       .filter(e => parseInt(e))
                       .map( e => parseInt(e))
+                      .map( e =>{
+                        // Invalidate Negative Numbers
+                        if(e>0){
+                          return e
+                        }
+                        else{
+                          throw new Error("Negative Numbers are invalid")
+                        }
+                      })
                       .reduce((current:number,prev:number)=> prev+=current)
 
     return sum
