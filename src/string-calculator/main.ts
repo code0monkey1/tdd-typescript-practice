@@ -1,5 +1,6 @@
 export class StringCalculator implements IStringCalculator{
-  add(input: string): number {
+
+  public add(input: string): number {
 
     let  trimmed=input.trim()
 
@@ -14,7 +15,6 @@ export class StringCalculator implements IStringCalculator{
       trimmed=this.removeCustomDelimiter(trimmed)
     }
 
-    // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
                       .filter(e => parseInt(e))
                       .map( e => parseInt(e))
@@ -32,8 +32,6 @@ export class StringCalculator implements IStringCalculator{
 
       return customDelimiter
   }
-
-  
 
   private removeCustomDelimiter(trimmed: string): string {
     return trimmed.substring(trimmed.indexOf('\n') + 1);
