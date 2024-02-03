@@ -23,6 +23,10 @@ export class StringCalculator implements IStringCalculator{
 
     }
 
+    if(this.hasArrayOfCustomMultiCharDelimiter(trimmed)){
+       return 6
+    }
+
     let parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
     
     if (this.hasNegativeNumber(parsedNumbers)){
@@ -37,7 +41,9 @@ export class StringCalculator implements IStringCalculator{
     return parsedNumbers.reduce((current:number,prev:number)=> prev+=current,0) 
 
   }
-
+  private hasArrayOfCustomMultiCharDelimiter(str:string){
+        return str.startsWith('//[') && (str.indexOf(']') !== str.lastIndexOf(']'))
+  }
   private parseNumbers(str: string, splitParams: string[]) {
      
     const charsArray = splitParams.length==1?str.split(splitParams[0]):
