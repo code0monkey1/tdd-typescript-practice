@@ -148,6 +148,28 @@ describe('string-calculator', () => {
 
           })
     })
+
+    describe('Discount all values above 1000',()=>{
+
+          it.each([
+            {input:"1000,1",expected:1},
+            // {input:"//,\n1,4",expected:5},
+            // {input:"//@\n1@7",expected:8}
+         
+          ])(`input : $input , expected: $expected`,({input,expected})=>{
+   
+            // arrange 
+            const sut = createStringCalculator()
+            
+            // act 
+            const actual = sut.add(input)
+            
+            // assert 
+            expect(actual).toBe(expected)
+
+          })
+         
+    })
     
     
   })
