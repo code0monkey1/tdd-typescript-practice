@@ -1,4 +1,4 @@
-
+import escapeStringRegexp from 'escape-string-regexp';
 import { IStringCalculator, StringCalculator } from "../../../src/string-calculator/main";
 describe('string-calculator', () => {
 
@@ -217,8 +217,6 @@ describe('string-calculator', () => {
     
 
     it.only('learning test',()=>{
-
-      const escapeStringRegexp = require('escape-string-regexp');
 
       const str = '1***2,3';
       const delimiters = ['***', ','];
