@@ -216,16 +216,21 @@ describe('string-calculator', () => {
     })
     
 
-    // it.skip('learning test',()=>{
+    it.only('learning test',()=>{
 
-    //   const str = "//[***]\n1***2***3"
-    //   const res =str.slice(str.indexOf('[')+1,str.indexOf(']'))
-    //   expect(res).toBe("***")
-
-    //   expect("1***2***3".split("***")).toStrictEqual(["1","2","3"])
-
-    
-    // })
+      let res:string[]=[]
+      let  str="//[***][',]\n1***2,3"
+  
+      while(str.indexOf('[')){
+          const extractedToken = str.substring(str.indexOf('[')+1,str.indexOf(']'))
+         
+          res.push(extractedToken)
+          
+          str=str.slice(str.indexOf(']')+1)
+        }
+      
+       expect(res).toBe([1,2,3])
+    })
     
   })
 
