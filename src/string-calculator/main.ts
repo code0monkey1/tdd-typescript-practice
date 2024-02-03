@@ -1,14 +1,18 @@
 export class StringCalculator implements IStringCalculator{
   add(input: string): number {
 
-    const trimmed=input.trim()
+    let  trimmed=input.trim()
 
     if( (trimmed).length==0)  return 0
 
     let splitParams = [",", "\n"];
 
-    if(this.hasCustomDelimiter(trimmed))
-         splitParams=[trimmed[2]]
+    if(this.hasCustomDelimiter(trimmed)){
+
+      splitParams=[trimmed[2]]
+
+      trimmed=trimmed.substring(trimmed.indexOf('\n')+1)
+    }
 
     // more than 1 digit
     const sum = trimmed.split(new RegExp(`(${splitParams.join("|")})`))
