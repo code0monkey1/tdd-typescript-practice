@@ -192,7 +192,7 @@ describe('string-calculator', () => {
           }) 
     })
 
-    describe('Array of Multiple Delimiters', () => {
+    describe.only('Array of Multiple Delimiters', () => {
            
          it.each([
             {input:"//[***][',]\n1***2,3",expected:6},
@@ -216,7 +216,7 @@ describe('string-calculator', () => {
     })
     
 
-    it.only('learning test',()=>{
+    it.skip('learning test',()=>{
 
       let res:string[]=[]
       let  str="//[***][,]\n1***2,3"

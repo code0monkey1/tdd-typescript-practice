@@ -48,14 +48,10 @@ export class StringCalculator implements IStringCalculator{
     let res:string[]=[]
 
      do {
-
-         const extractedToken = this.extractMultiCharDelimiter(str)
-
-          res.push(extractedToken)
+          res.push(this.extractMultiCharDelimiter(str))
       
           str=str.slice(str.indexOf(']')+1)
-
-        
+          
       } while (str.indexOf('[')!=-1);
     
     return res
