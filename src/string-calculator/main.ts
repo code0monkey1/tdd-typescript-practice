@@ -24,10 +24,10 @@ export class StringCalculator implements IStringCalculator{
       throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
     }
     console.log(parsedNumbers)
-    
+
     parsedNumbers= this.removeGreaterThanN(parsedNumbers,1000)
    
-    return parsedNumbers.reduce((current:number,prev:number)=> prev+=current) 
+    return parsedNumbers.reduce((current:number,prev:number)=> prev+=current,0) 
 
   }
 
