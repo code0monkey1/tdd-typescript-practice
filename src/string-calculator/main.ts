@@ -15,6 +15,10 @@ export class StringCalculator implements IStringCalculator{
       trimmed=this.removeCustomDelimiter(trimmed)
     }
 
+    if(this.hasCustomMultiCharDelimiter(trimmed)){
+      splitParams = []
+    }
+
     let parsedNumbers = this.parseNumbers(trimmed, splitParams) // parse numbers      
     
     if (this.hasNegativeNumber(parsedNumbers)){
@@ -30,10 +34,14 @@ export class StringCalculator implements IStringCalculator{
 
   }
 
-  private parseNumbers(trimmed: string, splitParams: string[]) {
-    return trimmed.split(new RegExp(`(${splitParams.join("|")})`))
+  private parseNumbers(str: string, splitParams: string[]) {
+    return str.split(new RegExp(`(${splitParams.join("|")})`))
       .filter(e => parseInt(e)) // filter out non-numbers
       .map(e => parseInt(e));
+  }
+
+  private hasCustomMultiCharDelimiter(str:string){
+      return str.startsWith('//[') && (str.indexOf(']') == str.lastIndexOf(']'))
   }
 
   private removeGreaterThanN(arr:number[],n:number){
