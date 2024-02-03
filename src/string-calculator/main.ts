@@ -23,7 +23,6 @@ export class StringCalculator implements IStringCalculator{
 
       throw ("negatives not allowed"+" : "+negativeNumbers.join(','))
     }
-    console.log(parsedNumbers)
 
     parsedNumbers= this.removeGreaterThanN(parsedNumbers,1000)
    
