@@ -47,7 +47,7 @@ export class StringCalculator implements IStringCalculator{
      
     let res=[]
 
-    while(str.indexOf(']')!==undefined){
+    while(str.indexOf(']')){
       res.push(this.extractMultiCharDelimiter(str))
       str=str.slice(str.indexOf(']')+1)
     }
