@@ -5,10 +5,15 @@ export class CharacterCopier implements ICopier{
   constructor( private src:ISource, private dst:IDestination ){}
 
   copy(): void {
+    
+    let char = this.src.readChar()
 
-    const char = this.src.readChar()
+    while ( (char = this.src.readChar()) !='\n'){
 
-    this.dst.writeChar(char) 
+      this.dst.writeChar(char) 
+
+    }
+
   }
 }
 
@@ -53,7 +58,7 @@ describe.only('copy', () => {
         const src=jest.fn()
 
         src.mockReturnValueOnce(input)
-        
+
         src.mockReturnValue('\n')
   
         jest.spyOn(mockSrc,'readChar').mockImplementation(src)
