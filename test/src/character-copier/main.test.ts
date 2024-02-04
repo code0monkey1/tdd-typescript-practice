@@ -26,22 +26,10 @@ describe('copy', () => {
   describe('only one character copied', () => {
 
       it('character copier reads `a` from src',()=>{
-         
-        let arr:string[]=[]
-        //arrange
-        const src:ISource={
-          readChar: function (): string {
-            return 'a'
-          }
-        }
-
-         const dst:IDestination={
-           writeChar: function (str: string): void {
-             arr.push(str)
-           }
-         }
         
-        const sut = createCharacterCopier(src,dst)
+        //arrange 
+        
+        const sut = createCharacterCopier(new MockSource(),new MockDestination())
 
         //act 
 
