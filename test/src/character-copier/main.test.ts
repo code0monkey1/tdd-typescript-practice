@@ -13,8 +13,6 @@ class CharacterCopier implements ICopier{
 }
 
 class MockDestination implements IDestination{
-  public arr:string[] = []
-
   writeChar(str: string): void {
     throw new Error('Method not implemented.');
   }
@@ -42,13 +40,15 @@ describe.only('copy', () => {
   describe('only one character copied', () => {
 
       it('character copier writes `a` from src to dst ',()=>{
+        
+        let arr:string[] = []
 
         //arrange 
 
         const sut = characterCopier
 
         const expected = ['a']
-     
+        const actual = arr
 
         jest.spyOn(mockSrc,'readChar').mockImplementation(()=>{
           return `a`
