@@ -115,10 +115,12 @@ describe.only('copy', () => {
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
-        expect(mockDst.writeChar).toHaveBeenCalledWith(input)
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(input.length)
 
-        expect(actual).toContain(input)
+        for(let c of input)
+          expect(mockDst.writeChar).toHaveBeenCalledWith(c)
+
+        expect(actual).toStrictEqual(input)
 
       })
 
