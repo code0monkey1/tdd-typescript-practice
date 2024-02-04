@@ -17,7 +17,7 @@ describe('copy', () => {
 
       it('copies `a` from src and writes it to destination',()=>{
         
-        
+        const sut = createCharacterCopier()
 
 
 
@@ -27,3 +27,17 @@ describe('copy', () => {
   
   
 })
+
+const createCharacterCopier=()=>{
+    
+  const src:ISource={
+    readChar: function (): string {
+      throw new Error('Function not implemented.');
+    }
+  }
+  const dst:IDestination={
+    
+  }
+   
+   return new CharacterCopier()
+}
