@@ -42,7 +42,7 @@ describe.only('copy', () => {
       it.each([
         {input:'a'},
         {input:'b'}
-      ])('character copier writes $input from src to dst',({input})=>{
+      ])('one character $input',({input})=>{
         
         //arrange 
         
