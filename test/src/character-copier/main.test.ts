@@ -5,6 +5,10 @@ class CharacterCopier implements ICopier{
   constructor( private src:ISource, private dst:IDestination ){}
 
   copy(): void {
+
+    const char = this.src.readChar()
+
+    this.dst.writeChar(char)
       
   }
 }
@@ -51,7 +55,7 @@ describe.only('copy', () => {
         //assert
         sut.copy()
 
-        expect(actual).toBe(expected)
+        expect(actual).toStrictEqual(expected)
 
       })
     
