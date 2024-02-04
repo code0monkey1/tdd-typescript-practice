@@ -122,11 +122,15 @@ describe.only('copy', () => {
       it.each([
         {
           chars:['a','b','c','\n','d','e','f'],
-        expect:['a','b','c'] , 
-        discount:['d','e','f']
+          expect:['a','b','c'] , 
+          discount:['d','e','f']
       },
-        {chars: ['d','e','f']}
-      ])('$input followed by a newline',({chars})=>{
+      //   {
+      //     chars: ['d','e','f','\n','a','b','c'],
+      // expect:['d','e','f',] , 
+      //     discount:['a','b','c']
+      //   }
+      ])('expect:$expected and discount: $discount ,which come after newline',({chars})=>{
         
         //arrange 
         
