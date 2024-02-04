@@ -16,6 +16,8 @@ export type CustomerData={
      customers:Customer[]
 }
 
+export type CustomerWriteData =Omit<CustomerData,'customers'>&{line:string}
+
 export class CustomerFileSystem implements IFileSystem<CustomerData>{
   write(data: CustomerData): void {
     throw new Error("Method not implemented.")
