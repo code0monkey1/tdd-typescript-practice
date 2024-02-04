@@ -39,23 +39,25 @@ describe.only('copy', () => {
 
   describe('only one character copied', () => {
 
-      it('character copier writes `a` from src to dst ',()=>{
+      it.each([
+        {input:'a',expected:['a']},
+        {input:'b',expected:['b']}
+      ])('character copier writes $input from src to dst  ',({input,expected})=>{
         
-        let arr:string[] = []
+        let actual:string[] = []
 
         //arrange 
 
         const sut = characterCopier
 
-        const expected = ['a']
-        const actual = arr
+  
 
         jest.spyOn(mockSrc,'readChar').mockImplementation(()=>{
-          return `a`
+          return input
         })
 
         jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
-           arr.push(str)
+           actual.push(str)
         })
 
         
@@ -65,7 +67,7 @@ describe.only('copy', () => {
 
         //assert
         expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
-        expect(mockDst.writeChar).toHaveBeenCalledWith('a')
+        expect(mockDst.writeChar).toHaveBeenCalledWith(input)
 
         expect(actual).toStrictEqual(expected)
 
