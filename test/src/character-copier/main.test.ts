@@ -43,6 +43,40 @@ describe.only('copy', () => {
     jest.clearAllMocks()
   })
 
+  describe('no character', () => {
+
+      it('has no input, followed by a newline',()=>{
+        
+        //arrange 
+        
+        let actual:string[] = []
+
+        const sut = characterCopier
+
+        const src=jest.fn()
+        
+        src.mockReturnValue('\n')
+  
+        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
+
+        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
+           actual.push(str)
+        })
+        
+        //act 
+  
+        sut.copy()
+
+        //assert
+
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(0)
+
+        expect(actual).toStrictEqual([])
+
+      })
+
+  })
+
   describe('one character', () => {
 
       it.each([
