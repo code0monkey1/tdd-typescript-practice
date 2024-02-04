@@ -4,20 +4,23 @@ interface IFileWriter<T>{
 
 }
 
-type Customer={
+
+export type Customer={
   name:string,
   contactNumber:string,
   toString:()=>{}
 }
 
-type CustomerData={
+export type CustomerData={
      fileName:string,
      customers:Customer[]
 }
 
-class CustomerFileWriter implements IFileWriter<CustomerData>{
+export class CustomerFileWriter implements IFileWriter<CustomerData>{
   write(data: CustomerData): void {
     throw new Error("Method not implemented.")
   }
   
 }
+
+
