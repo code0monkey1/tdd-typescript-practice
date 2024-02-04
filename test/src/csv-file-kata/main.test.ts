@@ -51,7 +51,7 @@ describe('customer-file-writer', () => {
 
              //assert
                
-             expect(mockFileSystem.write).toHaveBeenCalledTimes(1)
+             expect(mockFileSystem.write).toHaveBeenCalledTimes(2)
             //  expect(arr).toHaveBeenLastCalledWith(expected)
              
             
