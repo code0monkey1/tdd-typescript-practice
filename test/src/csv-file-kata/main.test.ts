@@ -20,19 +20,21 @@ describe('customer-file-writer', () => {
             //arrange
 
             const mockWrite = jest.fn()
-             const mockFileWriter:CustomerFileSystem={
+
+             const mockFileSystem:CustomerFileSystem={
                write:mockWrite
              }
-             const sut= new CustomerCsvFileWriter(mockFileWriter)
+             const sut= new CustomerCsvFileWriter(mockFileSystem)
 
              const customer:Customer={
                 name:"chinu",
                 contactNumber:"1234",
-                toString:()=>'chinu,1234'
+                toString:()=>'a'
              }
 
              const data:CustomerData={
-              
+               fileName: 'a.txt',
+               customers: [customer]
              }
 
              const expected={fileName:"a.txt",line:"a"}
@@ -40,13 +42,15 @@ describe('customer-file-writer', () => {
             //act
           
 
-             sut.writeData()
+             sut.writeData(data)
 
 
              //assert
-
-
+               
+             expect(mockWrite).toHaveBeenCalledTimes(1)
+             expect(mockWrite).toHaveBeenLastCalledWith(expected)
              
+            
 
           })
     })
