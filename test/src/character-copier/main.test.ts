@@ -1,11 +1,15 @@
 import { ICopier, IDestination, ISource } from '../../../src/character-copier/main';
 
 class CharacterCopier implements ICopier{
-
+  private arr:string[]=[]
   constructor( private src:ISource, private dst:IDestination ){}
 
   copy(): void {
       
+  }
+
+  getCharArray=()=>{
+    return this.arr
   }
 
 }
@@ -17,16 +21,24 @@ describe('copy', () => {
       it('character copier reads `a` from src',()=>{
         
         //arrange
-        const sut = createCharacterCopier()
+        const src:ISource={
+          readChar: function (): string {
+            throw new Error('Function not implemented.');
+          }
+        }
+
+         const dst:IDestination={
+           writeChar: function (str: string): void {
+             throw new Error('Function not implemented.');
+           }
+         }
+        
+        const sut = createCharacterCopier(src,dst)
 
         //act 
-        
-
 
         //assert
-        
-
-
+      
 
       })
     
@@ -35,32 +47,11 @@ describe('copy', () => {
   
 })
 
-const createSource=():ISource=>{
 
-    const src:ISource={
-        readChar: function (): string {
-          return 'a'
-        }
-      }
 
-  return src
 
-}
+const createCharacterCopier=(src:ISource,dst:IDestination):ICopier=>{
 
-const createDestination=():IDestination=>{
-  
-   const dst:IDestination={
-    
-    writeChar: function (str: string): void {
-       
-    }  
-  }
-
-  return dst
-}
-
-const createCharacterCopier=():ICopier=>{
-
-   return new CharacterCopier( createSource(),createDestination())
+   return new CharacterCopier( src,dst)
 
 }
