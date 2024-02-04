@@ -64,7 +64,8 @@ describe.only('copy', () => {
         sut.copy()
 
         //assert
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(2)
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
+        expect(mockDst.writeChar).toHaveBeenCalledWith('a')
 
         expect(actual).toStrictEqual(expected)
 
