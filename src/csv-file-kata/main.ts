@@ -27,15 +27,6 @@ export interface FileWriter<T>{
     writeData(obj:T):void
 }
 
-export class CustomerCsvFileWriter implements FileWriter<Customer>{
-
-  constructor(private fs:CustomerFileSystem){}
-
-  writeData(obj: Customer): void {
-    throw new Error('Method not implemented.');
-  }
-
-}
 
 
 
