@@ -40,12 +40,14 @@ const createCharacterCopier=()=>{
        return 'a'
     }
   }
+  
   const dst:IDestination={
     
     writeChar: function (str: string): void {
         arr.push(str)
     }  
   }
+
   const getCharArray=()=>{
     return arr
   }
