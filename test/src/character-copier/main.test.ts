@@ -57,10 +57,10 @@ describe.only('copy', () => {
         const sut = characterCopier
 
         const src=jest.fn()
+        
+        src.mockReturnValue('\n')
 
         src.mockReturnValueOnce(input)
-
-        src.mockReturnValue('\n')
   
         jest.spyOn(mockSrc,'readChar').mockImplementation(src)
 
