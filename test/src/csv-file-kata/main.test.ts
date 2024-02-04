@@ -41,7 +41,7 @@ describe('customer-file-writer', () => {
                customers: [customer]
              }
 
-             const expected={fileName:"a.txt",line:"a"}
+             const expected=[{fileName:"a.txt",line:"a"}]
 
             //act
           
@@ -50,9 +50,8 @@ describe('customer-file-writer', () => {
 
 
              //assert
-               
-             expect(mockFileSystem.write).toHaveBeenCalledTimes(1)
-             expect(arr).toHaveBeenLastCalledWith(expected)
+
+             expect(arr).toStrictEqual(expected)
              
             
 
