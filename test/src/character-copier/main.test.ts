@@ -67,6 +67,35 @@ describe.only('copy', () => {
         expect(actual).toStrictEqual(expected)
 
       })
+
+       it('character copier writes `a` from src to dst ',()=>{
+        
+        let arr:string[] = []
+
+        //arrange 
+
+        const sut = characterCopier
+
+        const expected = ['a']
+        const actual = arr
+
+        //act 
+        
+        jest.spyOn(mockSrc,'readChar').mockImplementation(()=>{
+          return `a`
+        })
+
+        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
+           arr.push(str)
+        })
+
+        //assert
+        sut.copy()
+
+        expect(actual).toStrictEqual(expected)
+
+      })
+    
     
   })
   
