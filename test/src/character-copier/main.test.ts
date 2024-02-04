@@ -1,17 +1,24 @@
 import { ICopier, IDestination, ISource } from '../../../src/character-copier/main';
 
 class CharacterCopier implements ICopier{
-  private arr:string[]=[]
+
   constructor( private src:ISource, private dst:IDestination ){}
 
   copy(): void {
       
   }
+}
 
-  getCharArray=()=>{
-    return this.arr
+class MockDestination implements IDestination{
+  writeChar(str: string): void {
+    throw new Error('Method not implemented.');
   }
+}
 
+class MockSource implements ISource{
+  readChar(): string {
+    throw new Error('Method not implemented.');
+  }
 }
 
 describe('copy', () => {
