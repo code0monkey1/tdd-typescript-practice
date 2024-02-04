@@ -44,14 +44,12 @@ describe.only('copy', () => {
         {input:'b',expected:['b']}
       ])('character copier writes $input from src to dst  ',({input,expected})=>{
         
+        //arrange 
+        
         let actual:string[] = []
 
-        //arrange 
-
         const sut = characterCopier
-
   
-
         jest.spyOn(mockSrc,'readChar').mockImplementation(()=>{
           return input
         })
@@ -59,13 +57,13 @@ describe.only('copy', () => {
         jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
            actual.push(str)
         })
-
         
         //act 
-        
+  
         sut.copy()
 
         //assert
+        
         expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
         expect(mockDst.writeChar).toHaveBeenCalledWith(input)
 
