@@ -43,7 +43,7 @@ describe.only('copy', () => {
     jest.clearAllMocks()
   })
 
-  describe('only one character copied', () => {
+  describe('one character', () => {
 
       it.each([
         {input:'a'},
@@ -62,6 +62,47 @@ describe.only('copy', () => {
 
         src.mockReturnValueOnce(input)
   
+        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
+
+        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
+           actual.push(str)
+        })
+        
+        //act 
+  
+        sut.copy()
+
+        //assert
+
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
+        expect(mockDst.writeChar).toHaveBeenCalledWith(input)
+
+        expect(actual).toContain(input)
+
+      })
+
+  })
+
+  describe('multiple characters', () => {
+
+      it.each([
+        {input:['a','b','c']},
+        {input: ['d','e','f']}
+      ])('$input followed by a newline',({input})=>{
+        
+        //arrange 
+        
+        let actual:string[] = []
+
+        const sut = characterCopier
+
+        const src=jest.fn()
+        
+        src.mockReturnValue('\n')
+        
+        for(let c of input)
+          src.mockReturnValueOnce(c)
+        
         jest.spyOn(mockSrc,'readChar').mockImplementation(src)
 
         jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
