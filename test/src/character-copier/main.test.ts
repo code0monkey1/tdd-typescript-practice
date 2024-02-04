@@ -19,6 +19,9 @@ describe('copy', () => {
         
         const sut = createCharacterCopier()
 
+        sut
+        
+
 
 
       })
@@ -29,6 +32,8 @@ describe('copy', () => {
 })
 
 const createCharacterCopier=()=>{
+
+   let arr:string[] =[]
     
   const src:ISource={
     readChar: function (): string {
@@ -36,9 +41,13 @@ const createCharacterCopier=()=>{
     }
   }
   const dst:IDestination={
+    
     writeChar: function (str: string): void {
-      
-    }
+        arr.push(str)
+    }  
+  }
+  const getCharArray=()=>{
+    return arr
   }
    
    return new CharacterCopier(src,dst)
