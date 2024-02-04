@@ -50,8 +50,6 @@ describe.only('copy', () => {
         const expected = ['a']
         const actual = arr
 
-        //act 
-        
         jest.spyOn(mockSrc,'readChar').mockImplementation(()=>{
           return `a`
         })
@@ -60,8 +58,13 @@ describe.only('copy', () => {
            arr.push(str)
         })
 
-        //assert
+        
+        //act 
+        
         sut.copy()
+
+        //assert
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(2)
 
         expect(actual).toStrictEqual(expected)
 
