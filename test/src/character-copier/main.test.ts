@@ -32,12 +32,14 @@ const createCharacterCopier=()=>{
     
   const src:ISource={
     readChar: function (): string {
-      throw new Error('Function not implemented.');
+       return 'a'
     }
   }
   const dst:IDestination={
-    
+    writeChar: function (str: string): void {
+      
+    }
   }
    
-   return new CharacterCopier()
+   return new CharacterCopier(src,dst)
 }
