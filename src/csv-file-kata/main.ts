@@ -8,7 +8,7 @@ interface IFileSystem<T>{
 export type Customer={
   name:string,
   contactNumber:string,
-  toString:()=>{}
+  toString:()=>string
 }
 
 export type CustomerData={
@@ -18,8 +18,8 @@ export type CustomerData={
 
 export type CustomerWriteData =Omit<CustomerData,'customers'>&{line:string}
 
-export class CustomerFileSystem implements IFileSystem<CustomerData>{
-  write(data: CustomerData): void {
+export class CustomerFileSystem implements IFileSystem<CustomerWriteData>{
+  write(data: CustomerWriteData): void {
     throw new Error("Method not implemented.")
   }
   

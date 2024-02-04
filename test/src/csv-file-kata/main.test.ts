@@ -1,11 +1,11 @@
-import { Customer, CustomerData, CustomerFileSystem, FileWriter } from '../../../src/csv-file-kata/main';
+import { Customer, CustomerData, CustomerFileSystem, CustomerWriteData, FileWriter } from '../../../src/csv-file-kata/main';
 
 class CustomerCsvFileWriter implements FileWriter<CustomerData>{
 
   constructor(private fs:CustomerFileSystem){}
-
   writeData(obj: CustomerData): void {
-    throw new Error('Method not implemented.');
+     
+       obj.customers.map(c => this.fs.write({fileName:obj.fileName,line:c.toString()}))
   }
 
 }
@@ -19,10 +19,14 @@ describe('customer-file-writer', () => {
 
             //arrange
 
-            const mockWrite = jest.fn()
+            const arr:CustomerWriteData[]=[]
+           
 
              const mockFileSystem:CustomerFileSystem={
-               write:mockWrite
+
+               write: jest.fn((customerWriteData:CustomerWriteData)=>{
+                   arr.push(customerWriteData)
+               })
              }
              const sut= new CustomerCsvFileWriter(mockFileSystem)
 
@@ -32,23 +36,23 @@ describe('customer-file-writer', () => {
                 toString:()=>'a'
              }
 
-             const data:CustomerData={
+             const customerData:CustomerData={
                fileName: 'a.txt',
                customers: [customer]
              }
 
-             const expected={fileName:"a.txt",line:"a"}
+             const expected=[{fileName:"a.txt",line:"a"}]
 
             //act
           
 
-             sut.writeData(data)
+             sut.writeData(customerData)
 
 
              //assert
                
-             expect(mockWrite).toHaveBeenCalledTimes(1)
-             expect(mockWrite).toHaveBeenLastCalledWith(expected)
+             expect(mockFileSystem.write).toHaveBeenCalledTimes(1)
+             expect(arr).toHaveBeenLastCalledWith(expected)
              
             
 
