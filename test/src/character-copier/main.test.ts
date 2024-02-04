@@ -157,6 +157,48 @@ describe.only('copy', () => {
       })
 
   })
+
+
+   describe('order of characters is same', () => {
+
+      it.each([
+        {chars:['a','b','c']},
+        // {chars: ['d','e','f']}
+      ])('$input followed by a newline',({chars})=>{
+        
+        //arrange 
+        
+        let actual:string[] = ['a','b','c']
+
+        const sut = characterCopier
+
+        const src=jest.fn()
+        
+        src.mockReturnValue('\n')
+        
+        chars.map(c => src.mockReturnValueOnce(c))
+        
+        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
+
+        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
+          //  actual.push(str)
+        })
+        
+        //act 
+  
+        sut.copy()
+
+        //assert
+
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(chars.length)
+
+        chars.map(c=> expect(mockDst.writeChar).toHaveBeenCalledWith(c))
+       
+        expect(actual).toStrictEqual(chars)
+
+      })
+
+  })
   
   
 })
