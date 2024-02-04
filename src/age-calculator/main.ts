@@ -1,6 +1,3 @@
-// class AgeCalculator{
-    
-    
 
 export interface IAgeCalculator{
    execute(birthDate:Date,targetDate:Date):number |Error
