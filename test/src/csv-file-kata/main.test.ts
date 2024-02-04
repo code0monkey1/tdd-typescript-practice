@@ -38,7 +38,7 @@ describe('customer-file-writer', () => {
 
              const customerData:CustomerData={
                fileName: 'a.txt',
-               customers: [customer]
+               customers: [customer,customer]
              }
 
              const expected=[{fileName:"a.txt",line:"a"}]
@@ -51,7 +51,7 @@ describe('customer-file-writer', () => {
 
              //assert
                
-             expect(mockFileSystem.write).toHaveBeenCalledTimes(2)
+             expect(mockFileSystem.write).toHaveBeenCalledTimes(1)
             //  expect(arr).toHaveBeenLastCalledWith(expected)
              
             
