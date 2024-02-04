@@ -117,10 +117,14 @@ describe.only('copy', () => {
 
   })
 
-  describe('multiple characters', () => {
+  describe('characters after newline should not be written', () => {
 
       it.each([
-        {chars:['a','b','c']},
+        {
+          chars:['a','b','c','\n','d','e','f'],
+        expect:['a','b','c'] , 
+        discount:['d','e','f']
+      },
         {chars: ['d','e','f']}
       ])('$input followed by a newline',({chars})=>{
         
