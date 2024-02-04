@@ -21,20 +21,37 @@ class MockSource implements ISource{
   }
 }
 
-describe('copy', () => {
+describe.only('copy', () => {
 
   describe('only one character copied', () => {
 
-      it('character copier reads `a` from src',()=>{
+      it('character copier writes `a` from src to dst ',()=>{
         
+        let arr:string[] = []
+
         //arrange 
-        
-        const sut = createCharacterCopier(new MockSource(),new MockDestination())
+        const src = new MockSource()
+        const dst = new MockDestination()
+
+        const sut = createCharacterCopier(src,dst)
+
+        const expected = ['a']
+        const actual = arr
 
         //act 
+        
+        jest.spyOn(src,'readChar').mockImplementation(()=>{
+          return `a`
+        })
+
+        jest.spyOn(dst,'writeChar').mockImplementation((str:string)=>{
+          arr.push(str)
+        })
 
         //assert
-      
+        sut.copy()
+
+        expect(actual).toBe(expected)
 
       })
     
