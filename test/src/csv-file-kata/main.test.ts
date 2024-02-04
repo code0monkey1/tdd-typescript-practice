@@ -1,5 +1,14 @@
-import { Customer, CustomerFileSystem, CustomerFileWriter } from '../../../src/csv-file-kata/main';
+import { Customer, CustomerFileSystem, FileWriter } from '../../../src/csv-file-kata/main';
 
+class CustomerCsvFileWriter implements FileWriter<Customer>{
+
+  constructor(private fs:CustomerFileSystem){}
+
+  writeData(obj: Customer): void {
+    throw new Error('Method not implemented.');
+  }
+
+}
 
 describe('customer-file-writer', () => {
 
@@ -9,10 +18,12 @@ describe('customer-file-writer', () => {
           it('a customer is written',()=>{
 
             //arrange
+
+            const mockWrite = jest.fn()
              const mockFileWriter:CustomerFileSystem={
-              
+               write:mockWrite
              }
-             const sut= new CustomerFileWriter()
+             const sut= new CustomerCsvFileWriter(mockFileWriter)
 
              const customer:Customer={
                 name:"chinu",
@@ -20,12 +31,17 @@ describe('customer-file-writer', () => {
                 toString:()=>'chinu,1234'
              }
 
+             const expected={fileName:"a.txt",line:"a"}
+
             //act
+
+          
 
              sut.writeData(customer)
 
 
              //assert
+
 
              
 
