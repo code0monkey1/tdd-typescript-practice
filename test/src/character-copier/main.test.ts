@@ -123,14 +123,14 @@ describe.only('copy', () => {
         {
           chars:['a','b','c','\n','d','e','f'],
           expected:['a','b','c'] , 
-          discount:['d','e','f']
+          discounted:['d','e','f']
       },
       //   {
       //     chars: ['d','e','f','\n','a','b','c'],
       // expect:['d','e','f',] , 
       //     discount:['a','b','c']
       //   }
-      ])('expect:$expected and discount: $discount, which come after newline',({chars,expected,discount})=>{
+      ])('expect:$expected and discount: $discount, which come after newline',({chars,expected,discounted})=>{
         
         //arrange 
         
@@ -157,7 +157,9 @@ describe.only('copy', () => {
 
         expect(mockDst.writeChar).toHaveBeenCalledTimes(expected.length)
 
-        expected.map(c=>    expect(mockDst.writeChar).toHaveBeenCalledWith(c))
+        expected.map(e =>  expect(mockDst.writeChar).toHaveBeenCalledWith(e))
+
+        discounted.map( d=> expect(mockDst.writeChar).not.toHaveBeenCalledWith(d) )
        
         expect(actual).toStrictEqual(expected)
 
