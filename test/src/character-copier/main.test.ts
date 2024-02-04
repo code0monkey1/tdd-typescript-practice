@@ -8,10 +8,11 @@ export class CharacterCopier implements ICopier{
     
     let char = this.src.readChar()
 
-    while ( (char = this.src.readChar()) !='\n'){
+    while (char !='\n'){
 
       this.dst.writeChar(char) 
 
+      char = this.src.readChar()
     }
 
   }
