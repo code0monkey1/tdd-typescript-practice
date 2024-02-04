@@ -5,7 +5,7 @@ class CharacterCopier implements ICopier{
   constructor( private src:ISource, private dst:IDestination ){}
 
   copy(): void {
-    throw new Error('Method not implemented.');
+      
   }
 
 }
@@ -14,12 +14,16 @@ describe('copy', () => {
 
   describe('only one character copied', () => {
 
-
-      it('copies `a` from src and writes it to destination',()=>{
+      it('character copier reads `a` from src',()=>{
         
+        //arrange
         const sut = createCharacterCopier()
 
-        sut
+        //act 
+        
+
+
+        //assert
         
 
 
@@ -31,26 +35,32 @@ describe('copy', () => {
   
 })
 
-const createCharacterCopier=()=>{
+const createSource=():ISource=>{
 
-   let arr:string[] =[]
-    
-  const src:ISource={
-    readChar: function (): string {
-       return 'a'
-    }
-  }
+    const src:ISource={
+        readChar: function (): string {
+          return 'a'
+        }
+      }
+
+  return src
+
+}
+
+const createDestination=():IDestination=>{
   
-  const dst:IDestination={
+   const dst:IDestination={
     
     writeChar: function (str: string): void {
-        arr.push(str)
+       
     }  
   }
 
-  const getCharArray=()=>{
-    return arr
-  }
-   
-   return new CharacterCopier(src,dst)
+  return dst
+}
+
+const createCharacterCopier=():ICopier=>{
+
+   return new CharacterCopier( createSource(),createDestination())
+
 }
