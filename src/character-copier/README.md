@@ -1,0 +1,1 @@
+![Picture](/public/character-copy-kata.png 'Character Copy Kata')

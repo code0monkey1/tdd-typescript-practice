@@ -1,47 +1,6 @@
-import { ICopier, IDestination, ISource } from '../../../src/character-copier/main';
+import { CharacterCopier, IDestination, ISource } from '../../../src/character-copier/main';
 
-export class CharacterCopier implements ICopier{
-
-  constructor( private src:ISource, private dst:IDestination ){}
-
-  copy(): void {
-    
-    let char = this.src.readChar()
-
-    while (char !='\n'){
-
-      this.dst.writeChar(char) 
-
-      char = this.src.readChar()
-    }
-
-  }
-}
-
-class MockDestination implements IDestination{
-  writeChar(str: string): void {
-    throw new Error('Method not implemented.');
-  }
-}
-
-class MockSource implements ISource{
-  readChar(): string {
-    throw new Error('Method not implemented.');
-  }
-}
-
-describe.only('copy', () => {
-  let mockSrc :ISource
-  let mockDst :IDestination
-  let characterCopier :ICopier
-
-  beforeEach(()=>{
-    mockSrc = new MockSource()
-    mockDst= new MockDestination()
-
-    characterCopier= new CharacterCopier(mockSrc,mockDst)
-    jest.clearAllMocks()
-  })
+describe('copy', () => {
 
   describe('no character', () => {
 
@@ -51,17 +10,11 @@ describe.only('copy', () => {
         
         let actual:string[] = []
 
-        const sut = characterCopier
-
-        const src=jest.fn()
-        
-        src.mockReturnValue('\n')
-  
-        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
-
-        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
-           actual.push(str)
-        })
+ 
+        const src=  createMockSource([])
+        const dst= createMockDestination()
+         
+        const sut = createCharacterCopier(src,dst)
         
         //act 
   
@@ -69,7 +22,7 @@ describe.only('copy', () => {
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(0)
+        expect(dst.writeChar).toHaveBeenCalledTimes(0)
 
         expect(actual).toStrictEqual([])
 
@@ -86,32 +39,19 @@ describe.only('copy', () => {
         
         //arrange 
         
-        let actual:string[] = []
-
-        const sut = characterCopier
-
-        const src=jest.fn()
-        
-        src.mockReturnValue('\n')
-
-        src.mockReturnValueOnce(input)
-  
-        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
-
-        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
-           actual.push(str)
-        })
-        
+        const src=  createMockSource([input])
+        const dst= createMockDestination()
+         
+        const sut = createCharacterCopier(src,dst)
         //act 
   
         sut.copy()
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
-        expect(mockDst.writeChar).toHaveBeenCalledWith(input)
+        expect(dst.writeChar).toHaveBeenCalledWith(input)
 
-        expect(actual).toContain(input)
+        expect(dst.getWrittenChars()).toContain(input)
 
       })
 
@@ -123,94 +63,99 @@ describe.only('copy', () => {
         {
           chars:['a','b','c','\n','d','e','f'],
           expected:['a','b','c'] , 
-          discounted:['d','e','f']
+         discounted:['d','e','f']
       },
-      //   {
-      //     chars: ['d','e','f','\n','a','b','c'],
-      // expect:['d','e','f',] , 
-      //     discount:['a','b','c']
-      //   }
+        {
+          chars: ['d','e','f','\n','a','b','c'],
+          expected:['d','e','f',] , 
+          discounted:['a','b','c']
+        }
       ])('expect:$expected and discount: $discount, which come after newline',({chars,expected,discounted})=>{
         
-        //arrange 
+       //arrange 
         
-        let actual:string[] = []
+        const src=  createMockSource(chars)
 
-        const sut = characterCopier
+        const dst= createMockDestination()
+         
+        const sut = createCharacterCopier(src,dst)
 
-        const src=jest.fn()
-        
-        
-        chars.map(c => src.mockReturnValueOnce(c))
-        
-        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
-
-        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
-           actual.push(str)
-        })
-        
         //act 
   
         sut.copy()
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(expected.length)
+        expected.map(e =>  expect(dst.writeChar).toHaveBeenCalledWith(e))
 
-        expected.map(e =>  expect(mockDst.writeChar).toHaveBeenCalledWith(e))
-
-        discounted.map( d=> expect(mockDst.writeChar).not.toHaveBeenCalledWith(d) )
+        discounted.map( d=> expect(dst.writeChar).not.toHaveBeenCalledWith(d) )
        
-        expect(actual).toStrictEqual(expected)
+        expect(dst.getWrittenChars()).toStrictEqual(expected)
 
       })
 
   })
 
 
-   describe('order of characters is same', () => {
+   describe('multiple characters copied in the same order', () => {
 
       it.each([
         {chars:['a','b','c']},
-        // {chars: ['d','e','f']}
+        {chars: ['d','e','f']}
       ])('$input followed by a newline',({chars})=>{
         
-        //arrange 
         
-        let actual:string[] = ['a','b','c']
-
-        const sut = characterCopier
-
-        const src=jest.fn()
+       //arrange 
         
-        src.mockReturnValue('\n')
-        
-        chars.map(c => src.mockReturnValueOnce(c))
-        
-        jest.spyOn(mockSrc,'readChar').mockImplementation(src)
-
-        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
-          //  actual.push(str)
-        })
-        
+        const src=  createMockSource(chars)
+        const dst= createMockDestination()
+         
+        const sut = createCharacterCopier(src,dst)
         //act 
   
         sut.copy()
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(chars.length)
-
-        chars.map(c=> expect(mockDst.writeChar).toHaveBeenCalledWith(c))
+        chars.map(c=> expect(dst.writeChar).toHaveBeenCalledWith(c))
        
-        expect(actual).toStrictEqual(chars)
+        expect(dst.getWrittenChars()).toStrictEqual(chars)
 
       })
 
   })
   
+  function createMockSource(chars:string[]){
+        
+      const mockReadChar = jest.fn()
+
+      chars.map(c => mockReadChar.mockReturnValueOnce(c))
+
+      mockReadChar.mockReturnValue('\n')
+
+      return {
+         readChar:mockReadChar
+      }
+      
+  }
+
+  function createMockDestination(){
+
+     const writtenChars:string[]=[]
+
+     return {
+        writeChar:jest.fn((c:string)=>{writtenChars.push(c)}),
+        getWrittenChars:()=>writtenChars
+     }
+  }
+
+  function createCharacterCopier(mockSource:ISource,mockDestination:IDestination){
+
+       return new CharacterCopier(mockSource,mockDestination)
+
+  }
   
 })
 
 
-
+ 
