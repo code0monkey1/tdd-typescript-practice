@@ -48,7 +48,7 @@ describe.only('copy', () => {
       it.each([
         {input:'a'},
         {input:'b'}
-      ])('one character $input',({input})=>{
+      ])('$input followed by a newline',({input})=>{
         
         //arrange 
         
