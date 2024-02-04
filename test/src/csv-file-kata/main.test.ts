@@ -1,10 +1,10 @@
-import { Customer, CustomerFileSystem, FileWriter } from '../../../src/csv-file-kata/main';
+import { Customer, CustomerData, CustomerFileSystem, FileWriter } from '../../../src/csv-file-kata/main';
 
-class CustomerCsvFileWriter implements FileWriter<Customer>{
+class CustomerCsvFileWriter implements FileWriter<CustomerData>{
 
   constructor(private fs:CustomerFileSystem){}
 
-  writeData(obj: Customer): void {
+  writeData(obj: CustomerData): void {
     throw new Error('Method not implemented.');
   }
 
@@ -31,13 +31,16 @@ describe('customer-file-writer', () => {
                 toString:()=>'chinu,1234'
              }
 
+             const data:CustomerData={
+              
+             }
+
              const expected={fileName:"a.txt",line:"a"}
 
             //act
-
           
 
-             sut.writeData(customer)
+             sut.writeData()
 
 
              //assert
