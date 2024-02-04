@@ -26,6 +26,17 @@ class MockSource implements ISource{
 }
 
 describe.only('copy', () => {
+  let mockSrc :ISource
+  let mockDst :IDestination
+  let characterCopier :ICopier
+
+  beforeEach(()=>{
+    mockSrc = new MockSource()
+    mockDst= new MockDestination()
+
+    characterCopier= new CharacterCopier(mockSrc,mockDst)
+    jest.clearAllMocks()
+  })
 
   describe('only one character copied', () => {
 
@@ -34,22 +45,20 @@ describe.only('copy', () => {
         let arr:string[] = []
 
         //arrange 
-        const src = new MockSource()
-        const dst = new MockDestination()
 
-        const sut = createCharacterCopier(src,dst)
+        const sut = characterCopier
 
         const expected = ['a']
         const actual = arr
 
         //act 
         
-        jest.spyOn(src,'readChar').mockImplementation(()=>{
+        jest.spyOn(mockSrc,'readChar').mockImplementation(()=>{
           return `a`
         })
 
-        jest.spyOn(dst,'writeChar').mockImplementation((str:string)=>{
-          arr.push(str)
+        jest.spyOn(mockDst,'writeChar').mockImplementation((str:string)=>{
+           arr.push(str)
         })
 
         //assert
@@ -66,9 +75,3 @@ describe.only('copy', () => {
 
 
 
-
-const createCharacterCopier=(src:ISource,dst:IDestination):ICopier=>{
-
-   return new CharacterCopier( src,dst)
-
-}
