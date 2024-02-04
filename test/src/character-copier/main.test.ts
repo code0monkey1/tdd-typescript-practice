@@ -122,7 +122,7 @@ describe.only('copy', () => {
       it.each([
         {
           chars:['a','b','c','\n','d','e','f'],
-          expect:['a','b','c'] , 
+          expected:['a','b','c'] , 
           discount:['d','e','f']
       },
       //   {
@@ -130,7 +130,7 @@ describe.only('copy', () => {
       // expect:['d','e','f',] , 
       //     discount:['a','b','c']
       //   }
-      ])('expect:$expected and discount: $discount ,which come after newline',({chars})=>{
+      ])('expect:$expected and discount: $discount, which come after newline',({chars,expected,discount})=>{
         
         //arrange 
         
@@ -158,9 +158,9 @@ describe.only('copy', () => {
 
         expect(mockDst.writeChar).toHaveBeenCalledTimes(chars.length)
 
-        chars.map(c=>    expect(mockDst.writeChar).toHaveBeenCalledWith(c))
+        expected.map(c=>    expect(mockDst.writeChar).toHaveBeenCalledWith(c))
        
-        expect(actual).toStrictEqual(chars)
+        expect(actual).toStrictEqual(expected)
 
       })
 
