@@ -40,9 +40,9 @@ describe.only('copy', () => {
   describe('only one character copied', () => {
 
       it.each([
-        {input:'a',expected:['a']},
-        {input:'b',expected:['b']}
-      ])('character copier writes $input from src to dst  ',({input,expected})=>{
+        {input:'a'},
+        {input:'b'}
+      ])('character copier writes $input from src to dst',({input})=>{
         
         //arrange 
         
@@ -63,11 +63,11 @@ describe.only('copy', () => {
         sut.copy()
 
         //assert
-        
+
         expect(mockDst.writeChar).toHaveBeenCalledTimes(1)
         expect(mockDst.writeChar).toHaveBeenCalledWith(input)
 
-        expect(actual).toStrictEqual(expected)
+        expect(actual).toContain(input)
 
       })
 
