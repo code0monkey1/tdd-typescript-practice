@@ -120,9 +120,9 @@ describe.only('copy', () => {
   describe('multiple characters', () => {
 
       it.each([
-        {input:['a','b','c']},
-        {input: ['d','e','f']}
-      ])('$input followed by a newline',({input})=>{
+        {chars:['a','b','c']},
+        {chars: ['d','e','f']}
+      ])('$input followed by a newline',({chars})=>{
         
         //arrange 
         
@@ -134,8 +134,7 @@ describe.only('copy', () => {
         
         src.mockReturnValue('\n')
         
-        for(let c of input)
-          src.mockReturnValueOnce(c)
+        chars.map(c => src.mockReturnValueOnce(c))
         
         jest.spyOn(mockSrc,'readChar').mockImplementation(src)
 
@@ -149,12 +148,11 @@ describe.only('copy', () => {
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(input.length)
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(chars.length)
 
-        for(let c of input)
-          expect(mockDst.writeChar).toHaveBeenCalledWith(c)
-
-        expect(actual).toStrictEqual(input)
+        chars.map(c=>    expect(mockDst.writeChar).toHaveBeenCalledWith(c))
+       
+        expect(actual).toStrictEqual(chars)
 
       })
 
