@@ -140,7 +140,6 @@ describe.only('copy', () => {
 
         const src=jest.fn()
         
-        src.mockReturnValue('\n')
         
         chars.map(c => src.mockReturnValueOnce(c))
         
@@ -156,7 +155,7 @@ describe.only('copy', () => {
 
         //assert
 
-        expect(mockDst.writeChar).toHaveBeenCalledTimes(chars.length)
+        expect(mockDst.writeChar).toHaveBeenCalledTimes(expected.length)
 
         expected.map(c=>    expect(mockDst.writeChar).toHaveBeenCalledWith(c))
        
