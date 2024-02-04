@@ -1,11 +1,9 @@
 
-
 interface IFileSystem<T>{
    
     write(data:T):void
 
 }
-
 
 export type Customer={
   name:string,
