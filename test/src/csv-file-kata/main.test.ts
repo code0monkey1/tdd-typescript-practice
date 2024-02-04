@@ -5,7 +5,8 @@ class CustomerCsvFileWriter implements FileWriter<CustomerData>{
   constructor(private fs:CustomerFileSystem){}
   writeData(obj: CustomerData): void {
      
-       obj.customers.map(c => this.fs.write({fileName:obj.fileName,line:c.toString()}))
+       obj.customers
+       .map(c => this.fs.write({fileName:obj.fileName,line:c.toString()}))
   }
 
 }
@@ -28,6 +29,7 @@ describe('customer-file-writer', () => {
                    arr.push(customerWriteData)
                })
              }
+             
              const sut= new CustomerCsvFileWriter(mockFileSystem)
 
              const customer:Customer={
@@ -44,8 +46,7 @@ describe('customer-file-writer', () => {
              const expected=[{fileName:"a.txt",line:"a"}]
 
             //act
-          
-
+        
              sut.writeData(customerData)
 
 
