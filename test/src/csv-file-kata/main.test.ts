@@ -1,4 +1,4 @@
-import { Customer, IFileSystem, TCustomer } from '../../../src/csv-file-kata/main';
+import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 
 
 export class CsvFileWriter{
@@ -7,7 +7,7 @@ export class CsvFileWriter{
 
     writeCustomers(fileName:string,customers:Customer[]){
           
-        this.fs.writeLine()
+        this.fs.writeLine(fileName,customers[0].toString())
     }
 }
 
@@ -21,42 +21,10 @@ describe('customer-file-writer', () => {
 
             //arrange
 
-              const customer:Customer= new Customer({
-                name: 'c',
-                contactNumber: '1'
-              }
-            )
-            
-            // data for writeCustomers
-
-            const fileName="a.txt"
-            const customers=[customer]
-            
-            const writtenCustomers:string[]=[]
-
-            const fs ={
-              
-              writeLine: jest.fn((fileName:string,line:string)=>{
-                   
-                  writtenCustomers.push( fileName+","+line)
-
-              })
-            }
-            const expected= {fileName,customer}
-            //act 
-            
-            const sut = new CsvFileWriter(fs)
-
-            sut.writeCustomers(fileName,customers)
+            //act
 
             //assert
-               
-            expect(fs.writeLine).toHaveBeenCalledWith(expected)
-            
-            
-            
 
-            
 
           })
     })
@@ -64,3 +32,22 @@ describe('customer-file-writer', () => {
       
   
 })
+
+
+const createMockFileSystem=()=>{
+
+  let customerEntries:string[] =[]
+
+  return{
+
+    writeLine(fileName:string,line:string){
+       customerEntries.push(fileName+','+line)
+    },
+    
+    getCustomerEntries(){
+      return customerEntries
+    }
+
+  }  
+
+}

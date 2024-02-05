@@ -1,18 +1,15 @@
-export type TCustomer={
-  name:string,
-  contactNumber:string
+
+export interface IFileSystem{
+   writeLine(fileName:string,line:string):void
 }
 
 export class Customer{
 
-  constructor(private customer:TCustomer){}
+  constructor(private name:string , private contactNumber:string){}
+  
   
   toString():string{
-    return this.customer.name
+    return ''
   }
 
-}
-
-export interface IFileSystem{
-   writeLine(fileName:string,line:string):void
 }
