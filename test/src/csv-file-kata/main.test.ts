@@ -20,8 +20,7 @@ describe('customer-file-writer', () => {
           it('a customer is written',()=>{
 
             //arrange
-          
-
+            
               const customer:Customer= new Customer({
                 name: 'c',
                 contactNumber: '1'
@@ -29,6 +28,7 @@ describe('customer-file-writer', () => {
             )
             
             // data for writeCustomers
+
             const fileName="a.txt"
             const customers=[customer]
             
@@ -47,7 +47,6 @@ describe('customer-file-writer', () => {
             const sut = new CsvFileWriter(fs)
 
             sut.writeCustomers(fileName,customers)
-
 
             //assert
             
