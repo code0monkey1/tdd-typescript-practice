@@ -7,7 +7,7 @@ export class CsvFileWriter{
 
     writeCustomers(fileName:string,customers:Customer[]){
           
-        throw('Not Implemented')
+        this.fs.writeLine()
     }
 }
 
@@ -20,7 +20,7 @@ describe('customer-file-writer', () => {
           it('a customer is written',()=>{
 
             //arrange
-            
+
               const customer:Customer= new Customer({
                 name: 'c',
                 contactNumber: '1'
@@ -36,12 +36,13 @@ describe('customer-file-writer', () => {
 
             const fs ={
               
-              writeLine: jest.fn((fineName:string,line:string)=>{
+              writeLine: jest.fn((fileName:string,line:string)=>{
                    
                   writtenCustomers.push( fileName+","+line)
 
               })
             }
+            const expected= {fileName,customer}
             //act 
             
             const sut = new CsvFileWriter(fs)
@@ -49,6 +50,12 @@ describe('customer-file-writer', () => {
             sut.writeCustomers(fileName,customers)
 
             //assert
+               
+            expect(fs.writeLine).toHaveBeenCalledWith(expected)
+            
+            
+            
+
             
 
           })
