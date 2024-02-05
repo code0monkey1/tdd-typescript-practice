@@ -21,7 +21,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 describe('customer-file-writer', () => {
 
 
-    describe('single customer', () => {
+    describe('one customer', () => {
          
           it('a customer is written',()=>{
 
