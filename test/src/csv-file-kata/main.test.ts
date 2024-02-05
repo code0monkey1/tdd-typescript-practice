@@ -6,8 +6,9 @@ export class CsvFileWriter{
     constructor(private fs:IFileSystem){}
 
     writeCustomers(fileName:string,customers:Customer[]){
-          
-        this.fs.writeLine(fileName,customers[0].toString())
+        
+      customers.map( c=> this.fs.writeLine(fileName,c.toString()))
+
     }
 }
 
@@ -26,10 +27,11 @@ describe('customer-file-writer', () => {
             const sut = createCsvFileWriter(mockFileSystem)
 
             const fileName="file.txt"
+            const line = 'a,1'
 
             const customer:Customer= createCustomer('a','1')
             
-            const expected = fileName+","+'a'+','+"1"
+            const expected = fileName+","+line
 
             //act
 
