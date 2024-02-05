@@ -21,9 +21,23 @@ describe('customer-file-writer', () => {
 
             //arrange
 
+            const mockFileSystem = createMockFileSystem()
+
+            const sut = createCsvFileWriter(mockFileSystem)
+
+            const fileName="file.txt"
+
+            const customer:Customer= createCustomer('a','1')
+            
+            const expected = fileName+","+'a'+','+"1"
+
             //act
 
+            sut.writeCustomers(fileName,[customer])
+
             //assert
+
+            expect(mockFileSystem.getCustomerEntries()).toContain(expected)
 
 
           })
@@ -43,11 +57,22 @@ const createMockFileSystem=()=>{
     writeLine(fileName:string,line:string){
        customerEntries.push(fileName+','+line)
     },
-    
+
     getCustomerEntries(){
       return customerEntries
     }
 
   }  
+
+}
+
+const createCsvFileWriter=(fs:IFileSystem)=>{
+
+    return new CsvFileWriter(fs)
+}
+
+const createCustomer =(name:string,contactNumber:string)=>{
+
+   return new Customer(name,contactNumber)
 
 }

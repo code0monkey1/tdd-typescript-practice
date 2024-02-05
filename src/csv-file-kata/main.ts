@@ -9,7 +9,7 @@ export class Customer{
   
   
   toString():string{
-    return ''
+    return this.name+','+this.contactNumber
   }
 
 }
