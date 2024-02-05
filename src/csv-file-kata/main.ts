@@ -5,7 +5,7 @@ export type TCustomer={
 
 export class Customer{
 
-  constructor(private name:string,private contactNumber:string){}
+  constructor(customerType:TCustomer){}
   
   toString():string{
     return ""
