@@ -1,5 +1,6 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 
+interface FileWriter<T></T>
 
 export class CsvFileWriter{
      
@@ -25,7 +26,7 @@ describe('customer-file-writer', () => {
             const mockFileSystem = createMockFileSystem()
 
             const sut = createCsvFileWriter(mockFileSystem)
-            
+
             const customer:Customer= createCustomer('a','1')
 
             const fileName="file.txt"
