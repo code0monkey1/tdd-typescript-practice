@@ -1,15 +1,19 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 
-interface FileWriter<T></T>
+export interface FileWriter<T> {
+  write(fileName: string, data: T[]): void;
+}
 
-export class CsvFileWriter{
+
+export class CsvFileWriter implements FileWriter<Customer>{
      
     constructor(private fs:IFileSystem){}
-
+    write(fileName: string, data: Customer[]): void {
+        data.map( c=> this.fs.writeLine(fileName,c.toString()))
+    }
     writeCustomers(fileName:string,customers:Customer[]){
         
-      customers.map( c=> this.fs.writeLine(fileName,c.toString()))
-
+      this.write(fileName,customers)
     }
 }
 
