@@ -5,10 +5,10 @@ export type TCustomer={
 
 export class Customer{
 
-  constructor(customerType:TCustomer){}
+  constructor(private customer:TCustomer){}
   
   toString():string{
-    return ""
+    return this.customer.name
   }
 
 }
