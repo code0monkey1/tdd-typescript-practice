@@ -1,15 +1,5 @@
 
 
-export class CsvFileWriter{
-     
-    constructor(private fs:IFileSystem){}
-
-    writeCustomers(fileName:string,customers:Customer[]){
-          
-        throw('Not Implemented')
-    }
-}
-
 export type TCustomer={
   name:string,
   contactNumber:string
