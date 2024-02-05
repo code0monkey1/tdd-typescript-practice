@@ -1,11 +1,11 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 
-export interface FileWriter<T> {
+export interface IFileWriter<T> {
   write(fileName: string, data: T[]): void;
 }
 
 
-export class CsvFileWriter implements FileWriter<Customer>{
+export class CsvFileWriter implements IFileWriter<Customer>{
      
     constructor(private fs:IFileSystem){}
     write(fileName: string, data: Customer[]): void {
@@ -29,7 +29,7 @@ describe('customer-file-writer', () => {
 
             const mockFileSystem = createMockFileSystem()
 
-            const sut = createCsvFileWriter(mockFileSystem)
+            const sut  = createCsvFileWriter(mockFileSystem)
 
             const customer:Customer= createCustomer('a','1')
 
