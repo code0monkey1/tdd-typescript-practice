@@ -25,11 +25,12 @@ describe('customer-file-writer', () => {
             const mockFileSystem = createMockFileSystem()
 
             const sut = createCsvFileWriter(mockFileSystem)
+            
+            const customer:Customer= createCustomer('a','1')
 
             const fileName="file.txt"
-            const line = 'a,1'
+            const line = customer.toString()
 
-            const customer:Customer= createCustomer('a','1')
             
             const expected = fileName+","+line
 
