@@ -1,2 +1,2 @@
 # tdd-typescript-practice
- TDD Revision from DevFluenc Typescript TDD course
+ TDD Katas in Typescript using best testing practices and SOLID Principles 
