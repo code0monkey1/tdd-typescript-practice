@@ -1,5 +1,3 @@
-
-
 export type TCustomer={
   name:string,
   contactNumber:string
@@ -14,7 +12,6 @@ export class Customer{
   }
 
 }
-
 
 export interface IFileSystem{
    writeLine(fileName:string,line:string):void

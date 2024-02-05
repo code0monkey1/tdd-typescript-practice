@@ -1,3 +1,5 @@
+
+
 export interface ISource{
    readChar():string
 }
@@ -10,7 +12,6 @@ export interface ICopier{
 
       copy():void
 }
-
 
 
 export class CharacterCopier implements ICopier{
