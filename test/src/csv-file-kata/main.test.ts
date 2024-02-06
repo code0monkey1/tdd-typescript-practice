@@ -51,7 +51,7 @@ describe('customer-file-writer', () => {
           it.each([{
               customers:createCustomers(1),
               expected :createCustomersData(1)
-            }])('customer : $customers.toString()  , expected : $expected',({customers,expected})=>{
+            }])('customer : ($customers)[0]  , expected : $expected',({customers,expected})=>{
 
             //arrange
 
