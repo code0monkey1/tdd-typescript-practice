@@ -28,6 +28,7 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
     private csvFileWriter:IFileWriter<Customer>){}
   
     write(fileName: string, data: Customer[]): void {
+      
 
          for(let i =0;i<data.length;i+=this.batchSize){
              
