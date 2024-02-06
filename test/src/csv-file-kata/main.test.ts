@@ -28,7 +28,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 export class BatchCsvFileWriter implements IFileWriter<Customer>{
    
   constructor(
-    private batchSize:number,
+    private batchSize=10,
     private csvFileWriter:IFileWriter<Customer>){}
   
     write(fileName: string, data: Customer[]): void {
@@ -46,6 +46,19 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
     }
   
 }
+
+
+describe('batched-csv-file-writer', () => {
+
+    describe('write', () => {
+      
+
+
+    })
+    
+  
+})
+
 
  
 describe('customer-file-writer', () => {
