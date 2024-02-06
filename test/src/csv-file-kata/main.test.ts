@@ -80,7 +80,6 @@ describe('customer-file-writer', () => {
               sut.write(getFileName(),customers)
 
               //assert
-
             
               expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
 
