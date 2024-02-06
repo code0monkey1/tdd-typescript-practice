@@ -52,8 +52,8 @@ describe('customer-file-writer', () => {
          
           it.each([{
             customers:createCustomers(2),
-            expected
-          }])('a customer is written',()=>{
+            expected :createCustomersData(2)
+          }])('a customer is written',({customers,expected})=>{
 
             //arrange
 
@@ -61,21 +61,16 @@ describe('customer-file-writer', () => {
 
             const sut  = createCsvFileWriter(mockFileSystem)
 
-            const customer:Customer= createCustomer('a','1')
-
+     
             const fileName="file.txt"
-            const line = customer.toString()
-
-            
-            const expected = fileName+","+line
 
             //act
 
-            sut.write(fileName,[customer])
+            sut.write(fileName,customers)
 
             //assert
            
-            expect(mockFileSystem.getCustomerEntries()).toContain(expected)
+            expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
 
 
           })
