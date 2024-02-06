@@ -39,6 +39,14 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
          }
           
     }
+
+    getCustomersData=(customers:Customer[])=>{
+       let customersString=''
+
+       for(let customer of customers)
+           customersString+=customer.toString()+'\n'
+       
+    }
   
 }
 
