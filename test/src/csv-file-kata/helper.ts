@@ -11,7 +11,6 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
       return{
         
           writeLine:jest.fn(),
-    
       }  
     
     }
@@ -44,8 +43,7 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
     fileName:string,
     customer:Customer)=>{
         
-      
-      console.log("The customer is",customer,"the fileName is",fileName)
+  
             
         expect(fileSystem.writeLine)
           .toHaveBeenCalledWith(fileName, customer.getName()+','+customer.getContactNumber())
@@ -62,8 +60,6 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
             
           customers.forEach(c => assertCustomerWasWritten(fileSystem,fileName,c))
 
-          // expect(fileSystem.writeLine)
-          //     .toHaveBeenCalledTimes(customers.length)
 
     }
 
