@@ -85,15 +85,18 @@ describe('batched-csv-file-writer', () => {
                const sut = createBatchedCsvFileWriter(csvFileWriter,batchSize)
        
                //act
-  
                sut.write(getFileName(),customers)
   
                //assert
 
-               assertCustomersWereWritten(mockFileSystem,BatchCsvFileWriter.getFormattedFileName(getFileName(),0),customers.slice(0,10))
+               assertCustomersWereWritten(mockFileSystem,
+                          BatchCsvFileWriter.getFormattedFileName(getFileName(),0),
+                          customers.slice(0,10))
 
-              // assertCustomersWereWritten(mockFileSystem,BatchCsvFileWriter.getFormattedFileName("file.csv",1),customers.slice(10,20))
-               
+              assertCustomersWereWritten(mockFileSystem,
+                  BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
+                  customers.slice(10))
+                
             
            })
         })
