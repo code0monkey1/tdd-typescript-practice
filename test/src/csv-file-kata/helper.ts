@@ -5,6 +5,10 @@ import { CsvFileWriter } from "./main.test"
        return "file.csv"
     }
 
+    export const createCustomerEntry=(fileName:string,line:string)=>{
+       return fileName+','+line
+    }
+
   export const createMockFileSystem=()=>{
     
       let customerEntries:string[] =[]
@@ -12,7 +16,7 @@ import { CsvFileWriter } from "./main.test"
       return{
 
         writeLine:jest.fn(( fileName:string, line:string)=>{
-                    customerEntries.push(fileName+','+line)   
+              customerEntries.push(createCustomerEntry(fileName,line))   
       }),
         
       getCustomerEntries(){
