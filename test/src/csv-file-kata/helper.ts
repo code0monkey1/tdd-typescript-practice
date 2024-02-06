@@ -8,13 +8,13 @@ import { CsvFileWriter } from "./main.test"
   export const createMockFileSystem=()=>{
     
       let customerEntries:string[] =[]
-    
+
+
       return{
     
-        writeLine(fileName:string,line:string){
-           customerEntries.push(fileName+','+line)
-        },
-    
+        writeLine:jest.fn(( fileName:string, line:string)=>{
+                    customerEntries.push(fileName+','+line)   
+      }),
         getCustomerEntries(){
           return customerEntries
         }
