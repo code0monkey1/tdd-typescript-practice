@@ -76,7 +76,6 @@ describe.only('batched-csv-file-writer', () => {
           it.each([{
                customers:createCustomers(20),
                batchSize:10
-   
              }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
   
                //arrange
@@ -96,9 +95,9 @@ describe.only('batched-csv-file-writer', () => {
                           BatchCsvFileWriter.getFormattedFileName(getFileName(),0),
                           customers.slice(0,10))
 
-              // assertCustomersWereWritten(mockFileSystem,
-              //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
-              //             customers.slice(10))
+              assertCustomersWereWritten(mockFileSystem,
+                          BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
+                          customers.slice(10))
                
             
             
