@@ -52,31 +52,37 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
 describe('batched-csv-file-writer', () => {
 
     describe('write', () => {
+    
 
-
-         it.each([{
-              customers:createCustomers(10),
+        describe('less than batchSize customers , written to same file', () => {
+          
+          it.each([{
+               customers:createCustomers(20),
+               batchSize:10
+   
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
   
-            }])('$customers.length customers are written by same file name',({customers})=>{
-
-              //arrange
-             
-              const mockFileSystem = createMockFileSystem()
-      
-              const csvFileWriter  = createCsvFileWriter(mockFileSystem)
-               
-              const sut = createBatchedCsvFileWriter(csvFileWriter)
-      
-              //act
-
-              sut.write(getFileName(),customers)
-
-              //assert
-
-              assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
+               //arrange
               
-           
-          })
+               const mockFileSystem = createMockFileSystem()
+       
+               const csvFileWriter  = createCsvFileWriter(mockFileSystem)
+                
+               const sut = createBatchedCsvFileWriter(csvFileWriter,batchSize)
+       
+               //act
+  
+               sut.write(getFileName(),customers)
+  
+               //assert
+  
+               assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
+               
+            
+           })
+        })
+        
+
 
        
 
