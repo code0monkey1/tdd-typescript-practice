@@ -1,5 +1,6 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 import {
+  assertCustomersWereWritten,
   createCsvFileWriter,
   createCustomerLineData,
   createCustomers,
@@ -81,13 +82,10 @@ describe('customer-file-writer', () => {
 
               //assert
             
+              assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
+              
               expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
               
-              expect(mockFileSystem.writeLine).toHaveBeenCalledWith(getFileName(),customers[0].toString())
-
-              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
-
-
           })
 
 

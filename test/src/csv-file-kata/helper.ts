@@ -66,6 +66,24 @@ import { CsvFileWriter } from "./main.test"
     
     }
 
+  export const assertCustomerWasWritten=(fileSystem:IFileSystem,fileName:string,customer:Customer)=>{
+
+            
+              expect(fileSystem.writeLine).toHaveBeenCalledWith(getFileName(),customer.toString())
+
+
+    }
+
+
+  export const assertCustomersWereWritten=(fileSystem:IFileSystem,fileName:string,customers:Customer[])=>{
+
+            
+          customers.map(c => assertCustomerWasWritten(fileSystem,fileName,c))
+
+          expect(fileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
+
+    }
+
 
 
 
