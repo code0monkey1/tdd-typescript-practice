@@ -21,6 +21,22 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 
 }
 
+export class BatchCsvFileWriter implements IFileWriter<Customer>{
+   
+  constructor(
+    private batchSize:number,
+    private csvFileWriter:IFileWriter<Customer>,
+    private fileName:string,
+    data:Customer[]){}
+  
+    write(fileName: string, data: Customer[]): void {
+        
+          this.csvFileWriter.write(fileName,data)
+          
+    }
+  
+}
+
  
 describe('customer-file-writer', () => {
     
