@@ -1,5 +1,11 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
-import { createCsvFileWriter, createCustomers, createCustomersData, createMockFileSystem, getFileName } from './helper';
+import {
+  createCsvFileWriter,
+  createCustomers,
+  createCustomersData,
+  createMockFileSystem,
+  getFileName
+} from './helper';
 
 export interface IFileWriter<T> {
   write(fileName: string, data: T[]): void;
@@ -77,7 +83,7 @@ describe('customer-file-writer', () => {
 
           
         })
-        describe('multiple customers', () => {
+    describe('multiple customers', () => {
                  
                   it.each([{
                     customers:createCustomers(2),
@@ -109,5 +115,4 @@ describe('customer-file-writer', () => {
           
             })
 
-          
     })
