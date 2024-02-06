@@ -97,15 +97,11 @@ describe.only('batched-csv-file-writer', () => {
 
               assertCustomersWereWritten(mockFileSystem,
                           BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
-                          customers.slice(10))
-               
+                          customers.slice(10)) 
             
             
            })
         })
-        
-
-
        
 
     })
