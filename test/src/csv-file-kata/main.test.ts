@@ -1,6 +1,7 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 import {
   assertCustomersWereWritten,
+  createBatchedCsvFileWriter,
   createCsvFileWriter,
   createCustomers,
   createMockFileSystem,
@@ -51,8 +52,33 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
 describe('batched-csv-file-writer', () => {
 
     describe('write', () => {
-      
 
+
+         it.each([{
+              customers:createCustomers(10),
+  
+            }])('customers : JSON.stringify($customers)',({customers})=>{
+
+              //arrange
+             
+              const mockFileSystem = createMockFileSystem()
+      
+              const csvFileWriter  = createCsvFileWriter(mockFileSystem)
+               
+              const sut = createBatchedCsvFileWriter(csvFileWriter)
+      
+              //act
+
+              sut.write(getFileName(),customers)
+
+              //assert
+
+              assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
+              
+           
+          })
+
+       
 
     })
     

@@ -1,5 +1,5 @@
 import { Customer, IFileSystem } from "../../../src/csv-file-kata/main"
-import { CsvFileWriter } from "./main.test"
+import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
 
    export const getFileName=()=>{
        return "file.csv"
@@ -68,4 +68,8 @@ import { CsvFileWriter } from "./main.test"
 
 
 
+  export const createBatchedCsvFileWriter=(fileWriter:IFileWriter<Customer>,batchSize?:number)=>{
+        
+      return  new BatchCsvFileWriter(batchSize,fileWriter)
+  }
 
