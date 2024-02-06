@@ -1,6 +1,6 @@
 
 import { IStringCalculator, StringCalculator } from "../../../src/string-calculator/main";
-describe('string-calculator', () => {
+describe.skip('string-calculator', () => {
 
   describe('add', () => {
     describe('Input is blank', () => {

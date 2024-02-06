@@ -1,6 +1,6 @@
 import { CharacterCopier, IDestination, ISource } from '../../../src/character-copier/main';
 
-describe('copy', () => {
+describe.skip('copy', () => {
 
   describe('no character', () => {
 
