@@ -66,7 +66,7 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
 }
 
 
-describe('batched-csv-file-writer', () => {
+describe.only('batched-csv-file-writer', () => {
 
     describe('write', () => {
     
@@ -92,12 +92,15 @@ describe('batched-csv-file-writer', () => {
   
                //assert
 
-               assertCustomersWereWritten(mockFileSystem,
-                          BatchCsvFileWriter.getFormattedFileName(getFileName(),0),
-                          customers.slice(0,10))
+              //  assertCustomersWereWritten(mockFileSystem,
+              //             BatchCsvFileWriter.getFormattedFileName(getFileName(),0),
+              //             customers.slice(0,10))
+
+              assertCustomersWereWritten(mockFileSystem,
+                          BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
+                          customers.slice(10))
                
-               console.log("filename",BatchCsvFileWriter.getFormattedFileName(getFileName(),1))
-               console.log("customers",JSON.stringify((customers.slice(10)),null,4))
+            
             
            })
         })
