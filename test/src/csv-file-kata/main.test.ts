@@ -15,6 +15,76 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 }
 
 
+    const createMockFileSystem=()=>{
+    
+      let customerEntries:string[] =[]
+    
+      return{
+    
+        writeLine(fileName:string,line:string){
+           customerEntries.push(fileName+','+line)
+        },
+    
+        getCustomerEntries(){
+          return customerEntries
+        }
+    
+      }  
+    
+    }
+    
+    const createCsvFileWriter=(fs:IFileSystem)=>{
+    
+        return new CsvFileWriter(fs)
+    }
+    
+    const createCustomer =(name:string,contactNumber:string)=>{
+    
+       return new Customer(name,contactNumber)
+    
+    }
+    
+    
+    const createCustomers = (count:number)=>{
+    
+         const customers :Customer[]=[]
+         
+         for(let i =1;i<=count;i++)
+           customers.push(createCustomer(i+'',i+''))
+         
+         return customers
+    }
+    
+    const createCustomerData=(name:any,number:any)=>{
+    
+       
+          const customer =createCustomer(name+'',number+'')
+    
+          const fileName="file.txt"
+          const line = customer.toString()
+               
+          const customerData = fileName+","+line
+    
+          return customerData
+    }
+    
+    const createCustomersData=(count:number):string[]=>{
+    
+          const customersData :string[]=[]
+    
+         for(let i =1;i<=count;i++){
+    
+          const data =createCustomerData(i,i)  
+      
+          customersData.push(data)
+        }
+          
+         
+         return customersData
+    
+    }
+
+
 describe('customer-file-writer', () => {
 
 
@@ -46,98 +116,40 @@ describe('customer-file-writer', () => {
 
 
           })
-    })
 
-        describe('two customers', () => {
-         
-          it.each([{
-            customers:createCustomers(2),
-            expected :createCustomersData(2)
-          }])('a customer is written',({customers,expected})=>{
 
-            //arrange
-
-            const mockFileSystem = createMockFileSystem()
-
-            const sut  = createCsvFileWriter(mockFileSystem)
-
-     
-            const fileName="file.txt"
-
-            //act
-
-            sut.write(fileName,customers)
-
-            //assert
+          describe('two customers', () => {
            
-            expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
+            it.each([{
+              customers:createCustomers(2),
+              expected :createCustomersData(2)
+            }])('a customer is written',({customers,expected})=>{
+      
+              //arrange
+      
+              const mockFileSystem = createMockFileSystem()
+      
+              const sut  = createCsvFileWriter(mockFileSystem)
+      
+       
+              const fileName="file.txt"
+      
+              //act
+      
+              sut.write(fileName,customers)
+      
+              //assert
+             
+              expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
+      
+      
+            })
+      })
 
-
-          })
     })
-    
+
+
       
   
 })
 
-
-const createMockFileSystem=()=>{
-
-  let customerEntries:string[] =[]
-
-  return{
-
-    writeLine(fileName:string,line:string){
-       customerEntries.push(fileName+','+line)
-    },
-
-    getCustomerEntries(){
-      return customerEntries
-    }
-
-  }  
-
-}
-
-const createCsvFileWriter=(fs:IFileSystem)=>{
-
-    return new CsvFileWriter(fs)
-}
-
-const createCustomer =(name:string,contactNumber:string)=>{
-
-   return new Customer(name,contactNumber)
-
-}
-
-
-const createCustomers = (count:number)=>{
-
-     const customers :Customer[]=[]
-     
-     for(let i =1;i<=count;i++)
-       customers.push(createCustomer(i+'',i+''))
-     
-     return customers
-}
-
-const createCustomersData=(count:number):string[]=>{
-
-      const customersData :string[]=[]
-
-     for(let i =1;i<=count;i++){
-
-      const customer =createCustomer(i+'',i+'')
-
-      const fileName="file.txt"
-      const line = customer.toString()
-           
-      const data = fileName+","+line
-
-      customersData.push(data)
-    }
-      
-     
-     return customersData
-
-}
