@@ -81,6 +81,7 @@ describe('customer-file-writer', () => {
 
               //assert
               expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
+              expect(mockFileSystem.writeLine).toHaveBeenCalledWith('a.csv', new Customer('1','1').toString())
             
               expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
 
