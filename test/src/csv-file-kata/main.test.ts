@@ -2,7 +2,6 @@ import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 import {
   assertCustomersWereWritten,
   createCsvFileWriter,
-  createCustomerLineData,
   createCustomers,
   createCustomersLineData,
   createMockFileSystem,
@@ -74,18 +73,22 @@ describe('customer-file-writer', () => {
               const mockFileSystem = createMockFileSystem()
       
               const sut  = createCsvFileWriter(mockFileSystem)
-      
+          
+              const actual = mockFileSystem.getCustomerEntries()
       
               //act
 
               sut.write(getFileName(),customers)
 
               //assert
+
+         
+
+              expect(actual).toStrictEqual(expected)
             
               assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
               
-              expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
-              
+           
           })
 
 
