@@ -21,7 +21,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 
 }
 
-export class BatchCsvFileWriter<Customer> implements IFileWriter<Customer>{
+export class BatchCsvFileWriter implements IFileWriter<Customer>{
    
   constructor(
     private batchSize:number,
