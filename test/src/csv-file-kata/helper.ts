@@ -9,13 +9,13 @@ import { CsvFileWriter } from "./main.test"
     
       let customerEntries:string[] =[]
 
-
       return{
-    
+
         writeLine:jest.fn(( fileName:string, line:string)=>{
                     customerEntries.push(fileName+','+line)   
       }),
-        getCustomerEntries(){
+        
+      getCustomerEntries(){
           return customerEntries
         }
     
