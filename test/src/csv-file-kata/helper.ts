@@ -76,11 +76,3 @@ import { CsvFileWriter } from "./main.test"
     }
 
 
-  // export const assertCustomerWasWrittenToFile=(fileName:string,customer:Customer)=>{
-
-  // }
-
-  // export const assertCustomersWereWrittenToFile=(fileName:string,customers:Customer[]){
-       
-  //     customers.map(c=> assertCustomerWasWrittenToFile())
-  // }

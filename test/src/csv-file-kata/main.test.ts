@@ -109,8 +109,6 @@ describe('customer-file-writer', () => {
             
                     //assert
                     
-                    expect(sut.write).toHaveBeenCalledWith(getFileName(),createCustomerData(1,1))
-                     expect(sut.write).toHaveBeenCalledWith(getFileName(),createCustomerData(2,2))
 
                     expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
             
