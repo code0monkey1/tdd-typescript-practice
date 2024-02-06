@@ -57,7 +57,7 @@ import { CsvFileWriter } from "./main.test"
     customers:Customer[])=>{
 
             
-          customers.map(c => assertCustomerWasWritten(fileSystem,fileName,c))
+          customers.forEach(c => assertCustomerWasWritten(fileSystem,fileName,c))
 
           expect(fileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
 

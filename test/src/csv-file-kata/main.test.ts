@@ -16,7 +16,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
      
     constructor(private fs:IFileSystem){}
     write(fileName: string, data: Customer[]): void {
-        data.map( c=> this.fs.writeLine(fileName,c.toString()))
+        data.forEach( c=> this.fs.writeLine(fileName,c.toString()))
     }
 
 }
