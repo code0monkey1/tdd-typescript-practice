@@ -14,6 +14,81 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 
 }
 
+ 
+
+describe('customer-file-writer', () => {
+
+
+    describe('one customer', () => {
+         
+          it.each([{
+              customers:createCustomers(1),
+              expected :createCustomersData(1)
+            }])('a customer is written',({customers,expected})=>{
+
+            //arrange
+
+
+              const mockFileSystem = createMockFileSystem()
+      
+              const sut  = createCsvFileWriter(mockFileSystem)
+      
+      
+              //act
+
+              sut.write(getFileName(),customers)
+
+              //assert
+            
+              expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
+
+
+          })
+
+
+          describe('multiple customers', () => {
+           
+            it.each([{
+              customers:createCustomers(2),
+              expected :createCustomersData(2)
+            },
+            {
+              customers:createCustomers(0),
+              expected :createCustomersData(0)
+            }
+          ])('customer',({customers,expected})=>{
+      
+              //arrange
+      
+              const mockFileSystem = createMockFileSystem()
+      
+              const sut  = createCsvFileWriter(mockFileSystem)
+      
+      
+              //act
+      
+              sut.write(getFileName(),customers)
+      
+              //assert
+             
+              expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
+      
+      
+            })
+      })
+
+    })
+
+
+      
+  
+})
+
+
+
+   const getFileName=()=>{
+       return "file.csv"
+    }
 
     const createMockFileSystem=()=>{
     
@@ -22,7 +97,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
       return{
     
         writeLine(fileName:string,line:string){
-           customerEntries.push(fileName+','+line)
+           customerEntries.push(getFileName()+','+line)
         },
     
         getCustomerEntries(){
@@ -45,7 +120,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
     }
     
     
-    const createCustomers = (count:number)=>{
+    const createCustomers = (count=0)=>{
     
          const customers :Customer[]=[]
          
@@ -55,12 +130,13 @@ export class CsvFileWriter implements IFileWriter<Customer>{
          return customers
     }
     
-    const createCustomerData=(name:any,number:any)=>{
+    const createCustomerData=(name=0,phoneNumber=0)=>{
     
        
-          const customer =createCustomer(name+'',number+'')
+          const customer =createCustomer(name+'',phoneNumber+'')
     
-          const fileName="file.txt"
+          const fileName=getFileName()
+
           const line = customer.toString()
                
           const customerData = fileName+","+line
@@ -68,7 +144,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
           return customerData
     }
     
-    const createCustomersData=(count:number):string[]=>{
+    const createCustomersData=(count=0):string[]=>{
     
           const customersData :string[]=[]
     
@@ -83,73 +159,3 @@ export class CsvFileWriter implements IFileWriter<Customer>{
          return customersData
     
     }
-
-
-describe('customer-file-writer', () => {
-
-
-    describe('one customer', () => {
-         
-          it('a customer is written',()=>{
-
-            //arrange
-
-            const mockFileSystem = createMockFileSystem()
-
-            const sut  = createCsvFileWriter(mockFileSystem)
-
-            const customer:Customer= createCustomer('a','1')
-
-            const fileName="file.txt"
-            const line = customer.toString()
-
-            
-            const expected = fileName+","+line
-
-            //act
-
-            sut.write(fileName,[customer])
-
-            //assert
-           
-            expect(mockFileSystem.getCustomerEntries()).toContain(expected)
-
-
-          })
-
-
-          describe('two customers', () => {
-           
-            it.each([{
-              customers:createCustomers(2),
-              expected :createCustomersData(2)
-            }])('a customer is written',({customers,expected})=>{
-      
-              //arrange
-      
-              const mockFileSystem = createMockFileSystem()
-      
-              const sut  = createCsvFileWriter(mockFileSystem)
-      
-       
-              const fileName="file.txt"
-      
-              //act
-      
-              sut.write(fileName,customers)
-      
-              //assert
-             
-              expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
-      
-      
-            })
-      })
-
-    })
-
-
-      
-  
-})
-
