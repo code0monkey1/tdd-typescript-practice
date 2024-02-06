@@ -25,13 +25,19 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
    
   constructor(
     private batchSize:number,
-    private csvFileWriter:IFileWriter<Customer>,
-    private fileName:string,
-    data:Customer[]){}
+    private csvFileWriter:IFileWriter<Customer>){}
   
     write(fileName: string, data: Customer[]): void {
+
+         for(let i =0;i<data.length;i+=this.batchSize){
+             
+            const newFileName=i==0?fileName:fileName+"-"+i
+
+            const batchData = data.slice(i,i+this.batchSize)
+
+            this.csvFileWriter.write(newFileName,batchData)
+         }
         
-          this.csvFileWriter.write(fileName,data)
           
     }
   
