@@ -45,7 +45,7 @@ import { CsvFileWriter } from "./main.test"
          return customers
     }
     
-    const createCustomerData=(name=0,phoneNumber=0)=>{
+  export const createCustomerData=(name=0,phoneNumber=0)=>{
     
        
           const customer =createCustomer(name+'',phoneNumber+'')
@@ -74,3 +74,13 @@ import { CsvFileWriter } from "./main.test"
          return customersData
     
     }
+
+
+  // export const assertCustomerWasWrittenToFile=(fileName:string,customer:Customer)=>{
+
+  // }
+
+  // export const assertCustomersWereWrittenToFile=(fileName:string,customers:Customer[]){
+       
+  //     customers.map(c=> assertCustomerWasWrittenToFile())
+  // }
