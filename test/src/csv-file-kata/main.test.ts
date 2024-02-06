@@ -20,7 +20,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
     }
 
 
-    private formatAsCsvRow(c: Customer): string {
+    public formatAsCsvRow(c: Customer): string {
       return c.toString();
     }
 }
