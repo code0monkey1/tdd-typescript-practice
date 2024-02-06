@@ -46,18 +46,18 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
           
     }
 
-    static geFilePrefix(fileName:string){
+    private static geFilePrefix(fileName:string){
        return fileName.substring(0,fileName.indexOf('.'))
     }
 
-    static getFileSuffix(fileName:string){
+    private static getFileSuffix(fileName:string){
       
       return fileName.substring(fileName.indexOf('.'))
     }
 
-    static getFormattedFileName(fileName:string,index:number){
+    public static getFormattedFileName(fileName:string,index:number){
       return  index==0?fileName:
-                       this.getFileSuffix(fileName)+"-"+(index+1)+this.getFileSuffix(fileName)
+                       this.geFilePrefix(fileName)+"-"+(index+1)+this.getFileSuffix(fileName)
     }
   
 }
@@ -89,6 +89,8 @@ describe('batched-csv-file-writer', () => {
                sut.write(getFileName(),customers)
   
                //assert
+
+      
   
                assertCustomersWereWritten(mockFileSystem,BatchCsvFileWriter.getFormattedFileName("file.csv",0),customers.slice(0,10))
 
