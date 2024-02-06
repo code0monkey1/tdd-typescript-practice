@@ -12,7 +12,7 @@ import { CsvFileWriter } from "./main.test"
       return{
     
         writeLine(fileName:string,line:string){
-           customerEntries.push(getFileName()+','+line)
+           customerEntries.push(fileName+','+line)
         },
     
         getCustomerEntries(){
