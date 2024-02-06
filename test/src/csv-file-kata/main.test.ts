@@ -43,9 +43,14 @@ describe('customer-file-writer', () => {
       
             //act
 
+
             sut.write(getFileName(),customers)
 
+
+
             //assert
+
+            expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(0)
 
             expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
 
@@ -75,6 +80,7 @@ describe('customer-file-writer', () => {
               sut.write(getFileName(),customers)
 
               //assert
+              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
             
               expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
 
