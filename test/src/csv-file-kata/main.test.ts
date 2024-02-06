@@ -16,9 +16,13 @@ export class CsvFileWriter implements IFileWriter<Customer>{
      
     constructor(private fs:IFileSystem){}
     write(fileName: string, data: Customer[]): void {
-        data.forEach( c=> this.fs.writeLine(fileName,c.toString()))
+        data.forEach( c=> this.fs.writeLine(fileName,this.formatAsCsvRow(c)))
     }
 
+
+    private formatAsCsvRow(c: Customer): string {
+      return c.toString();
+    }
 }
 
 export class BatchCsvFileWriter implements IFileWriter<Customer>{
