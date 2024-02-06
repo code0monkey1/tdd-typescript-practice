@@ -43,9 +43,11 @@ import { CsvFileWriter } from "./main.test"
     fileSystem:IFileSystem,
     fileName:string,
     customer:Customer)=>{
-
+        
+      
             
-        expect(fileSystem.writeLine).toHaveBeenCalledWith(fileName,customer.toString())
+        expect(fileSystem.writeLine)
+          .toHaveBeenCalledWith(fileName, customer.getName()+','+customer.getContactNumber())
 
 
     }
@@ -59,7 +61,8 @@ import { CsvFileWriter } from "./main.test"
             
           customers.forEach(c => assertCustomerWasWritten(fileSystem,fileName,c))
 
-          expect(fileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
+          expect(fileSystem.writeLine)
+              .toHaveBeenCalledTimes(customers.length)
 
     }
 
