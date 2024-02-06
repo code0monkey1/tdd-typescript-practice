@@ -1,9 +1,9 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 import {
   createCsvFileWriter,
-  createCustomerData,
+  createCustomerLineData,
   createCustomers,
-  createCustomersData,
+  createCustomersLineData,
   createMockFileSystem,
   getFileName
 } from './helper';
@@ -30,7 +30,7 @@ describe('customer-file-writer', () => {
             
         it.each([{
               customers:createCustomers(0),
-              expected :createCustomersData(0)
+              expected :createCustomersLineData(0)
             }])('no customer data is written',({customers,expected})=>{
          //arrange
             
@@ -47,12 +47,12 @@ describe('customer-file-writer', () => {
             sut.write(getFileName(),customers)
 
 
-
             //assert
 
-            expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(0)
-
             expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
+            
+            expect(mockFileSystem.writeLine).not.toHaveBeenCalled()
+
 
           })
 
@@ -63,7 +63,7 @@ describe('customer-file-writer', () => {
          
           it.each([{
               customers:createCustomers(1),
-              expected :createCustomersData(1)
+              expected :createCustomersLineData(1)
             }])('customers : $customers, expected : $expected',({customers,expected})=>{
 
             //arrange
@@ -82,6 +82,10 @@ describe('customer-file-writer', () => {
               //assert
             
               expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
+              
+              expect(mockFileSystem.writeLine).toHaveBeenCalledWith(getFileName(),customers[0].toString())
+
+              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
 
 
           })
@@ -93,11 +97,11 @@ describe('customer-file-writer', () => {
                  
                   it.each([{
                     customers:createCustomers(2),
-                    expected :createCustomersData(2)
+                    expected :createCustomersLineData(2)
                   },
                   {
                     customers:createCustomers(0),
-                    expected :createCustomersData(0)
+                    expected :createCustomersLineData(0)
                   }
                 ])('customers : $customers, expected : $expected',({customers,expected})=>{
                        

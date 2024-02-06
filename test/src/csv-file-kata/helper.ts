@@ -45,7 +45,7 @@ import { CsvFileWriter } from "./main.test"
          return customers
     }
     
-  export const createCustomerData=(name=0,phoneNumber=0)=>{
+  export const createCustomerLineData=(name=0,phoneNumber=0)=>{
     
        
           const customer =createCustomer(name+'',phoneNumber+'')
@@ -54,12 +54,12 @@ import { CsvFileWriter } from "./main.test"
 
     }
     
-   export const createCustomersData=(count=0):string[]=>{
+   export const createCustomersLineData=(count=0):string[]=>{
     
         const customersData :string[]=[]
     
         for(let i =1;i<=count;i++)
-           customersData.push(createCustomerData(i,i)  )
+           customersData.push(createCustomerLineData(i,i)  )
         
          
         return customersData
