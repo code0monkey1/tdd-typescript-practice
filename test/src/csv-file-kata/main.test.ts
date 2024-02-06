@@ -3,7 +3,6 @@ import {
   assertCustomersWereWritten,
   createCsvFileWriter,
   createCustomers,
-  createCustomersLineData,
   createMockFileSystem,
   getFileName
 } from './helper';
@@ -30,8 +29,7 @@ describe('customer-file-writer', () => {
             
         it.each([{
               customers:createCustomers(0),
-              expected :createCustomersLineData(0)
-            }])('no customer data is written',({customers,expected})=>{
+            }])('no customer data is written',({customers})=>{
          //arrange
             
          
@@ -40,16 +38,12 @@ describe('customer-file-writer', () => {
       
             const sut  = createCsvFileWriter(mockFileSystem)
       
-      
             //act
-
 
             sut.write(getFileName(),customers)
 
 
             //assert
-
-            expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
             
             expect(mockFileSystem.writeLine).not.toHaveBeenCalled()
 
@@ -68,8 +62,6 @@ describe('customer-file-writer', () => {
 
             //arrange
              
-           
-
               const mockFileSystem = createMockFileSystem()
       
               const sut  = createCsvFileWriter(mockFileSystem)
@@ -91,15 +83,16 @@ describe('customer-file-writer', () => {
         })
     describe('multiple customers', () => {
                  
-                  it.each([{
+                  it.each([
+                    {
                     customers:createCustomers(2),
-                    expected :createCustomersLineData(2)
-                  },
-                  {
+
+                    },
+                    {
                     customers:createCustomers(0),
-                    expected :createCustomersLineData(0)
+   
                   }
-                ])('customers : $customers, expected : $expected',({customers,expected})=>{
+                ])('customers : $customers, expected : $expected',({customers})=>{
                        
                  
             
@@ -113,10 +106,10 @@ describe('customer-file-writer', () => {
                     sut.write(getFileName(),customers)
             
                     //assert
+                     
                     
-
-                    expect(mockFileSystem.getCustomerEntries()).toStrictEqual(expected)
-            
+                     assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
+              
             
                   })
           
