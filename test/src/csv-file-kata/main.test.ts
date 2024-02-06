@@ -57,7 +57,7 @@ describe('batched-csv-file-writer', () => {
          it.each([{
               customers:createCustomers(10),
   
-            }])('customers : JSON.stringify($customers)',({customers})=>{
+            }])('$customers.length customers are written by same file name',({customers})=>{
 
               //arrange
              
