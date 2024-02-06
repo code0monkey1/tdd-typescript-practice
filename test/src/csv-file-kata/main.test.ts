@@ -95,8 +95,9 @@ describe('batched-csv-file-writer', () => {
                assertCustomersWereWritten(mockFileSystem,
                           BatchCsvFileWriter.getFormattedFileName(getFileName(),0),
                           customers.slice(0,10))
-
-                  
+               
+               console.log("filename",BatchCsvFileWriter.getFormattedFileName(getFileName(),1))
+               console.log("customers",JSON.stringify((customers.slice(10)),null,4))
             
            })
         })
