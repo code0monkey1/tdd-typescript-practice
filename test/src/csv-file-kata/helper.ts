@@ -49,29 +49,20 @@ import { CsvFileWriter } from "./main.test"
     
        
           const customer =createCustomer(name+'',phoneNumber+'')
-    
-          const fileName=getFileName()
-
-          const line = customer.toString()
                
-          const customerData = fileName+","+line
-    
-          return customerData
+          return  getFileName()+","+customer.toString()
+
     }
     
    export const createCustomersData=(count=0):string[]=>{
     
-          const customersData :string[]=[]
+        const customersData :string[]=[]
     
-         for(let i =1;i<=count;i++){
-    
-          const data =createCustomerData(i,i)  
-      
-          customersData.push(data)
-        }
-          
+        for(let i =1;i<=count;i++)
+           customersData.push(createCustomerData(i,i)  )
+        
          
-         return customersData
+        return customersData
     
     }
 
