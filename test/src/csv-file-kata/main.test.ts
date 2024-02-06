@@ -90,9 +90,9 @@ describe('batched-csv-file-writer', () => {
   
                //assert
   
-               assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
+               assertCustomersWereWritten(mockFileSystem,BatchCsvFileWriter.getFormattedFileName("file.csv",0),customers.slice(0,10))
 
-              assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+              assertCustomersWereWritten(mockFileSystem,BatchCsvFileWriter.getFormattedFileName("file.csv",1),customers.slice(10))
                
             
            })
