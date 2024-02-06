@@ -34,16 +34,30 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
   
     write(fileName: string, data: Customer[]): void {
       
-
+        
          for(let i =0;i<data.length;i+=this.batchSize){
              
-            const newFileName=i==0?fileName:fileName+"-"+i
+            const newFileName= this.getFormattedFileName(fileName,i)
 
             const batchData = data.slice(i,i+this.batchSize)
 
             this.csvFileWriter.write(newFileName,batchData)
          }
           
+    }
+
+    geFilePrefix(fileName:string){
+       return fileName.substring(0,fileName.indexOf('.'))
+    }
+
+    getFileSuffix(fileName:string){
+      
+      return fileName.substring(fileName.indexOf('.'))
+    }
+
+    getFormattedFileName(fileName:string,index:number){
+      return  index==0?fileName:
+                       this.getFileSuffix(fileName)+"-"+(index+1)+this.getFileSuffix(fileName)
     }
   
 }
@@ -76,7 +90,9 @@ describe('batched-csv-file-writer', () => {
   
                //assert
   
-               assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
+               assertCustomersWereWritten(mockFileSystem,getFileName(),customers.slice(0,10))
+
+              assertCustomersWereWritten(mockFileSystem,getFileName()+'_'+1,customers.slice(10))
                
             
            })
