@@ -8,8 +8,16 @@ export class Customer{
   constructor(private name:string , private contactNumber:string){}
   
   
-  toString():string{
+  public toString():string{
     return this.name+','+this.contactNumber
+  }
+
+  public getName(){
+      return this.name
+  }
+
+  public getContactNumber(){
+     return this.contactNumber
   }
 
 }

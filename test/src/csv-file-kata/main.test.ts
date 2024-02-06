@@ -21,7 +21,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
 
 
     public formatAsCsvRow(c: Customer): string {
-      return c.toString();
+      return c.getName()+','+c.getContactNumber()
     }
 }
 
