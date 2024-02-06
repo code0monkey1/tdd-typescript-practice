@@ -51,7 +51,8 @@ describe('customer-file-writer', () => {
         describe('two customers', () => {
          
           it.each([{
-            customers:
+            customers:createCustomers(2),
+            expected
           }])('a customer is written',()=>{
 
             //arrange
@@ -122,6 +123,26 @@ const createCustomers = (count:number)=>{
      for(let i =1;i<=count;i++)
        customers.push(createCustomer(i+'',i+''))
      
-
      return customers
+}
+
+const createCustomersData=(count:number):string[]=>{
+
+      const customersData :string[]=[]
+
+     for(let i =1;i<=count;i++){
+
+      const customer =createCustomer(i+'',i+'')
+
+      const fileName="file.txt"
+      const line = customer.toString()
+           
+      const data = fileName+","+line
+
+      customersData.push(data)
+    }
+      
+     
+     return customersData
+
 }
