@@ -45,6 +45,7 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
     customer:Customer)=>{
         
       
+      console.log("The customer is",customer,"the fileName is",fileName)
             
         expect(fileSystem.writeLine)
           .toHaveBeenCalledWith(fileName, customer.getName()+','+customer.getContactNumber())
