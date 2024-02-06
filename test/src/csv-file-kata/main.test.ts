@@ -11,10 +11,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
     write(fileName: string, data: Customer[]): void {
         data.map( c=> this.fs.writeLine(fileName,c.toString()))
     }
-    writeCustomers(fileName:string,customers:Customer[]){
-        
-      this.write(fileName,customers)
-    }
+
 }
 
 
@@ -41,7 +38,7 @@ describe('customer-file-writer', () => {
 
             //act
 
-            sut.writeCustomers(fileName,[customer])
+            sut.write(fileName,[customer])
 
             //assert
            
