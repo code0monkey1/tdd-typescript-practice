@@ -55,6 +55,8 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
                                     +index
                                        +FileUtil.getFileSuffix(fileName)
                     }
+
+  
   
 }
 
