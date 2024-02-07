@@ -5,7 +5,7 @@ import {
   createCustomers,
   createMockFileSystem,
   getFileName
-} from './helper';
+} from './customer-file-writer-helper';
 
  
 describe('customer-file-writer', () => {

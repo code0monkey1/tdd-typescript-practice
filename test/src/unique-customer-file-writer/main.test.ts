@@ -1,6 +1,6 @@
 import { BatchCustomerFileWriter } from '../../../src/batch-csv-file-writer/main';
 import { UniqueCustomerFileWriter } from '../../../src/unique-customer-file-writer/main';
-import { assertBatchedCustomersWereWritten, assertCustomersWereWritten, createBatchedCsvFileWriter, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
+import { assertBatchedCustomersWereWritten, assertCustomersWereWritten, createBatchedCsvFileWriter, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/customer-file-writer-helper';
 
 
 describe('unique-csv-file-writer', () => {

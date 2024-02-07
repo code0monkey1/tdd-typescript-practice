@@ -5,7 +5,7 @@ import {
   createCustomers,
   createMockFileSystem,
   getFileName
-} from "../csv-file-writer/helper"
+} from "../csv-file-writer/customer-file-writer-helper"
 
 
 
