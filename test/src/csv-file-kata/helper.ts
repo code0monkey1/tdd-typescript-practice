@@ -8,10 +8,18 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
 
 
   export const createMockFileSystem=()=>{
+       
+     
     
       return{
-        
-          writeLine:jest.fn(),
+
+        assertCustomersWereWritten:(
+          fileSystem:IFileSystem,
+          fileName:string,
+          customers:Customer[])=>customers.forEach(c => assertCustomerWasWritten(fileSystem,fileName,c)),
+          
+           writeLine:jest.fn()
+         
       }  
     
     }
