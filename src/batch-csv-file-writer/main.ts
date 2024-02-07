@@ -3,7 +3,7 @@ import { FileUtil } from "../utils"
 
 
 
-export class BatchCsvFileWriter<Customer> implements IFileWriter<Customer>{
+export class BatchCustomerFileWriter<Customer> implements IFileWriter<Customer>{
    
   constructor(
     private batchSize=10,
