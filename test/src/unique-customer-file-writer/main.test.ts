@@ -112,7 +112,6 @@ describe('unique-csv-file-writer', () => {
           
             //assert
         
-            
             assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,2)
       })
       

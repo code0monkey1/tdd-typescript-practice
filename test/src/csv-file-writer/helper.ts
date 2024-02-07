@@ -97,7 +97,7 @@ import { FileUtil } from "../../../src/utils";
           for(let batch=0,fileIndex=0;batch<customers.length;batch+=batchSize,fileIndex+=1){
 
           
-            const formattedFileName =fileIndex==0?fileName:prefix+"-"+fileIndex+suffix
+            const formattedFileName = fileIndex==0?fileName:prefix+"-"+fileIndex+suffix
                   
             assertCustomersWereWritten(mockFileSystem,formattedFileName,customers.slice(batch,batch+batchSize))
         }
