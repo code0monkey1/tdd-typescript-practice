@@ -18,9 +18,8 @@ describe('customer-file-writer', () => {
          it.each([{
                customers:createCustomers(0),
              }])('no customer data is written',({customers})=>{
-          //arrange
-             
-          
+
+             //arrange         
   
              const mockFileSystem = createMockFileSystem()
        
