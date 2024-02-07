@@ -30,7 +30,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
            
         if(data.length>10){
             this.write(fileName,data.slice(0,10))
-            this.write(fileName,data.slice(10))
+            this.write(fileName+'-'+'1',data.slice(10))
            }
     }
 }
