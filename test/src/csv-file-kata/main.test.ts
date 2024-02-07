@@ -103,10 +103,39 @@ describe('batched-csv-file-writer', () => {
 
               expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
 
-              // assertCustomersWereWritten(mockFileSystem,
-              //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
-              //             customers.slice(10)) 
-            
+           
+           })
+        })
+
+        describe('greater than batchSize customers , written to different file', () => {
+          
+          it.each([{
+               customers:createCustomers(11),
+               batchSize:10
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
+  
+               //arrange
+         
+                const mockFileSystem = createMockFileSystem()
+          
+                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
+
+                const fileName= getFileName()
+
+                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+          
+                //act
+
+                sut.write(fileName,customers)
+
+  
+               //assert
+
+               assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
+                assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+
+              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
+
            
            })
         })
