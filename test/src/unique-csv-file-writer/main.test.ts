@@ -31,12 +31,43 @@ describe('unique-csv-file-writer', () => {
 
 
 
-  describe('all duplicates', () => {
+  describe('only 1 unique', () => {
     
     it('will only write one unique value',()=>{
          
       //arrange
+
+      const customers =[...createCustomers(1),
+                        ...createCustomers(1),
+                        ...createCustomers(1)
+                      ]
     
+      const mockFileSystem = createMockFileSystem()
+    
+      const csvFileWriter = createCsvFileWriter(mockFileSystem)
+    
+      const sut = new UniqueCsvFileWriter(csvFileWriter)
+    
+      //act
+    
+      const fileName=getFileName()
+    
+      sut.write(fileName,customers)
+    
+      //assert
+    
+      expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
+     
+    })
+
+  })
+
+   describe('only 2 unique', () => {
+    
+    it('will only write one unique value',()=>{
+         
+      //arrange
+      const customers = 
       const mockFileSystem = createMockFileSystem()
     
       const csvFileWriter = createCsvFileWriter(mockFileSystem)
@@ -83,7 +114,6 @@ describe('unique-csv-file-writer', () => {
         expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(3)
         
         assertCustomersWereWritten(mockFileSystem,fileName,customers)
-      
       
       })
       
