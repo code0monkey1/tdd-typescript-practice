@@ -49,7 +49,9 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
 
       if(this.batchSize==0)
             throw ("batch size cannot be zero")
-        
+      if(FileUtil.isInvalidName(fileName))
+            throw ("is invalid file name")
+      
       
       for(let batch=0,fileIndex=0;batch<data.length;batch+=this.batchSize,fileIndex+=1){
             
@@ -61,6 +63,8 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
         }
  
     }
+
+  
 
 
     private getFormattedFileName(fileName:string,fileIndex:number){

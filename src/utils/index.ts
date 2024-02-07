@@ -9,4 +9,9 @@ export class FileUtil{
       return fileName.substring(fileName.indexOf('.'))
     }
 
+    public static isInvalidName(fileName:string){
+
+        return fileName.indexOf('.')==-1 
+    }
+
 }
