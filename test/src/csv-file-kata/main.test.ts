@@ -91,13 +91,13 @@ describe.only('batched-csv-file-writer', () => {
           
                 //act
 
-                sut.write(getFileName(),customers)
+                sut.write("file.csv",customers)
 
   
                //assert
 
                assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
-              assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+                assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
 
               // assertCustomersWereWritten(mockFileSystem,
               //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
