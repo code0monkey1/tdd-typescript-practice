@@ -92,12 +92,10 @@ describe('batched-csv-file-writer', () => {
                //arrange
          
                 const mockFileSystem = createMockFileSystem()
-          
-                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
-
+        
                 const fileName= getFileName()
 
-                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+                const sut =createBatchedCsvFileWriter(mockFileSystem,batchSize)
           
                 //act
 
@@ -121,12 +119,10 @@ describe('batched-csv-file-writer', () => {
                //arrange
          
                 const mockFileSystem = createMockFileSystem()
-          
-                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
 
                 const fileName= getFileName()
 
-                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+                const sut =createBatchedCsvFileWriter(mockFileSystem,batchSize)
           
                 //act
 
@@ -151,11 +147,10 @@ describe('batched-csv-file-writer', () => {
          
                 const mockFileSystem = createMockFileSystem()
           
-                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
 
                 const fileName= getFileName()
 
-                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+                const sut =createBatchedCsvFileWriter(mockFileSystem,batchSize)
 
                 const errorMessage ="batch size cannot be zero"
           
@@ -181,11 +176,10 @@ describe('batched-csv-file-writer', () => {
          
                 const mockFileSystem = createMockFileSystem()
           
-                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
 
                 const fileName= "file"
 
-                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+                const sut =createBatchedCsvFileWriter(mockFileSystem,batchSize)
 
                 const errorMessage ="is invalid file name : "+fileName
           
