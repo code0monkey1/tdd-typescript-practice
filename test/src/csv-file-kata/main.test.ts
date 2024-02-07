@@ -132,7 +132,7 @@ describe('batched-csv-file-writer', () => {
   
                //assert
 
-               assertBatchedCustomersWereWritten(mockFileSystem,customers)
+               assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
 
               //  assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
               //  assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))

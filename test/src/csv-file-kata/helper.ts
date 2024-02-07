@@ -1,4 +1,5 @@
 import { Customer, IFileSystem } from "../../../src/csv-file-kata/main";
+import { FileUtil } from "../../../src/utils";
 import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
 
    export const getFileName=()=>{
@@ -70,10 +71,25 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
       return  new BatchCsvFileWriter(batchSize,fileWriter)
   }
 
-  export const assertBatchedCustomersWereWritten=(mockFileSystem:IFileSystem,customers:Customer[])=>{
+  export const assertBatchedCustomersWereWritten=(
+    mockFileSystem:IFileSystem,
+    customers:Customer[],
+    fileName:string,
+    batchSize=10)=>{
 
-         assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
-               assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
-          expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
+          for(let batch=0,fileIndex=0;batch<customers.length;batch+=batchSize,fileIndex+=1){
+            
+            const prefix=FileUtil.geFilePrefix(fileName)
+            const suffix=FileUtil.getFileSuffix(fileName)
+
+            const formattedFileName =fileIndex==0?fileName:prefix+"-"+fileIndex+suffix
+                  
+            assertCustomersWereWritten(mockFileSystem,formattedFileName,customers.slice(batch,batch+batchSize))
+        }
+         
+
+        //  assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
+        //        assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+        //   expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
   }
 
