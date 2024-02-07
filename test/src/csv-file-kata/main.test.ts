@@ -75,10 +75,10 @@ describe('batched-csv-file-writer', () => {
 
 
 
-        describe('less than batchSize customers , written to same file', () => {
+        describe('less than or equal to batchSize customers , written to same file', () => {
           
           it.each([{
-               customers:createCustomers(20),
+               customers:createCustomers(10),
                batchSize:10
              }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
   
@@ -100,9 +100,8 @@ describe('batched-csv-file-writer', () => {
                //assert
 
                assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
-               assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
 
-              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(20)
+              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
 
               // assertCustomersWereWritten(mockFileSystem,
               //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
