@@ -6,8 +6,9 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
     write(fileName: string, data: Customer[]): void {
       
       const uniqueCustomers = data
-                                .filter((c,index,array)=> 
-                                            data.indexOf(c)===data.lastIndexOf(c))
+                                .filter((c,index)=> 
+                                            data
+                                            .findIndex( cust => cust.getName()===c.getName())===index)
 
       this.csvFileWriter.write(fileName,uniqueCustomers)
     }
