@@ -69,9 +69,11 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
 
 
 
-  export const createBatchedCsvFileWriter=(fileWriter:IFileWriter<Customer>,batchSize?:number)=>{
+  export const createBatchedCsvFileWriter=(mockFileSystem:IFileSystem ,batchSize?:number)=>{
+         
+      const csvFileWriter  = createCsvFileWriter(mockFileSystem)
         
-      return  new BatchCsvFileWriter(batchSize,fileWriter)
+      return  new BatchCsvFileWriter(batchSize,csvFileWriter)
   }
 
   export const assertBatchedCustomersWereWritten=(
