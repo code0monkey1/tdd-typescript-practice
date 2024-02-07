@@ -42,6 +42,34 @@ describe('batched-csv-file-writer', () => {
            })
         })
 
+
+        describe('greater than batchSize customers , written to different files', () => {
+          
+          it.each([{
+               customers:createCustomers(10),
+               batchSize:5
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
+  
+               //arrange
+         
+                const mockFileSystem = createMockFileSystem()
+        
+                const fileName= getFileName()
+
+                const sut =createBatchedCsvFileWriter(mockFileSystem,batchSize)
+          
+                //act
+
+                sut.write(fileName,customers)
+
+  
+               //assert
+              assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
+
+           
+           })
+        })
+
         describe('greater than batchSize customers , written to different file', () => {
           
           it.each([{

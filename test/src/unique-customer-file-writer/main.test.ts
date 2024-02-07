@@ -1,3 +1,4 @@
+import { BatchCustomerFileWriter } from '../../../src/batch-csv-file-writer/main';
 import { UniqueCustomerFileWriter } from '../../../src/unique-customer-file-writer/main';
 import { assertBatchedCustomersWereWritten, assertCustomersWereWritten, createBatchedCsvFileWriter, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
 
@@ -92,28 +93,36 @@ describe('unique-csv-file-writer', () => {
       })
 
 
-      describe('all unique files in batched files', () => {
-
-           //arrange
+        describe('greater than batchSize customers , written to different files', () => {
+          
+          it.each([{
+               customers:createCustomers(10),
+               batchSize:5
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
+  
+               //arrange
+         
+                const mockFileSystem = createMockFileSystem()
         
-            const customers = createCustomers(3)
-    
-            const mockFileSystem = createMockFileSystem()
+                const fileName= getFileName()
 
-            const batchCustomerFileWriter = createBatchedCsvFileWriter(mockFileSystem)
-          
-            const sut = new UniqueCustomerFileWriter(batchCustomerFileWriter)
-          
-            //act
-          
-            const fileName=getFileName()
-          
-            sut.write(fileName,customers)
-          
-            //assert
+                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
         
-            assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,2)
-      })
+                const batchCustomerFileWriter=  new BatchCustomerFileWriter(batchSize,csvFileWriter)
+
+                const sut = new UniqueCustomerFileWriter(batchCustomerFileWriter)
+          
+                //act
+
+                sut.write(fileName,customers)
+
+  
+               //assert
+              assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
+
+           
+           })
+        })
       
       
     
