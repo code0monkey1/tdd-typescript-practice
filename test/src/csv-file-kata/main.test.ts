@@ -65,8 +65,6 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
     }
 
   
-
-
     private getFormattedFileName(fileName:string,fileIndex:number){
       return  fileIndex==0?fileName:
                                 FileUtil.geFilePrefix(fileName)

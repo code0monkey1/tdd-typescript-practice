@@ -12,17 +12,7 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
     
       return{
 
-          assertCustomerWasWritten:(
-          fileSystem:IFileSystem,
-          fileName:string,
-          customer:Customer)=>expect(fileSystem.writeLine)
-                .toHaveBeenCalledWith(fileName, customer.getName()+','+customer.getContactNumber()),
-
-         assertCustomersWereWritten:(
-          fileSystem:IFileSystem,
-          fileName:string,
-          customers:Customer[])=>customers.forEach(c => assertCustomerWasWritten(fileSystem,fileName,c)),
-          
+  
            writeLine:jest.fn()
          
       }  
