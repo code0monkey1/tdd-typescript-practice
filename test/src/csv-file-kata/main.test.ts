@@ -88,13 +88,15 @@ describe.only('batched-csv-file-writer', () => {
          
                 const mockFileSystem = createMockFileSystem()
           
-                const sut  = createCsvFileWriter(mockFileSystem)
+                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
 
                 const fileName= getFileName()
+
+                const sut =createBatchedCsvFileWriter(csvFileWriter)
           
                 //act
 
-                sut.writeBatched(fileName,customers)
+                sut.write(fileName,customers)
 
   
                //assert
