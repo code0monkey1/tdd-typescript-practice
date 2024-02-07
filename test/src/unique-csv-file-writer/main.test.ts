@@ -37,9 +37,6 @@ describe('unique-csv-file-writer', () => {
          
       //arrange
     
-      const customer1=createCustomers(1)
-      const customer2=createCustomers(1)
-    
       const mockFileSystem = createMockFileSystem()
     
       const csvFileWriter = createCsvFileWriter(mockFileSystem)
@@ -50,26 +47,25 @@ describe('unique-csv-file-writer', () => {
     
       const fileName=getFileName()
     
-      sut.write(fileName,[new Customer('1','1'),new Customer('2','1'),new Customer('1','1')])
+      sut.write(fileName,[new Customer('1','1'),
+      new Customer('1','1'),
+      new Customer('1','1')])
     
       //assert
     
-      expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
+      expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
      
     })
 
   })
 
-    describe('one duplicate', () => {
+    describe('all unique', () => {
     
       it('will only write unique customers',()=>{
             
         //arrange
-      
-        const customer1=new Customer('1','1')
-        const customer2=new Customer('1','1')
-        const customer3=new Customer('2','1')
-      
+    
+        const customers =createCustomers(3)
         const mockFileSystem = createMockFileSystem()
       
         const csvFileWriter = createCsvFileWriter(mockFileSystem)
@@ -80,13 +76,13 @@ describe('unique-csv-file-writer', () => {
       
         const fileName=getFileName()
       
-        sut.write(fileName,[customer1,customer2,customer3])
+        sut.write(fileName,customers)
       
         //assert
       
-        expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
-        assertCustomerWasWritten(mockFileSystem,fileName,customer1)
-        assertCustomerWasWritten(mockFileSystem,fileName,customer3)
+        expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(3)
+        
+        assertCustomersWereWritten(mockFileSystem,fileName,customers)
       
       
       })
