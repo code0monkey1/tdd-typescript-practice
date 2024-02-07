@@ -93,7 +93,7 @@ describe('unique-csv-file-writer', () => {
       })
 
 
-        describe('greater than batchSize customers , written to different files', () => {
+        describe('all unique customers , written to different file batches', () => {
           
           it.each([{
                customers:createCustomers(10),
