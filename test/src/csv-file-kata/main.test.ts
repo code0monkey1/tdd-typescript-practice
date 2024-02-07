@@ -1,4 +1,5 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
+import { FileUtil } from '../../../src/utils/index';
 import {
   assertCustomersWereWritten,
   createBatchedCsvFileWriter,
@@ -46,21 +47,13 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
           
     }
 
-    private static geFilePrefix(fileName:string){
-       return fileName.substring(0,fileName.indexOf('.'))
-    }
-
-    private static getFileSuffix(fileName:string){
-      
-      return fileName.substring(fileName.indexOf('.'))
-    }
 
     public static getFormattedFileName(fileName:string,index:number){
       return  index==0?fileName:
-                                this.geFilePrefix(fileName)
+                                FileUtil.geFilePrefix(fileName)
                                   +"-"
                                     +index
-                                       +this.getFileSuffix(fileName)
+                                       +FileUtil.getFileSuffix(fileName)
                     }
   
 }
