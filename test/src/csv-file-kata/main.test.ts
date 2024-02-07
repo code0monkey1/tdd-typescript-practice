@@ -29,8 +29,8 @@ export class CsvFileWriter implements IFileWriter<Customer>{
     writeBatched(fileName:string,data:Customer[]):void{
            
         if(data.length>10){
-            this.write(fileName,data.slice(0,10))
-            this.write(FileUtil.geFilePrefix(fileName)+'-'+'1'+FileUtil.getFileSuffix(fileName),data.slice(10))
+            this.write("file.csv",data.slice(0,10))
+            this.write("file-1.csv",data.slice(10))
            }
     }
 }
@@ -96,8 +96,8 @@ describe.only('batched-csv-file-writer', () => {
   
                //assert
 
-               assertCustomersWereWritten(mockFileSystem,fileName,customers.slice(0,10))
-              assertCustomersWereWritten(mockFileSystem,FileUtil.geFilePrefix(fileName)+'-'+1 +FileUtil.getFileSuffix(fileName),customers.slice(10))
+               assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
+              assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
 
               // assertCustomersWereWritten(mockFileSystem,
               //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
