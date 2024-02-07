@@ -77,9 +77,7 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
     fileName:string,
     batchSize=10)=>{
 
-          if(batchSize==0){
-            throw ("batch size cannot be zero")
-          }
+
 
           for(let batch=0,fileIndex=0;batch<customers.length;batch+=batchSize,fileIndex+=1){
             
