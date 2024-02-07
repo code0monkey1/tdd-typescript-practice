@@ -50,7 +50,7 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
       if(this.batchSize==0)
             throw ("batch size cannot be zero")
       if(FileUtil.isInvalidName(fileName))
-            throw ("is invalid file name")
+            throw ("is invalid file name : "+fileName)
       
       
       for(let batch=0,fileIndex=0;batch<data.length;batch+=this.batchSize,fileIndex+=1){
@@ -172,11 +172,11 @@ describe('batched-csv-file-writer', () => {
            })
         })
 
-         describe('if file has no extension , throw Error', () => {
+         describe('file has no extension , throw Error', () => {
           
           it.each([{
                customers:createCustomers(10),
-               batchSize:0
+               batchSize:1
              }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
   
                //arrange
@@ -189,7 +189,7 @@ describe('batched-csv-file-writer', () => {
 
                 const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
 
-                const errorMessage ="batch size cannot be zero"
+                const errorMessage ="is invalid file name : "+fileName
           
                 //act
   
