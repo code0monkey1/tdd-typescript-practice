@@ -7,7 +7,7 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
        
       // const uniqueCustomers:Customer[]=[]
 
-      const uniques = data.filter((c,index,array)=> !array.find( cust => cust.getName()==c.getName()))
+      const uniques = data.filter((c,index,array)=> array.findIndex( cust => cust.getName()===c.getName())===index)
 
       // data.forEach(customer =>{
 
