@@ -80,7 +80,6 @@ describe('batched-csv-file-writer', () => {
     describe('write', () => {
 
 
-
         describe('less than or equal to batchSize customers , written to same file', () => {
           
           it.each([{
@@ -168,6 +167,37 @@ describe('batched-csv-file-writer', () => {
            
            })
         })
+
+         describe('if file has no extension , throw Error', () => {
+          
+          it.each([{
+               customers:createCustomers(10),
+               batchSize:0
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
+  
+               //arrange
+         
+                const mockFileSystem = createMockFileSystem()
+          
+                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
+
+                const fileName= "file"
+
+                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+
+                const errorMessage ="batch size cannot be zero"
+          
+                //act
+  
+               //assert
+               
+               expect(()=>sut.write(fileName,customers)).toThrow(errorMessage)
+
+
+           
+           })
+        })
+       
        
 
     })
