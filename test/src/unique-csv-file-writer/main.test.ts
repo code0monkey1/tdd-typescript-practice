@@ -40,26 +40,26 @@ describe('unique-csv-file-writer', () => {
     
        describe('3 unique customers', () => {
         
-        it('will write 3 ',()=>{
-             
-          //arrange
-          const customers =  [...createCustomers(3),...createCustomers(1)]
-        
-          const mockFileSystem = createMockFileSystem()
-        
-          const sut = createUniqueCsvFileWriter(mockFileSystem)
-        
-          //act
-        
-          const fileName=getFileName()
-        
-          sut.write(fileName,customers)
-        
-          //assert
-        
-          expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(3)
-         
-        })
+          it('will write 3 ',()=>{
+              
+            //arrange
+            const customers =  [...createCustomers(3),...createCustomers(1)]
+          
+            const mockFileSystem = createMockFileSystem()
+          
+            const sut = createUniqueCsvFileWriter(mockFileSystem)
+          
+            //act
+          
+            const fileName=getFileName()
+          
+            sut.write(fileName,customers)
+          
+            //assert
+          
+            expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(3)
+          
+          })
     
       })
     
