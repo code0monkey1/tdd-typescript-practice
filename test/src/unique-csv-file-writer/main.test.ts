@@ -1,5 +1,5 @@
 import { Customer, IFileWriter } from '../../../src/csv-file-writer/main';
-import { assertBatchedCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
+import { assertBatchedCustomersWereWritten, assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
 
 
 export class UniqueCsvFileWriter implements IFileWriter<Customer>{
@@ -86,7 +86,7 @@ describe('unique-csv-file-writer', () => {
       
         expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
 
-        assertBatchedCustomersWereWritten(mockFileSystem,createCustomers(2),fileName)
+        assertCustomersWereWritten(mockFileSystem,fileName,createCustomers(2))
       
       })
       
