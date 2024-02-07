@@ -147,11 +147,8 @@ describe('unique-csv-file-writer', () => {
 
                 sut.write(fileName,customers)
 
-
-               //assert
-              // assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
-
-              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(10)
+             
+              assertBatchedCustomersWereWritten(mockFileSystem,customers.slice(0,10),fileName,batchSize)
 
            
            })
