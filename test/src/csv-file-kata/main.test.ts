@@ -46,10 +46,10 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
   
     write(fileName: string, data: Customer[]): void {
       
-        for(let i=0;i<data.length;i+=this.batchSize){
+      
+        for(let i=0,fileIndex=0;i<data.length;i+=this.batchSize,fileIndex+=1){
             
-            const formattedFileName =i==0?fileName:
-                  FileUtil.geFilePrefix(fileName)+'-'+i+FileUtil.getFileSuffix(fileName)
+            const formattedFileName =fileIndex==0?fileName:BatchCsvFileWriter.getFormattedFileName(fileName,fileIndex)
                   
             this.csvFileWriter.write(formattedFileName,data.slice(i,i+this.batchSize))
         }
@@ -58,11 +58,11 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
     }
 
 
-    public static getFormattedFileName(fileName:string,index:number){
-      return  index==0?fileName:
+    public static getFormattedFileName(fileName:string,fileIndex:number){
+      return  fileIndex==0?fileName:
                                 FileUtil.geFilePrefix(fileName)
                                   +"-"
-                                    +index
+                                    +fileIndex
                                        +FileUtil.getFileSuffix(fileName)
                     }
 
@@ -71,16 +71,11 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
 }
 
 
-describe.only('batched-csv-file-writer', () => {
+describe('batched-csv-file-writer', () => {
 
     describe('write', () => {
 
-      it.only('FileUtil',()=>{
 
-            expect(FileUtil.geFilePrefix("file.csv") +"-"+1+FileUtil.getFileSuffix("file.csv")).toBe("file-1.csv")
-      
-      })
-    
 
         describe('less than batchSize customers , written to same file', () => {
           
