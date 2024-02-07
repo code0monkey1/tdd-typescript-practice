@@ -20,7 +20,7 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
            
       })
 
-      console.log("unique customers",JSON.stringify(data,null,4))
+      console.log("unique customers",JSON.stringify(uniqueCustomers,null,4))
 
       this.csvFileWriter.write(fileName,uniqueCustomers)
     }
@@ -50,11 +50,11 @@ describe('unique-csv-file-writer', () => {
 
     const fileName=getFileName()
 
-    sut.write(fileName,[new Customer('1','1'),new Customer('1','1'),new Customer('1','1')])
+    sut.write(fileName,[new Customer('1','1'),new Customer('2','1'),new Customer('1','1')])
 
     //assert
 
-    expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
+    expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
     
    })
   
