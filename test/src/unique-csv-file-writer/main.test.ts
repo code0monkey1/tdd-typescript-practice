@@ -40,7 +40,6 @@ describe('unique-csv-file-writer', () => {
 
     const csvFileWriter = createCsvFileWriter(mockFileSystem)
 
-
     const sut = new UniqueCsvFileWriter(csvFileWriter)
 
     //act
@@ -51,8 +50,9 @@ describe('unique-csv-file-writer', () => {
 
     //assert
 
-   expect(csvFileWriter.write).toHaveBeenCalledTimes(1)
-
+    expect(mockFileSystem.writeLine)
+          .toHaveBeenCalledTimes(1)
+    
    })
   
 })
