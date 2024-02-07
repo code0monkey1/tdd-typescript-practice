@@ -5,18 +5,20 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
     constructor(private csvFileWriter:IFileWriter<Customer>){}
     write(fileName: string, data: Customer[]): void {
        
-      const uniqueCustomers:Customer[]=[]
+      // const uniqueCustomers:Customer[]=[]
 
-      data.forEach(customer =>{
+      const uniques = data.filter((c,index,array)=> !array.find( cust => cust.getName()==c.getName()))
 
-        const isDuplicate = uniqueCustomers
-                            .find( c => c.getName()==customer.getName())
+      // data.forEach(customer =>{
+
+      //   const isDuplicate = uniqueCustomers
+      //                       .find( c => c.getName()==customer.getName())
   
-        if(!isDuplicate)uniqueCustomers.push(customer)
+      //   if(!isDuplicate)uniqueCustomers.push(customer)
            
-      })
+      // })
 
-      this.csvFileWriter.write(fileName,uniqueCustomers)
+      this.csvFileWriter.write(fileName,uniques)
     }
 
 }
