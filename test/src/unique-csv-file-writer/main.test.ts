@@ -1,5 +1,6 @@
-import { Customer, IFileSystem, IFileWriter } from '../../../src/csv-file-writer/main';
+import { Customer, IFileWriter } from '../../../src/csv-file-writer/main';
 import { createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
+
 
 export class UniqueCsvFileWriter implements IFileWriter<Customer>{
      
@@ -16,7 +17,6 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
         if(isNotUnique)uniqueCustomers.push(customer)
            
       })
-
 
       this.csvFileWriter.write(fileName,uniqueCustomers)
     }
