@@ -46,13 +46,18 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
     private csvFileWriter:IFileWriter<Customer>){}
   
     write(fileName: string, data: Customer[]): void {
-      
+
+      if(this.batchSize==0)
+            throw ("batch size cannot be zero")
+        
       
       for(let batch=0,fileIndex=0;batch<data.length;batch+=this.batchSize,fileIndex+=1){
             
             const formattedFileName =fileIndex==0?fileName:this.getFormattedFileName(fileName,fileIndex)
                   
             this.csvFileWriter.write(formattedFileName,data.slice(batch,batch+this.batchSize))
+
+            
         }
  
     }
@@ -91,7 +96,7 @@ describe('batched-csv-file-writer', () => {
 
                 const fileName= getFileName()
 
-                const sut =createBatchedCsvFileWriter(csvFileWriter)
+                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
           
                 //act
 
@@ -99,10 +104,7 @@ describe('batched-csv-file-writer', () => {
 
   
                //assert
-
-               assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
-
-              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
+              assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
 
            
            })
@@ -129,10 +131,39 @@ describe('batched-csv-file-writer', () => {
 
                 sut.write(fileName,customers)
 
-  
                //assert
 
                assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
+
+           
+           })
+        })
+
+        describe('if batch size is 0 , throw Error', () => {
+          
+          it.each([{
+               customers:createCustomers(10),
+               batchSize:0
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
+  
+               //arrange
+         
+                const mockFileSystem = createMockFileSystem()
+          
+                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
+
+                const fileName= getFileName()
+
+                const sut =createBatchedCsvFileWriter(csvFileWriter,batchSize)
+
+                const errorMessage ="batch size cannot be zero"
+          
+                //act
+  
+               //assert
+               
+               expect(()=>sut.write(fileName,customers)).toThrow(errorMessage)
+
 
            
            })
@@ -226,12 +257,9 @@ describe('customer-file-writer', () => {
             
             
                     //act
-            
                     sut.write(getFileName(),customers)
             
                     //assert
-                     
-                    
                      assertCustomersWereWritten(mockFileSystem,getFileName(),customers)
               
             
