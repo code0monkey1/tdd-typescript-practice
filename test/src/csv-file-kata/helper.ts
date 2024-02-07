@@ -88,8 +88,7 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
         }
          
 
-        //  assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
-        //        assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
-        //   expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
   }
+
+  
 
