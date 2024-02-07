@@ -1,4 +1,4 @@
-import { UniqueCsvFileWriter } from '../../../src/unique-csv-file-writer/main';
+import { UniqueCustomerFileWriter } from '../../../src/unique-customer-file-writer/main';
 import { assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
 
 
@@ -22,7 +22,7 @@ describe('unique-csv-file-writer', () => {
         
           const csvFileWriter = createCsvFileWriter(mockFileSystem)
         
-          const sut = new UniqueCsvFileWriter(csvFileWriter)
+          const sut = new UniqueCustomerFileWriter(csvFileWriter)
         
           //act
         

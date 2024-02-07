@@ -1,6 +1,6 @@
 import { BatchCsvFileWriter } from '../../../src/batch-csv-file-writer/main';
 import { CsvFileWriter, Customer, IFileSystem } from "../../../src/csv-file-writer/main";
-import { UniqueCsvFileWriter } from '../../../src/unique-csv-file-writer/main';
+import { UniqueCustomerFileWriter } from '../../../src/unique-customer-file-writer/main';
 import { FileUtil } from "../../../src/utils";
 
    export const getFileName=()=>{
@@ -79,7 +79,7 @@ import { FileUtil } from "../../../src/utils";
               
       const csvFileWriter  = createCsvFileWriter(mockFileSystem)
 
-      return new UniqueCsvFileWriter(csvFileWriter)
+      return new UniqueCustomerFileWriter(csvFileWriter)
   }
 
   export const assertBatchedCustomersWereWritten=(

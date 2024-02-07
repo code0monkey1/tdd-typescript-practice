@@ -1,6 +1,6 @@
 import { Customer, IFileWriter } from "../csv-file-writer/main"
 
-export class UniqueCsvFileWriter implements IFileWriter<Customer>{
+export class UniqueCustomerFileWriter implements IFileWriter<Customer>{
      
     constructor(private csvFileWriter:IFileWriter<Customer>){}
     write(fileName: string, data: Customer[]): void {
