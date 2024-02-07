@@ -46,7 +46,7 @@ describe('unique-csv-file-writer', () => {
 
     const fileName=getFileName()
 
-    sut.write(fileName,[...customer1,...customer2])
+    sut.write(fileName,[new Customer('1','1')])
 
     //assert
 
