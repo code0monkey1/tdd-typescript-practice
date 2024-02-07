@@ -1,17 +1,13 @@
 import { Customer, IFileSystem, IFileWriter } from '../../../src/csv-file-writer/main';
-import { createCustomers } from '../csv-file-writer/helper';
+import { createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
 
 export class UniqueCsvFileWriter implements IFileWriter<Customer>{
      
-    constructor(private fs:IFileSystem){}
+    constructor(private csvFileWriter:IFileWriter<Customer>){}
     write(fileName: string, data: Customer[]): void {
-        data.forEach( c=> this.fs.writeLine(fileName,this.formatAsCsvRow(c)))
+        throw("not implemented")
     }
 
-
-    public formatAsCsvRow(c: Customer): string {
-      return c.getName()+','+c.getContactNumber()
-    }
 
 }
 
@@ -25,14 +21,24 @@ describe('unique-csv-file-writer', () => {
     //arrange
 
     const customer1=createCustomers(1)
-
     const customer2=createCustomers(1)
 
+    const mockFileSystem = createMockFileSystem()
+
+    const csvFileWriter = createCsvFileWriter(mockFileSystem)
+
+
+    const sut = new UniqueCsvFileWriter(csvFileWriter)
 
     //act
 
+    const fileName=getFileName()
+
+    sut.write(fileName,[...customer1,...customer2])
 
     //assert
+
+   expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
 
    })
   
