@@ -85,7 +85,6 @@ describe('unique-csv-file-writer', () => {
         //assert
       
         expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
-
         assertCustomerWasWritten(mockFileSystem,fileName,customer1)
         assertCustomerWasWritten(mockFileSystem,fileName,customer3)
       
