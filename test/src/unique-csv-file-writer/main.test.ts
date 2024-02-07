@@ -5,7 +5,19 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
      
     constructor(private csvFileWriter:IFileWriter<Customer>){}
     write(fileName: string, data: Customer[]): void {
-        throw("not implemented")
+       
+      const uniqueCustomers = data.reduce((acc:Customer[],customer:Customer)=>{
+           
+          const isNotUnique =uniqueCustomers
+                              .find( cust => cust.getName()==customer.getName())
+
+          if(isNotUnique)acc.push(customer)
+
+          return acc
+
+        },[])
+
+      
     }
 
 
