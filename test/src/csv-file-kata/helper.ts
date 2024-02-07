@@ -76,14 +76,16 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
     customers:Customer[],
     fileName:string,
     batchSize=10)=>{
-
+            
+            
+                       
+          const prefix=FileUtil.geFilePrefix(fileName)
+          const suffix=FileUtil.getFileSuffix(fileName)
 
 
           for(let batch=0,fileIndex=0;batch<customers.length;batch+=batchSize,fileIndex+=1){
-            
-            const prefix=FileUtil.geFilePrefix(fileName)
-            const suffix=FileUtil.getFileSuffix(fileName)
 
+          
             const formattedFileName =fileIndex==0?fileName:prefix+"-"+fileIndex+suffix
                   
             assertCustomersWereWritten(mockFileSystem,formattedFileName,customers.slice(batch,batch+batchSize))
