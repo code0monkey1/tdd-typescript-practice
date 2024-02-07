@@ -1,6 +1,7 @@
-import { Customer, IFileSystem } from "../../../src/csv-file-writer/main";
+import { BatchCsvFileWriter } from '../../../src/batch-csv-file-writer/main';
+import { CsvFileWriter, Customer, IFileSystem } from "../../../src/csv-file-writer/main";
 import { FileUtil } from "../../../src/utils";
-import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
+
 
    export const getFileName=()=>{
        return "file.csv"
@@ -9,10 +10,8 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
 
   export const createMockFileSystem=()=>{
        
-    
       return{
-
-  
+        
            writeLine:jest.fn()
          
       }  
