@@ -46,13 +46,17 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
   
     write(fileName: string, data: Customer[]): void {
       
-             
-        if(data.length>10){
-            this.csvFileWriter.write("file.csv",data.slice(0,10))
-            this.csvFileWriter.write("file-1.csv",data.slice(10))
-           }
-        else
-          this.csvFileWriter.write("file.csv",data)
+        for(let i=0;i<data.length;i+=this.batchSize){
+            
+            const formattedFileName =i==0?fileName:"file-1.csv"
+            this.csvFileWriter.write(formattedFileName,data.slice(i,i+this.batchSize))
+        }
+        // if(data.length>10){
+        //     this.csvFileWriter.write("file.csv",data.slice(0,10))
+        //     this.csvFileWriter.write("file-1.csv",data.slice(10))
+        //    }
+        // else
+        //   this.csvFileWriter.write("file.csv",data)
         
           
     }
