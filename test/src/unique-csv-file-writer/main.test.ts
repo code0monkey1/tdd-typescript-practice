@@ -1,5 +1,5 @@
 import { Customer, IFileWriter } from '../../../src/csv-file-writer/main';
-import { assertBatchedCustomersWereWritten, assertCustomerWasWritten, assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
+import { assertBatchedCustomersWereWritten, assertCustomerWasWritten, assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
 
 
 export class UniqueCsvFileWriter implements IFileWriter<Customer>{
@@ -22,13 +22,10 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
       this.csvFileWriter.write(fileName,uniqueCustomers)
     }
 
-
 }
 
 
-
 describe('unique-csv-file-writer', () => {
-
 
 
   describe('only 1 unique', () => {
@@ -37,7 +34,8 @@ describe('unique-csv-file-writer', () => {
          
       //arrange
 
-      const customers =[...createCustomers(1),
+      const customers =[
+                        ...createCustomers(1),
                         ...createCustomers(1),
                         ...createCustomers(1)
                       ]
@@ -62,29 +60,26 @@ describe('unique-csv-file-writer', () => {
 
   })
 
-   describe('only 2 unique', () => {
+   describe('only 3 unique', () => {
     
-    it('will only write one unique value',()=>{
+    it('will only write 3 unique values',()=>{
          
       //arrange
-      const customers = 
+      const customers =  [...createCustomers(3),...createCustomers(1)]
+    
       const mockFileSystem = createMockFileSystem()
     
-      const csvFileWriter = createCsvFileWriter(mockFileSystem)
-    
-      const sut = new UniqueCsvFileWriter(csvFileWriter)
+      const sut = createUniqueCsvFileWriter(mockFileSystem)
     
       //act
     
       const fileName=getFileName()
     
-      sut.write(fileName,[new Customer('1','1'),
-      new Customer('1','1'),
-      new Customer('1','1')])
+      sut.write(fileName,customers)
     
       //assert
     
-      expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
+      expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(3)
      
     })
 
@@ -97,11 +92,10 @@ describe('unique-csv-file-writer', () => {
         //arrange
     
         const customers =createCustomers(3)
+
         const mockFileSystem = createMockFileSystem()
       
-        const csvFileWriter = createCsvFileWriter(mockFileSystem)
-      
-        const sut = new UniqueCsvFileWriter(csvFileWriter)
+        const sut = createUniqueCsvFileWriter(mockFileSystem)
       
         //act
       
