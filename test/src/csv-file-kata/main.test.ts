@@ -74,15 +74,15 @@ describe.only('batched-csv-file-writer', () => {
              }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
   
                //arrange
-              
-               const mockFileSystem = createMockFileSystem()
-       
-               const csvFileWriter  = createCsvFileWriter(mockFileSystem)
-                
-               const sut = createBatchedCsvFileWriter(csvFileWriter,batchSize)
-       
-               //act
-               sut.write(getFileName(),customers)
+         
+                const mockFileSystem = createMockFileSystem()
+          
+                const sut  = createCsvFileWriter(mockFileSystem)
+          
+                //act
+
+                sut.write(getFileName(),customers)
+
   
                //assert
 
