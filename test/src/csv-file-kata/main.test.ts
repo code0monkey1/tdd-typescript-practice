@@ -25,6 +25,14 @@ export class CsvFileWriter implements IFileWriter<Customer>{
     public formatAsCsvRow(c: Customer): string {
       return c.getName()+','+c.getContactNumber()
     }
+
+    writeBatched(fileName:string,data:Customer[]):void{
+           
+        if(data.length>10){
+            this.write(fileName,data.slice(0,10))
+            this.write(fileName,data.slice(10))
+           }
+    }
 }
 
 export class BatchCsvFileWriter implements IFileWriter<Customer>{
