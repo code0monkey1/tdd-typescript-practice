@@ -1,4 +1,4 @@
-import { Customer, IFileSystem } from "../../../src/csv-file-kata/main";
+import { Customer, IFileSystem } from "../../../src/csv-file-writer/main";
 import { FileUtil } from "../../../src/utils";
 import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
 
