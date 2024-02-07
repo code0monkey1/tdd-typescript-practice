@@ -1,4 +1,5 @@
 import { Customer, IFileSystem, IFileWriter } from '../../../src/csv-file-writer/main';
+import { createCustomers } from '../csv-file-writer/helper';
 
 export class UniqueCsvFileWriter implements IFileWriter<Customer>{
      
@@ -13,3 +14,27 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
     }
 
 }
+
+
+
+describe('unique-csv-file-writer', () => {
+
+
+   it('will only write one unique value',()=>{
+        
+    //arrange
+
+    const customer1=createCustomers(1)
+
+    const customer2=createCustomers(1)
+
+
+    //act
+
+
+    //assert
+
+   })
+  
+})
+
