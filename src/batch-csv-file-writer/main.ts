@@ -1,4 +1,4 @@
-import { Customer, IFileWriter } from "../csv-file-writer/main"
+import { IFileWriter } from "../csv-file-writer/main"
 import { FileUtil } from "../utils"
 
 

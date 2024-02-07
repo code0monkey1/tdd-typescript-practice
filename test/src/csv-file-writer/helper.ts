@@ -1,8 +1,7 @@
 import { BatchCsvFileWriter } from '../../../src/batch-csv-file-writer/main';
 import { CsvFileWriter, Customer, IFileSystem } from "../../../src/csv-file-writer/main";
+import { UniqueCsvFileWriter } from '../../../src/unique-csv-file-writer/main';
 import { FileUtil } from "../../../src/utils";
-import { UniqueCsvFileWriter } from '../unique-csv-file-writer/main.test';
-
 
    export const getFileName=()=>{
        return "file.csv"

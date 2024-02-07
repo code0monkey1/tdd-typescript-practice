@@ -1,27 +1,5 @@
-import { Customer, IFileWriter } from '../../../src/csv-file-writer/main';
-import { assertBatchedCustomersWereWritten, assertCustomerWasWritten, assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
-
-
-export class UniqueCsvFileWriter implements IFileWriter<Customer>{
-     
-    constructor(private csvFileWriter:IFileWriter<Customer>){}
-    write(fileName: string, data: Customer[]): void {
-       
-      const uniqueCustomers:Customer[]=[]
-
-      data.forEach(customer =>{
-
-        const isDuplicate = uniqueCustomers
-                            .find( c => c.getName()==customer.getName())
-  
-        if(!isDuplicate)uniqueCustomers.push(customer)
-           
-      })
-
-      this.csvFileWriter.write(fileName,uniqueCustomers)
-    }
-
-}
+import { UniqueCsvFileWriter } from '../../../src/unique-csv-file-writer/main';
+import { assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
 
 
 describe('unique-csv-file-writer', () => {
