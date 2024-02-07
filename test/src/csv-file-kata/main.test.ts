@@ -1,6 +1,7 @@
 import { Customer, IFileSystem } from '../../../src/csv-file-kata/main';
 import { FileUtil } from '../../../src/utils/index';
 import {
+  assertBatchedCustomersWereWritten,
   assertCustomersWereWritten,
   createBatchedCsvFileWriter,
   createCsvFileWriter,
@@ -131,10 +132,12 @@ describe('batched-csv-file-writer', () => {
   
                //assert
 
-               assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
-                assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+               assertBatchedCustomersWereWritten(mockFileSystem,customers)
 
-              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
+              //  assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
+              //  assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+
+              // expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
 
            
            })

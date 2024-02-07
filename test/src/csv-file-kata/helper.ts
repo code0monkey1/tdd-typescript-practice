@@ -1,5 +1,5 @@
-import { Customer, IFileSystem } from "../../../src/csv-file-kata/main"
-import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
+import { Customer, IFileSystem } from "../../../src/csv-file-kata/main";
+import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test";
 
    export const getFileName=()=>{
        return "file.csv"
@@ -68,5 +68,12 @@ import { BatchCsvFileWriter, CsvFileWriter, IFileWriter } from "./main.test"
   export const createBatchedCsvFileWriter=(fileWriter:IFileWriter<Customer>,batchSize?:number)=>{
         
       return  new BatchCsvFileWriter(batchSize,fileWriter)
+  }
+
+  export const assertBatchedCustomersWereWritten=(mockFileSystem:IFileSystem,customers:Customer[])=>{
+
+         assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
+               assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+          expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(customers.length)
   }
 
