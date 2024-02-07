@@ -12,7 +12,7 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
       data.forEach(customer =>{
 
         const isDuplicate = uniqueCustomers
-                            .find( prevCust => prevCust.getName()==customer.getName())
+                            .find( c => c.getName()==customer.getName())
   
         if(!isDuplicate)uniqueCustomers.push(customer)
            
