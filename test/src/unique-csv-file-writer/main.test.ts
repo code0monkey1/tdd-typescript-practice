@@ -9,18 +9,15 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
        
       const uniqueCustomers:Customer[]=[]
 
-      console.log("all customers",JSON.stringify(data,null,4))
-
       data.forEach(customer =>{
 
-        const hasOccurred = uniqueCustomers
+        const isDuplicate = uniqueCustomers
                             .find( prevCust => prevCust.getName()==customer.getName())
   
-        if(!hasOccurred)uniqueCustomers.push(customer)
+        if(!isDuplicate)uniqueCustomers.push(customer)
            
       })
 
-      console.log("unique customers",JSON.stringify(uniqueCustomers,null,4))
 
       this.csvFileWriter.write(fileName,uniqueCustomers)
     }
