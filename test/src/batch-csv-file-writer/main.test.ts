@@ -1,5 +1,11 @@
 
-import { assertBatchedCustomersWereWritten, createBatchedCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from "../csv-file-writer/helper"
+import {
+  assertBatchedCustomersWereWritten,
+  createBatchedCsvFileWriter,
+  createCustomers,
+  createMockFileSystem,
+  getFileName
+} from "../csv-file-writer/helper"
 
 
 
