@@ -74,6 +74,12 @@ export class BatchCsvFileWriter implements IFileWriter<Customer>{
 describe.only('batched-csv-file-writer', () => {
 
     describe('write', () => {
+
+      it.only('FileUtil',()=>{
+
+            expect(FileUtil.geFilePrefix("file.csv") +"-"+1+FileUtil.getFileSuffix("file.csv")).toBe("file-1.csv")
+      
+      })
     
 
         describe('less than batchSize customers , written to same file', () => {
@@ -213,5 +219,6 @@ describe('customer-file-writer', () => {
                   })
           
             })
-
+     
+        
     })
