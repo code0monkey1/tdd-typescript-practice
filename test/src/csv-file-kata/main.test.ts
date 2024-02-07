@@ -30,7 +30,7 @@ export class CsvFileWriter implements IFileWriter<Customer>{
            
         if(data.length>10){
             this.write(fileName,data.slice(0,10))
-            this.write(fileName+'-'+'1',data.slice(10))
+            this.write(FileUtil.geFilePrefix(fileName)+'-'+'1'+FileUtil.getFileSuffix(fileName),data.slice(10))
            }
     }
 }
@@ -86,6 +86,8 @@ describe.only('batched-csv-file-writer', () => {
                 const mockFileSystem = createMockFileSystem()
           
                 const sut  = createCsvFileWriter(mockFileSystem)
+
+                const fileName= getFileName()
           
                 //act
 
@@ -94,9 +96,8 @@ describe.only('batched-csv-file-writer', () => {
   
                //assert
 
-               assertCustomersWereWritten(mockFileSystem,
-                          BatchCsvFileWriter.getFormattedFileName(getFileName(),0),
-                          customers.slice(0,10))
+               assertCustomersWereWritten(mockFileSystem,fileName,customers.slice(0,10))
+              assertCustomersWereWritten(mockFileSystem,FileUtil.geFilePrefix(fileName)+'-'+1 +FileUtil.getFileSuffix(fileName),customers.slice(10))
 
               // assertCustomersWereWritten(mockFileSystem,
               //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
