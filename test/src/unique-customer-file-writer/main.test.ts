@@ -123,6 +123,39 @@ describe('unique-csv-file-writer', () => {
            
            })
         })
+
+        describe('all unique customers , written to different file batches', () => {
+          
+          it.each([{
+               customers:[...createCustomers(10), ...createCustomers(10)],
+               batchSize:5
+             }])('$customers.length customers , with batchSize : $batchSize',({customers,batchSize})=>{
+  
+               //arrange
+         
+                const mockFileSystem = createMockFileSystem()
+        
+                const fileName= getFileName()
+
+                const csvFileWriter  = createCsvFileWriter(mockFileSystem)
+        
+                const batchCustomerFileWriter=  new BatchCustomerFileWriter(batchSize,csvFileWriter)
+
+                const sut = new UniqueCustomerFileWriter(batchCustomerFileWriter)
+          
+                //act
+
+                sut.write(fileName,customers)
+
+
+               //assert
+              // assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,batchSize)
+
+              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(10)
+
+           
+           })
+        })
       
       
     
