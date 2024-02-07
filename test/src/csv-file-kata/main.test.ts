@@ -32,9 +32,9 @@ export class CsvFileWriter implements IFileWriter<Customer>{
             this.write("file.csv",data.slice(0,10))
             this.write("file-1.csv",data.slice(10))
            }
-        else{
+        else
           this.write("file.csv",data)
-        }
+        
     }
 }
 
@@ -94,13 +94,15 @@ describe.only('batched-csv-file-writer', () => {
           
                 //act
 
-                sut.write("file.csv",customers)
+                sut.writeBatched(fileName,customers)
 
   
                //assert
 
                assertCustomersWereWritten(mockFileSystem,"file.csv",customers.slice(0,10))
                assertCustomersWereWritten(mockFileSystem,"file-1.csv",customers.slice(10))
+
+              expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(20)
 
               // assertCustomersWereWritten(mockFileSystem,
               //             BatchCsvFileWriter.getFormattedFileName(getFileName(),1),
