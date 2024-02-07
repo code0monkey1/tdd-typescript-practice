@@ -1,5 +1,5 @@
 import { Customer, IFileWriter } from '../../../src/csv-file-writer/main';
-import { createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
+import { assertBatchedCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, getFileName } from '../csv-file-writer/helper';
 
 
 export class UniqueCsvFileWriter implements IFileWriter<Customer>{
@@ -35,26 +35,26 @@ describe('unique-csv-file-writer', () => {
     
     it('will only write one unique value',()=>{
          
-     //arrange
-  
-     const customer1=createCustomers(1)
-     const customer2=createCustomers(1)
-  
-     const mockFileSystem = createMockFileSystem()
-  
-     const csvFileWriter = createCsvFileWriter(mockFileSystem)
-  
-     const sut = new UniqueCsvFileWriter(csvFileWriter)
-  
-     //act
-  
-     const fileName=getFileName()
-  
-     sut.write(fileName,[new Customer('1','1'),new Customer('2','1'),new Customer('1','1')])
-  
-     //assert
-  
-     expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
+      //arrange
+    
+      const customer1=createCustomers(1)
+      const customer2=createCustomers(1)
+    
+      const mockFileSystem = createMockFileSystem()
+    
+      const csvFileWriter = createCsvFileWriter(mockFileSystem)
+    
+      const sut = new UniqueCsvFileWriter(csvFileWriter)
+    
+      //act
+    
+      const fileName=getFileName()
+    
+      sut.write(fileName,[new Customer('1','1'),new Customer('2','1'),new Customer('1','1')])
+    
+      //assert
+    
+      expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
      
     })
 
@@ -62,32 +62,34 @@ describe('unique-csv-file-writer', () => {
 
     describe('one duplicate', () => {
     
-    it('will only write one unique customers',()=>{
-         
-     //arrange
-  
-     const customer1=new Customer('1','1')
-     const customer2=new Customer('1','1')
-     const customer3=new Customer('2','1')
-  
-     const mockFileSystem = createMockFileSystem()
-  
-     const csvFileWriter = createCsvFileWriter(mockFileSystem)
-  
-     const sut = new UniqueCsvFileWriter(csvFileWriter)
-  
-     //act
-  
-     const fileName=getFileName()
-  
-     sut.write(fileName,[customer1,customer2,customer3])
-  
-     //assert
-  
-     expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
-     
-    })
-    
+      it('will only write unique customers',()=>{
+            
+        //arrange
+      
+        const customer1=new Customer('1','1')
+        const customer2=new Customer('1','1')
+        const customer3=new Customer('2','1')
+      
+        const mockFileSystem = createMockFileSystem()
+      
+        const csvFileWriter = createCsvFileWriter(mockFileSystem)
+      
+        const sut = new UniqueCsvFileWriter(csvFileWriter)
+      
+        //act
+      
+        const fileName=getFileName()
+      
+        sut.write(fileName,[customer1,customer2,customer3])
+      
+        //assert
+      
+        expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(2)
+
+        assertBatchedCustomersWereWritten(mockFileSystem,createCustomers(2),fileName)
+      
+      })
+      
   })
   
   
