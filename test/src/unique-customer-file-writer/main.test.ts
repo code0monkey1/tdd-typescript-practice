@@ -1,5 +1,5 @@
 import { UniqueCustomerFileWriter } from '../../../src/unique-customer-file-writer/main';
-import { assertCustomersWereWritten, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
+import { assertBatchedCustomersWereWritten, assertCustomersWereWritten, createBatchedCsvFileWriter, createCsvFileWriter, createCustomers, createMockFileSystem, createUniqueCsvFileWriter, getFileName } from '../csv-file-writer/helper';
 
 
 describe('unique-csv-file-writer', () => {
@@ -90,6 +90,32 @@ describe('unique-csv-file-writer', () => {
           })
           
       })
+
+
+      describe('all unique files in batched files', () => {
+
+           //arrange
+        
+            const customers = createCustomers(3)
+    
+            const mockFileSystem = createMockFileSystem()
+
+            const batchCustomerFileWriter = createBatchedCsvFileWriter(mockFileSystem)
+          
+            const sut = new UniqueCustomerFileWriter(batchCustomerFileWriter)
+          
+            //act
+          
+            const fileName=getFileName()
+          
+            sut.write(fileName,customers)
+          
+            //assert
+        
+            
+            assertBatchedCustomersWereWritten(mockFileSystem,customers,fileName,2)
+      })
+      
       
     
   })
