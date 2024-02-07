@@ -9,14 +9,18 @@ export class UniqueCsvFileWriter implements IFileWriter<Customer>{
        
       const uniqueCustomers:Customer[]=[]
 
+      console.log("all customers",JSON.stringify(data,null,4))
+
       data.forEach(customer =>{
 
-        const isNotUnique = uniqueCustomers
+        const hasOccurred = uniqueCustomers
                             .find( prevCust => prevCust.getName()==customer.getName())
   
-        if(isNotUnique)uniqueCustomers.push(customer)
+        if(!hasOccurred)uniqueCustomers.push(customer)
            
       })
+
+      console.log("unique customers",JSON.stringify(data,null,4))
 
       this.csvFileWriter.write(fileName,uniqueCustomers)
     }
@@ -46,11 +50,11 @@ describe('unique-csv-file-writer', () => {
 
     const fileName=getFileName()
 
-    sut.write(fileName,[new Customer('1','1')])
+    sut.write(fileName,[new Customer('1','1'),new Customer('1','1'),new Customer('1','1')])
 
     //assert
 
-    expect(mockFileSystem.writeLine).toHaveBeenCalled()
+    expect(mockFileSystem.writeLine).toHaveBeenCalledTimes(1)
     
    })
   
