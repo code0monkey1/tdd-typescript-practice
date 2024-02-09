@@ -1,8 +1,6 @@
 import { IFileWriter } from "../csv-file-writer/main"
 import { FileUtil } from "../utils"
 
-
-
 export class BatchCustomerFileWriter<Customer> implements IFileWriter<Customer>{
    
   constructor(
