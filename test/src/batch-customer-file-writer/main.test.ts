@@ -107,8 +107,7 @@ describe('batched-csv-file-writer', () => {
                //arrange
          
                 const mockFileSystem = createMockFileSystem()
-          
-
+        
                 const fileName= getFileName()
 
                 const sut =createBatchedCsvFileWriter(mockFileSystem,batchSize)
