@@ -29,7 +29,6 @@ describe('customer-file-writer', () => {
   
              sut.write(getFileName(),customers)
   
-  
              //assert
              
              expect(mockFileSystem.writeLine).not.toHaveBeenCalled()
